@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "erasableSyntaxOnly": true,
+    "lib": ["es2023"],
+    "module": "node16",
+    "moduleResolution": "node16",
+    "noEmit": true,
+    "target": "es2022"
+  },
+  "include": ["./lynx.config.ts", "./vitest.config.ts"]
+}

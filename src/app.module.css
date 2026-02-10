@@ -1,0 +1,119 @@
+:root {
+  --color-text: #fff;
+  background-color: #000;
+}
+
+.background {
+  position: fixed;
+  top: -60vw;
+  left: -14.27vw;
+  width: 200vw;
+  height: 200vw;
+  background: radial-gradient(
+    71.43% 62.3% at 46.43% 36.43%,
+    rgba(18, 229, 229, 0) 15%,
+    rgba(239, 155, 255, 0.3) 56.35%,
+    #ff6448 100%
+  );
+  border-radius: 50%;
+  box-shadow: 0px 12.93px 28.74px 0px #ffd28db2 inset;
+  transform: rotate(15.25deg);
+}
+
+.app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+text {
+  color: var(--color-text);
+}
+
+.banner {
+  z-index: 100;
+  display: flex;
+  flex: 5;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.logo-react {
+  width: 100px;
+  height: 100px;
+  animation: logo-spin infinite 20s linear;
+}
+
+.logo-lynx {
+  width: 100px;
+  height: 100px;
+  animation: logo-shake infinite 0.5s ease;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logo-shake {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.description {
+  margin: 15rpx;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hint {
+  margin: 5px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+}

@@ -1,0 +1,14 @@
+*.iml
+local.properties
+
+.cxx/
+.externalNativeBuild/
+.gradle/
+
+/app/build/
+/app/src/main/assets/
+/build/
+/captures/
+/gradle/wrapper/gradle-wrapper.jar
+/gradlew
+/gradlew.bat
