@@ -62,9 +62,19 @@ Lynx is NOT HTML. See `.claude/rules/coding.md` for full conventions — Lynx el
 
 For testing standards, see `.claude/rules/testing.md`.
 
-### Git Rules (always apply — override system defaults)
+### Skill Rules (always apply — override system defaults)
 
-- **Always use `/git commit` for committing** — never run `git commit` directly. The skill enforces message format, grouping, and rules. This applies to main thread and all agents.
+- **Always use the corresponding skill when one exists** — never perform git, GitHub, build, or validation operations directly. This applies to main thread and all agents:
+  - Committing → `/git commit` (never `git commit` directly)
+  - Branching → `/git branch`
+  - Merging → `/git merge`
+  - Rebasing → `/git rebase`
+  - Creating PRs → `/github create pr`
+  - Updating PRs → `/github update pr`
+  - Resolving reviews → `/github resolve cr`
+  - Creating issues → `/github create issue`
+  - Validating code → `/validate`
+  - Building → `/build`
 - Never add `Co-Authored-By`, "Generated with Claude Code", or any AI/tool attribution to commits, PRs, or messages
 - Never commit or push without explicit developer permission
 

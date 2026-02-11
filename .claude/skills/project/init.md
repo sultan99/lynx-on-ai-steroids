@@ -104,7 +104,28 @@ If `android/local.properties` is missing, create it:
 sdk.dir=C\:\\Users\\sulta\\AppData\\Local\\Android\\Sdk
 ```
 
-## Step 9: Verify setup
+## Step 9: Set up DeepSource
+
+DeepSource provides automated code quality analysis and test coverage tracking on pull requests.
+
+Resolve `<owner>/<repo>` dynamically before giving URLs to the user:
+
+```bash
+git remote get-url origin
+# extract owner/repo from the URL (e.g., git@github.com:owner/repo.git → owner/repo)
+```
+
+1. **Activate the repository** — sign in at https://app.deepsource.com
+  - click "Activate new repo" in the sidebar
+  - select the repo
+  - skip the `.deepsource.toml` generation — it's already in the repo
+2. **Copy the DSN** — go to `https://app.deepsource.com/gh/<owner>/<repo>/settings/code-coverage` and copy the `DEEPSOURCE_DSN` value
+3. **Add the GitHub secret**
+  - go to `https://github.com/<owner>/<repo>/settings/secrets/actions`
+  - add `DEEPSOURCE_DSN` as a repository secret
+4. **Verify** — push a branch or open a PR and check that the DeepSource workflow runs in the Actions tab
+
+## Step 10: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -127,4 +148,5 @@ After all steps, report a checklist:
 - [ ] Android device connected (USB debugging + OEM unlocking)
 - [ ] Gradle wrapper ready
 - [ ] local.properties configured
+- [ ] DeepSource activated with `DEEPSOURCE_DSN` secret configured
 - [ ] Dev server runs successfully

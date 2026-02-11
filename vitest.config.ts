@@ -12,7 +12,14 @@ const config = defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
-  test: {},
+  test: {
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'cobertura'],
+      include: ['src/**'],
+      exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
+    },
+  },
 })
 
 export default mergeConfig(defaultConfig, config)

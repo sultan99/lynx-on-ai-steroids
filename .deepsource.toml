@@ -1,0 +1,38 @@
+version = 1
+
+exclude_patterns = [
+  "android/.gradle/**",
+  "android/app/build/**",
+  "android/app/src/main/assets/**",
+  "coverage/**",
+  "dist/**",
+  "node_modules/**",
+  "src/components/icon/glyph-map.ts",
+]
+
+test_patterns = [
+  "src/**/*.test.ts",
+  "src/**/*.test.tsx",
+]
+
+[[analyzers]]
+name = "javascript"
+enabled = true
+
+  [analyzers.meta]
+  dialect = "typescript"
+  module_system = "es-modules"
+  environment = ["nodejs", "browser", "vitest"]
+  plugins = ["react"]
+
+[[analyzers]]
+name = "kotlin"
+enabled = true
+
+  [analyzers.meta]
+  language_version = "1.9"
+  runtime_version = "1.8"
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
