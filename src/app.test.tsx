@@ -25,56 +25,60 @@ test('App', async () => {
     <page>
       <view>
         <view
-          class="Background"
+          class=""
         />
         <view
-          class="App"
+          class=""
         >
           <view
-            class="Banner"
+            class=""
           >
             <view
-              class="Logo"
+              class=""
             >
               <image
-                class="Logo--lynx"
+                class=""
                 src="/src/assets/lynx-logo.png"
               />
             </view>
             <text
-              class="Title"
+              class=""
             >
               React
             </text>
             <text
-              class="Subtitle"
+              class=""
             >
               on Lynx
             </text>
           </view>
           <view
-            class="Content"
+            class=""
           >
             <image
-              class="Arrow"
+              class=""
               src="/src/assets/arrow.png"
             />
             <text
-              class="Description"
+              class=""
             >
               Tap the logo and have fun!
             </text>
-            <text
-              class="Hint"
+            <view
+              class=""
             >
-              Welcome!
-              <text
-                style="font-style:italic;color:rgba(255, 255, 255, 0.85)"
-              >
-                 src/app.tsx
+              <wrapper>
+                <text
+                  class=""
+                  style="font-family: icons; font-size: 13px; width: 13px; height: 13px; color: gray;"
+                >
+                  
+                </text>
+              </wrapper>
+              <text>
+                Read more about Lynx
               </text>
-              to see updates!
-            </text>
+            </view>
           </view>
           <view
             style="flex:1"
@@ -83,12 +87,14 @@ test('App', async () => {
       </view>
     </page>
   `)
-  const { findByText } = getQueriesForElement(elementTree.root!)
+  const root = elementTree.root
+  if (!root) throw new Error('root not rendered')
+  const { findByText } = getQueriesForElement(root)
   const element = await findByText('Tap the logo and have fun!')
   expect(element).toBeInTheDocument()
   expect(element).toMatchInlineSnapshot(`
     <text
-      class="Description"
+      class=""
     >
       Tap the logo and have fun!
     </text>
