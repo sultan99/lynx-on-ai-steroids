@@ -1,0 +1,40 @@
+name: DeepSource
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '**'
+    branches-ignore:
+      - main
+
+jobs:
+  analysis:
+    name: Code Analysis & Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npx vitest run --coverage
+
+      - name: Report coverage to DeepSource
+        if: ${{ secrets.DEEPSOURCE_DSN != '' }}
+        uses: deepsourcelabs/test-coverage-action@v1
+        with:
+          key: javascript
+          coverage-file: coverage/cobertura-coverage.xml
+          dsn: ${{ secrets.DEEPSOURCE_DSN }}
