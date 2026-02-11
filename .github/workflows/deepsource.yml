@@ -7,6 +7,8 @@ jobs:
   analysis:
     name: Code Analysis & Coverage
     runs-on: ubuntu-latest
+    env:
+      DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
 
     steps:
       - name: Checkout
@@ -27,8 +29,8 @@ jobs:
         run: npx vitest run --coverage
 
       - name: Report coverage to DeepSource
-        if: ${{ secrets.DEEPSOURCE_DSN != '' }}
-        uses: deepsourcelabs/test-coverage-action@v1
+        if: ${{ env.DEEPSOURCE_DSN != '' }}
+        uses: deepsourcelabs/test-coverage-action@v1.1.3
         with:
           key: javascript
           coverage-file: coverage/cobertura-coverage.xml

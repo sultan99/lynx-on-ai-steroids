@@ -119,11 +119,13 @@ git remote get-url origin
   - click "Activate new repo" in the sidebar
   - select the repo
   - skip the `.deepsource.toml` generation — it's already in the repo
-2. **Copy the DSN** — go to `https://app.deepsource.com/gh/<owner>/<repo>/settings/code-coverage` and copy the `DEEPSOURCE_DSN` value
-3. **Add the GitHub secret**
-  - go to `https://github.com/<owner>/<repo>/settings/secrets/actions`
-  - add `DEEPSOURCE_DSN` as a repository secret
-4. **Verify** — push a branch or open a PR and check that the DeepSource workflow runs in the Actions tab
+2. **Copy the DSN** — go to Settings > General in DeepSource
+  - open `https://app.deepsource.com/gh/<owner>/<repo>/settings/general`
+  - find the `DEEPSOURCE_DSN` field and copy the DSN value
+3. **Add the GitHub secret** — ask the user for the DSN value, then set it via CLI:
+  ```bash
+  gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
+  ```
 
 ## Step 10: Verify setup
 
