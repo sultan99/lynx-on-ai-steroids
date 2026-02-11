@@ -6,6 +6,7 @@
 .DS_Store
 Thumbs.db
 
+.claude/progress/
 .idea/
 .vscode/*
 bugreport-*.zip

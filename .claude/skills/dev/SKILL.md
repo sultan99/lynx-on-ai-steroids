@@ -1,6 +1,7 @@
 ---
 name: dev
 description: Feature implementation workflow. Use when developer wants to implement a feature or fix - creates branch, plans, implements, and validates.
+user-invocable: true
 argument-hint: "<description>"
 ---
 

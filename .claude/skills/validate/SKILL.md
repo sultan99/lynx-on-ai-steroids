@@ -1,6 +1,7 @@
 ---
 name: validate
 description: Run code validation (lint, type-check, test) in parallel. Use when developer wants to validate code before committing or after making changes.
+user-invocable: true
 ---
 
 # Validate Code

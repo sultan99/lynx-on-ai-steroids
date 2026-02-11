@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "ai": "clear && claude --dangerously-skip-permissions",
+    "claude": "clear && claude --dangerously-skip-permissions",
     "start": "rspeedy dev"
   },
   "dependencies": {
@@ -20,6 +20,8 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@types/react": "^18.3.27",
     "jsdom": "^27.4.0",
+    "oslllo-svg-fixer": "^6.0.1",
+    "svgtofont": "^6.5.1",
     "typescript": "~5.9.3",
     "vitest": "^3.2.4"
   },

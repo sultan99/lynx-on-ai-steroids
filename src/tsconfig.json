@@ -6,7 +6,11 @@
     "module": "ESNext",
     "jsxImportSource": "@lynx-js/react",
     "jsx": "react-jsx",
-    "composite": true
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["./**/*.ts", "./**/*.tsx"]
 }
