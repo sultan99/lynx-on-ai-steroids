@@ -44,6 +44,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/build aab --release` — Build Android release App Bundle for Google Play
 - `/dev <description>` — Feature implementation workflow (plan, implement, test, commit)
 - `/forge icons` — Generate icon font from SVGs in `src/components/icon/svgs/` (uses `oslllo-svg-fixer` for stroke→fill, `svgtofont` for SVG→TTF)
+- `/github create issue` — Conversational issue creation (refines rough input into structured ticket)
 - `/github create pr` — Create PR with description from GitHub issue
 - `/github update pr [pr-number]` — Update existing PR title and description
 - `/github resolve cr [pr-number]` — Resolve code review feedback on a PR

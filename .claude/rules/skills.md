@@ -52,7 +52,7 @@ If no argument is provided, list available commands and ask the user.
 ## Instruction File Format
 
 - Steps start at **Step 1** (no Step 0)
-- Each step has a clear heading: `### Step N: <action>`
+- Each step has a clear heading: `### Step N: <action>` (must be `###` h3, not `##` h2)
 - Include bash commands in fenced code blocks
 - Keep steps atomic — one action per step
 - Don't duplicate setup covered by `/project init`
