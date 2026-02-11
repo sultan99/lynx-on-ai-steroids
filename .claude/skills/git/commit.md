@@ -53,4 +53,4 @@ If invalid → warn user before proceeding.
 
 ### Step 4: Create commit(s)
 
-Use the message format above.
+Use the message format above. Present the proposed commit message and list of files to the developer and wait for explicit confirmation before proceeding.

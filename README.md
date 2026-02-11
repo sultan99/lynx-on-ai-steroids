@@ -27,7 +27,7 @@ For alternative installation methods, see the [Claude Code docs](https://code.cl
 Run Claude Code:
 
 ```sh
-claude
+npm run claude
 ```
 
 Use the init command:

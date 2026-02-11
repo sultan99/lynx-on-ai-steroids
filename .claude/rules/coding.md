@@ -1,21 +1,53 @@
 # Coding Conventions
 
+## Scope
+
+These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude/skills/`, and any other code files.
+
 ## General Principles
 
 - Prioritize readability, maintainability, and simplicity
 - Prefer concise solutions: less code, fewer elements, minimal CSS
 - Favor functional and declarative patterns; avoid classes
-- Avoid deep nesting in code or markup
 - Keep functions under 200 lines; split into smaller units
+- Avoid deep nesting in code or markup (3+ levels)
 - Don't create utility functions for simple one-liners — use library functions directly
+- Avoid over-engineering: unnecessary abstractions, premature generalization, feature flags for simple changes
+- Scripts generating files should use temp dirs for intermediate output — copy only final artifacts to the target dir, then delete temp
+- Windows compatibility: use forward slashes in glob patterns — `path.join` produces backslashes on Windows which breaks glob libraries. Use `path.join` only for non-glob filesystem paths
 
 ## Lynx Elements
 
-- Use `<view>`, `<text>`, `<image>` — never HTML tags (`<div>`, `<span>`, `<img>`)
+- Use `<view>`, `<text>`, `<image>` — never HTML tags (`<div>`, `<span>`, `<img>`, `<p>`, `<button>`, `<input>`)
 - Use `bindtap` for tap handlers, not `onClick`
 - Use `className` for styling
 - Avoid unnecessary wrapper `<view>` elements; use the fewest elements possible
 - Use `flex` + `gap` for spacing between elements; avoid margins for gaps
+
+## JSX Props
+
+- Properties first, then callbacks — sorted alphabetically within each group
+- Callbacks are props starting with `bind`, `catch`, `on`, or whose value is a function
+
+```tsx
+// Prefer
+<image
+  className={css.avatar}
+  data-testid="user-avatar"
+  src={avatarUrl}
+  bindtap={handleTap}
+  onLoad={handleLoad}
+/>
+
+// Avoid
+<image
+  bindtap={handleTap}
+  src={avatarUrl}
+  className={css.avatar}
+  onLoad={handleLoad}
+  data-testid="user-avatar"
+/>
+```
 
 ## Threads
 
@@ -25,7 +57,10 @@
 ## Styling
 
 - Use CSS modules: `import * as css from './component.module.css'`
+- Never use `import styles from` or bare `import './component.css'` — always `import * as css`
+- Global CSS imports are allowed only for: the app entry point (e.g. `src/index.tsx`) importing tokens/reset files, and `@font-face` declarations in font components
 - Write class names in kebab-case in CSS (`logo-react`), reference as camelCase in TS (`css.logoReact`)
+- No inline styles — use CSS modules instead. Exception: dynamic styles computed at runtime (e.g. icon size, color) where CSS modules cannot apply
 - Lynx layout engine is not identical to browser CSS — test on device
 
 ## TypeScript
@@ -33,8 +68,8 @@
 - Strict mode enabled
 - Use `@lynx-js/react` hooks (`useState`, `useCallback`, `useEffect`) — not React's
 - Use `type` over `interface`
-- Avoid `any`, `unknown`, type assertions (`as`, `!`)
-- Avoid enums; use objects or maps instead
+- Avoid `any`, type assertions (`as`, `!`), and enums (use objects or maps)
+- `unknown` is acceptable only at system boundaries (user input, external APIs)
 
 ### Type Safety
 

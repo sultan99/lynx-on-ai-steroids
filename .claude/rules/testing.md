@@ -39,12 +39,14 @@ npx vitest run
 
 ## Writing Rules
 
-- Use `render` from `@lynx-js/react/testing-library`
-- Use `getQueriesForElement(elementTree.root!)` for querying rendered output
+- Use `render` from `@lynx-js/react/testing-library` — never `@testing-library/react`
+- Never use `elementTree.root!` — Biome forbids `!` assertions. Use a `queryRoot()` helper instead (see Querying Rendered Output below)
 - Use `expect(elementTree.root).toMatchInlineSnapshot()` for snapshot testing
 - Use Arrange-Act-Assert pattern
 - Clear mocks: `vi.clearAllMocks()` in `beforeEach`
 - Use `.at(0)` instead of `[0]!` for array access (Biome forbids `!` assertions)
+- Use `vitest` — never `jest`
+- Avoid raw `setTimeout`/`setInterval` in tests — use fake timers instead
 
 ## Imports
 
@@ -52,6 +54,21 @@ npx vitest run
 import '@testing-library/jest-dom'
 import { getQueriesForElement, render } from '@lynx-js/react/testing-library'
 import { expect, test, vi } from 'vitest'
+```
+
+## Querying Rendered Output
+
+Use a helper to avoid `!` assertions on `elementTree.root`:
+
+```ts
+const queryRoot = () => {
+  const root = elementTree.root
+  if (!root) throw new Error('root not rendered')
+  return getQueriesForElement(root)
+}
+
+// Usage
+const { getByText } = queryRoot()
 ```
 
 ## Fake Timers
