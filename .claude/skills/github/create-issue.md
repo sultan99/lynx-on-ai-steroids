@@ -16,7 +16,7 @@ Take the developer's raw input and:
 
 - Fix grammar, spelling, phrasing
 - Expand vague ideas into clear, specific acceptance criteria
-- Infer implied requirements (edge cases, error handling, UX)
+- Identify potential implied requirements (edge cases, error handling, UX) and confirm with the developer
 - Determine type: `feature` / `bug` / `chore`
 - If the description is too vague to form acceptance criteria, ask targeted follow-up questions before proceeding
 
