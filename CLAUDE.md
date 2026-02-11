@@ -54,6 +54,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/git rebase [branch]` — Rebase current branch onto another
 - `/project init` — Set up the project from scratch
 - `/project skill-up` — Suggest improvements to instructions and rules based on session learnings
+- `/deepsource review` — Interactive review of DeepSource static analysis issues
 - `/validate` — Run lint, type-check, and tests in parallel
 
 ## Key Conventions
@@ -73,6 +74,7 @@ For testing standards, see `.claude/rules/testing.md`.
   - Updating PRs → `/github update pr`
   - Resolving reviews → `/github resolve cr`
   - Creating issues → `/github create issue`
+  - Reviewing DeepSource issues → `/deepsource review`
   - Validating code → `/validate`
   - Building → `/build`
 - Never add `Co-Authored-By`, "Generated with Claude Code", or any AI/tool attribution to commits, PRs, or messages

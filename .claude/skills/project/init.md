@@ -104,7 +104,41 @@ If `android/local.properties` is missing, create it:
 sdk.dir=C\:\\Users\\sulta\\AppData\\Local\\Android\\Sdk
 ```
 
-## Step 9: Set up DeepSource
+## Step 9: Install DeepSource CLI
+
+Download and install the DeepSource CLI from GitHub releases:
+
+```bash
+gh release download v0.10.1 -R DeepSourceCorp/cli -p "deepsource_*_windows_x86_64.tar.gz" -D /tmp
+mkdir -p ~/bin
+tar -xzf /tmp/deepsource_*_windows_x86_64.tar.gz -C ~/bin deepsource.exe
+```
+
+Verify installation:
+
+```bash
+~/bin/deepsource.exe version
+```
+
+Authenticate with DeepSource:
+
+```bash
+~/bin/deepsource.exe auth login
+```
+
+This prints a one-time code and waits for browser auth. Tell the user to:
+
+1. Open https://app.deepsource.com/device/activate
+2. Enter the one-time code
+3. Authorize the CLI
+
+Confirm auth succeeded:
+
+```bash
+~/bin/deepsource.exe auth status
+```
+
+## Step 10: Set up DeepSource
 
 DeepSource provides automated code quality analysis and test coverage tracking on pull requests.
 
@@ -127,7 +161,7 @@ git remote get-url origin
   gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
   ```
 
-## Step 10: Verify setup
+## Step 11: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -150,5 +184,6 @@ After all steps, report a checklist:
 - [ ] Android device connected (USB debugging + OEM unlocking)
 - [ ] Gradle wrapper ready
 - [ ] local.properties configured
+- [ ] DeepSource CLI installed and authenticated
 - [ ] DeepSource activated with `DEEPSOURCE_DSN` secret configured
 - [ ] Dev server runs successfully
