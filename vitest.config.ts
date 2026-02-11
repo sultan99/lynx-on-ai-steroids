@@ -17,6 +17,7 @@ const config = defineConfig({
       provider: 'v8',
       reporter: ['text', 'cobertura'],
       include: ['src/**'],
+      exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
     },
   },
 })

@@ -121,7 +121,7 @@ git remote get-url origin
   - skip the `.deepsource.toml` generation — it's already in the repo
 2. **Copy the DSN** — go to `https://app.deepsource.com/gh/<owner>/<repo>/settings/code-coverage` and copy the `DEEPSOURCE_DSN` value
 3. **Add the GitHub secret**
-  — go to `https://github.com/<owner>/<repo>/settings/secrets/actions`
+  - go to `https://github.com/<owner>/<repo>/settings/secrets/actions`
   - add `DEEPSOURCE_DSN` as a repository secret
 4. **Verify** — push a branch or open a PR and check that the DeepSource workflow runs in the Actions tab
 
