@@ -30,7 +30,7 @@ jobs:
 
       - name: Report coverage to DeepSource
         if: ${{ env.DEEPSOURCE_DSN != '' }}
-        uses: deepsourcelabs/test-coverage-action@v1
+        uses: deepsourcelabs/test-coverage-action@v1.1.3
         with:
           key: javascript
           coverage-file: coverage/cobertura-coverage.xml
