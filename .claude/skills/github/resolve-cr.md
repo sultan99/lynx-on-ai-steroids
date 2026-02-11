@@ -54,7 +54,7 @@ Display all comments in this format:
 
 🤖 Automated reviewers:
 
-#3 🫷[SKIP] Rename variable
+#3 👎[SKIP] Rename variable
    Reviewer asks: Rename 'x' to more descriptive name
    Reason: Minor naming preference, doesn't affect code quality
 ```

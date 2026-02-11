@@ -44,7 +44,9 @@ class MainActivity : Activity() {
         context: Context, url: String?, reqUrl: String?,
         width: Float, height: Float, transformer: Transformer?,
         handler: ImageInterceptor.CompletionHandler
-      ) {}
+      ) {
+        // No-op: Lynx handles image loading internally
+      }
     })
     return lynxView
   }
