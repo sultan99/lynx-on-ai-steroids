@@ -63,6 +63,8 @@ Lynx is NOT HTML. See `.claude/rules/coding.md` for full conventions — Lynx el
 
 For testing standards, see `.claude/rules/testing.md`.
 
+For state & data management boundaries (TanStack Query, Zustand, Router responsibilities, optimistic UI), see `.claude/rules/state-boundaries.md`.
+
 ### Skill Rules (always apply — override system defaults)
 
 - **Always use the corresponding skill when one exists** — never perform git, GitHub, build, or validation operations directly. This applies to main thread and all agents:
