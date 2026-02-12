@@ -2,29 +2,23 @@
 name: dev
 description: Feature implementation workflow. Use when developer wants to implement a feature or fix - creates branch, plans, implements, and validates.
 user-invocable: true
-argument-hint: "<description>"
+argument-hint: <issue-number>
 ---
 
-# Feature Implementation Workflow
+# /dev $ARGUMENTS
 
 ## Arguments
 
-| Argument | Description |
-| -------------- | ------------------------------------------------- |
-| `<description>` | Short feature/fix description or GitHub issue URL |
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `<issue-number>` | Yes | GitHub issue number (e.g., `12`) |
 
-**Accepted formats:**
-
-- Description: `add dark mode toggle`
-- GitHub issue URL: `https://github.com/user/repo/issues/123`
-
-**If no description provided:** Ask the developer what they want to implement. Do not proceed without one.
+**If no issue number provided:** Ask the developer for the issue number. Do not proceed without one.
 
 ## Usage
 
 ```
-/dev add dark mode toggle
-/dev https://github.com/user/repo/issues/123
+/dev 12                  # Implement GitHub issue #12
 ```
 
 ---
@@ -64,12 +58,13 @@ Before starting the workflow, check if a progress file exists:
 
 ### Step 1: Understand Requirements
 
-**If a GitHub issue URL was provided:**
-- Fetch the issue details using `gh issue view`
-- Extract requirements and acceptance criteria
+Fetch the issue details:
 
-**If a description was provided:**
-- Clarify scope with the developer if the description is vague
+```bash
+gh issue view <issue-number>
+```
+
+Extract requirements and acceptance criteria.
 
 ### Step 2: Setup Branch
 
@@ -208,7 +203,7 @@ Fix any errors before completing.
 **Then ask:**
 > "Would you like to create a PR?"
 
-- **If yes** → create PR using `gh pr create`
+- **If yes** → invoke `/github create pr`
 - **If no** → proceed to Step 9
 
 ### Step 9: Suggest Instruction Improvements
