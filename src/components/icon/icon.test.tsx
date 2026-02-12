@@ -30,7 +30,7 @@ describe('resolveValue', () => {
 describe('Icon', () => {
   test('renders null when isVisible is false', () => {
     render(<Icon glyph='house' isVisible={false} />)
-    expect(elementTree.root).toMatchInlineSnapshot(`<page />`)
+    expect(elementTree.root).toMatchInlineSnapshot('<page />')
   })
 
   test('renders glyph character', () => {
