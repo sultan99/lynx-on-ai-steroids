@@ -54,6 +54,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/git rebase [branch]` — Rebase current branch onto another
 - `/project init` — Set up the project from scratch
 - `/project skill-up` — Suggest improvements to instructions and rules based on session learnings
+- `/ship` — Ship experimental changes (create issue from diff, rename branch, open PR)
 - `/deepsource review` — Interactive review of DeepSource static analysis issues
 - `/validate` — Run lint, type-check, and tests in parallel
 
@@ -76,6 +77,7 @@ For state & data management boundaries (TanStack Query, Zustand, Router responsi
   - Updating PRs → `/github update pr`
   - Resolving reviews → `/github resolve cr`
   - Creating issues → `/github create issue`
+  - Shipping experimental changes → `/ship`
   - Reviewing DeepSource issues → `/deepsource review`
   - Validating code → `/validate`
   - Building → `/build`
