@@ -8,6 +8,7 @@ All coding conventions and testing standards are defined in:
 
 - `.claude/rules/coding.md` — coding conventions, Lynx elements, TypeScript, styling, naming
 - `.claude/rules/testing.md` — testing standards, imports, patterns
+- `.claude/rules/state-boundaries.md` — state & data management boundaries (TanStack Query, Zustand, Router)
 
 Read and apply these rules when reviewing pull requests.
 
