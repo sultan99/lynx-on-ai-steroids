@@ -49,15 +49,21 @@ For **release** build (when `--release` flag is passed):
 
 Report the APK file path and size to the user.
 
-### Step 5: Deploy to device (optional)
+### Step 5: Deploy to device
 
-Ask the user if they want to install and launch the APK on a connected device. If yes:
+Check if a device is connected:
+
+```bash
+adb devices | grep -w "device"
+```
+
+If a device is listed, install and launch automatically:
 
 ```bash
 adb install -r android/app/build/outputs/apk/debug/app-debug.apk && adb shell am start -n com.lynxonaisteroids.app/.MainActivity
 ```
 
-This requires a device connected via USB with USB debugging enabled.
+If no device is connected, skip deployment and inform the user that no device was detected.
 
 ## Troubleshooting
 
