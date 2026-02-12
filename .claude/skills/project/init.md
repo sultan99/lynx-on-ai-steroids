@@ -161,7 +161,19 @@ git remote get-url origin
   gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
   ```
 
-## Step 11: Verify setup
+## Step 11: Install Lynx DevTools
+
+Lynx DevTools is a desktop application for debugging Lynx apps on-device. It provides Elements, Console, Sources, and Trace panels — similar to Chrome DevTools but for the Lynx rendering engine.
+
+The debug APK already includes the DevTools integration (enabled automatically in debug builds). The desktop app connects to it over USB to provide the inspector UI.
+
+Tell the user:
+
+1. Download the latest release from https://github.com/lynx-family/lynx-devtool/releases
+2. Install and launch it
+3. Connect the Android device via USB — the app will be detected automatically
+
+## Step 12: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -186,4 +198,5 @@ After all steps, report a checklist:
 - [ ] local.properties configured
 - [ ] DeepSource CLI installed and authenticated
 - [ ] DeepSource activated with `DEEPSOURCE_DSN` secret configured
+- [ ] Lynx DevTools desktop app installed
 - [ ] Dev server runs successfully

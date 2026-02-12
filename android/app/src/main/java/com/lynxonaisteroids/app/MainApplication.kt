@@ -27,9 +27,11 @@ class MainApplication : Application() {
     LynxServiceCenter.inst().registerService(LynxImageService.getInstance())
     LynxServiceCenter.inst().registerService(LynxLogService)
     LynxServiceCenter.inst().registerService(LynxHttpService)
+    DevToolsInitializer.registerService()
   }
 
   private fun initLynxEnv() {
     LynxEnv.inst().init(this, null, null, null)
+    DevToolsInitializer.enableDebugSwitches()
   }
 }
