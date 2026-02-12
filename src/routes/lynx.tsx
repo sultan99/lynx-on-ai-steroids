@@ -21,10 +21,9 @@ export const Route = createFileRoute('/lynx')({
 let isFirstVisit = true
 
 function LynxRoute() {
-  const { data } = useQuery(lynxQueryOptions)
-  console.log('[/lynx]', data?.message)
+  useQuery(lynxQueryOptions)
 
-  const slideDirection = isFirstVisit ? undefined : ('left' as const)
+  const slideDirection = isFirstVisit ? undefined : 'left'
   isFirstVisit = false
 
   return (

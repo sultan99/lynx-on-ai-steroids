@@ -52,7 +52,7 @@ export function Screen({
             <text>Read more about Lynx</text>
           </view>
         </view>
-        <view style={{ flex: 1 }} />
+        <view className={css.spacer} />
       </view>
     </view>
   )

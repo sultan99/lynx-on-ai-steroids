@@ -19,8 +19,7 @@ export const Route = createFileRoute('/react')({
 })
 
 function ReactRoute() {
-  const { data } = useQuery(reactQueryOptions)
-  console.log('[/react]', data?.message)
+  useQuery(reactQueryOptions)
 
   return (
     <Screen

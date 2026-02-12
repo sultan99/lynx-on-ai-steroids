@@ -3,6 +3,11 @@ if (typeof globalThis.window === 'undefined') {
   globalThis.window = globalThis
 }
 
+if (typeof globalThis.self === 'undefined') {
+  // @ts-expect-error — minimal shim, RouterCore assigns self.__TSR_ROUTER__
+  globalThis.self = globalThis
+}
+
 if (typeof Promise.allSettled !== 'function') {
   Promise.allSettled = <T>(
     promises: Array<T | PromiseLike<T>>,
@@ -25,11 +30,22 @@ if (typeof globalThis.Response === 'undefined') {
   // @ts-expect-error — minimal stub for redirect()/isRedirect()
   globalThis.Response = class Response {
     status: number
-    headers: Map<string, string>
+    headers: Headers
     options?: unknown
-    constructor(_body: unknown, init?: { status?: number; headers?: unknown }) {
+    constructor(
+      _body: unknown,
+      init?: { status?: number; headers?: Headers | Record<string, string> },
+    ) {
       this.status = init?.status ?? 200
-      this.headers = new Map()
+      if (init?.headers instanceof Headers) {
+        this.headers = init.headers
+      } else {
+        this.headers = new Headers(
+          init?.headers && typeof init.headers === 'object'
+            ? init.headers
+            : undefined,
+        )
+      }
     }
   }
 }
