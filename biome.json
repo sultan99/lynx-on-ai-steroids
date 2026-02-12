@@ -27,6 +27,7 @@
       "!**/node_modules",
       "!**/*.d.ts",
       "!**/_generated-*.ts",
+      "!**/*.gen.ts",
       "!**/.yalc",
       "!**/testing/**/*",
       "!**/gql/**/*",
