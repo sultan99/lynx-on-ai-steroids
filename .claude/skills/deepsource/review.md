@@ -6,7 +6,9 @@ Interactively review and fix DeepSource static analysis issues.
 
 ### Step 1: Fetch issues
 
-Run the DeepSource CLI to list current issues:
+If `--run` is provided → read `.claude/skills/deepsource/fetch-run.md` and follow it, then continue to Step 2.
+
+Otherwise, use the CLI:
 
 ```bash
 ~/bin/deepsource.exe issues list --json --output-file /tmp/deepsource-issues.json
