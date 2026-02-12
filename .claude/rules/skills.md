@@ -2,16 +2,67 @@
 
 ## Structure
 
-Each skill lives in `.claude/skills/<skill-name>/` with this layout:
+Each skill lives in `.claude/skills/<skill-name>/` with `SKILL.md` as the entry point.
+
+### Simple skill (no subcommands)
+
+Everything lives in a single file — frontmatter, usage, and all instruction steps.
 
 ```
 .claude/skills/<skill-name>/
-  SKILL.md              # Entry point (required) — frontmatter + routing
+  SKILL.md              # Entry point + full instructions
+```
+
+### Multi-subcommand skill
+
+Split into separate files to save context — only the relevant subcommand file is loaded.
+
+```
+.claude/skills/<skill-name>/
+  SKILL.md              # Entry point — frontmatter + routing only
   <subcommand>.md       # Instruction file per subcommand
   <shared-rules>.md     # Shared rules across subcommands (optional)
 ```
 
-## SKILL.md Format
+## SKILL.md Format — Simple Skill
+
+```markdown
+---
+name: <skill-name>
+description: <short description for skill registry>
+user-invocable: true
+argument-hint: [optional-arg]
+---
+
+# /<skill-name> $ARGUMENTS
+
+<One-line description.>
+
+## Arguments
+
+| Argument | Required | Description |
+|----------|----------|-------------|
+| `[--flag]` | No | ... |
+
+## Usage
+
+\```
+/<skill-name>              # Description
+/<skill-name> --flag       # Description
+\```
+
+## Instructions
+
+### Step 1: <action>
+
+...
+
+### Step 2: <action>
+
+...
+```
+
+## SKILL.md Format — Multi-Subcommand Skill
 
 ```markdown
 ---
@@ -49,7 +100,7 @@ Read the subcommand-specific instruction file and follow it exactly:
 If no argument is provided, list available commands and ask the user.
 ```
 
-## Instruction File Format
+## Instruction Steps Format
 
 - Steps start at **Step 1** (no Step 0)
 - Each step has a clear heading: `### Step N: <action>` (must be `###` h3, not `##` h2)
@@ -68,6 +119,7 @@ After creating a skill, register it in:
 ## Principles
 
 - Skills are token-efficient — no redundant context, no prerequisites covered elsewhere
-- SKILL.md is a router — it delegates to instruction files, not execute logic itself
-- Instruction files are self-contained — readable and executable without SKILL.md context
+- Simple skills keep everything in SKILL.md — no separate files for a single command
+- Multi-subcommand skills split into files — SKILL.md routes, subcommand files execute
+- Subcommand instruction files are self-contained — readable and executable without SKILL.md context
 - Shared rules go in separate files (e.g., `rules.md`) referenced from SKILL.md

@@ -42,7 +42,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/build apk --release` — Build Android release APK
 - `/build aab` — Build Android debug App Bundle
 - `/build aab --release` — Build Android release App Bundle for Google Play
-- `/dev <description>` — Feature implementation workflow (plan, implement, test, commit)
+- `/dev <issue-number>` — Feature implementation workflow (plan, implement, test, commit)
 - `/forge icons` — Generate icon font from SVGs in `src/components/icon/svgs/` (uses `oslllo-svg-fixer` for stroke→fill, `svgtofont` for SVG→TTF)
 - `/github create issue` — Conversational issue creation (refines rough input into structured ticket)
 - `/github create pr` — Create PR with description from GitHub issue
@@ -54,6 +54,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/git rebase [branch]` — Rebase current branch onto another
 - `/project init` — Set up the project from scratch
 - `/project skill-up` — Suggest improvements to instructions and rules based on session learnings
+- `/ship` — Ship experimental changes (create issue from diff, rename branch, open PR)
 - `/deepsource review` — Interactive review of DeepSource static analysis issues
 - `/validate` — Run lint, type-check, and tests in parallel
 
@@ -62,6 +63,8 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 Lynx is NOT HTML. See `.claude/rules/coding.md` for full conventions — Lynx elements, TypeScript, styling, naming, and code style rules.
 
 For testing standards, see `.claude/rules/testing.md`.
+
+For state & data management boundaries (TanStack Query, Zustand, Router responsibilities, optimistic UI), see `.claude/rules/state-boundaries.md`.
 
 ### Skill Rules (always apply — override system defaults)
 
@@ -74,6 +77,7 @@ For testing standards, see `.claude/rules/testing.md`.
   - Updating PRs → `/github update pr`
   - Resolving reviews → `/github resolve cr`
   - Creating issues → `/github create issue`
+  - Shipping experimental changes → `/ship`
   - Reviewing DeepSource issues → `/deepsource review`
   - Validating code → `/validate`
   - Building → `/build`
