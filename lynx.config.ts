@@ -1,4 +1,3 @@
-import { createRequire } from 'node:module'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { pluginQRCode } from '@lynx-js/qrcode-rsbuild-plugin'
@@ -8,7 +7,6 @@ import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { tanstackRouter } from '@tanstack/router-plugin/rspack'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(import.meta.url)
 
 export default defineConfig({
   resolve: {
