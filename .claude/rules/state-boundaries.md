@@ -93,7 +93,7 @@ Mutations interact with overlays, not cache structures.
 3. Rollback on error (`onError`)
 4. Clean up overlay and invalidate queries (`onSettled`)
 
-- Use `mutationKey` to deduplicate concurrent in-flight requests
+- Use `mutationKey` to group/identify related mutations and query mutation state (e.g., via `useIsMutating`)
 - Always clean up overlays in `onSettled` — don't rely on invalidation alone, stale IDs accumulate
 
 **Avoid:** deep cache traversal, page-level manual updates, cross-query structural surgery.

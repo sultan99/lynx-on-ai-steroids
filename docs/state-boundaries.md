@@ -205,7 +205,7 @@ const useDeleteUser = () => {
   const { markDeleted, clearDeleted } = useTableStore()
 
   return useMutation({
-    mutationKey: ['deleteUser'], // deduplicates concurrent calls
+    mutationKey: ['deleteUser'], // groups related mutations for identification
     mutationFn: (id: string) => api.deleteUser(id),
 
     onMutate: (id) => {
@@ -231,7 +231,7 @@ const useDeleteUser = () => {
 
 No `setQueryData`. No page traversal. No cache corruption.
 
-> **Concurrent mutations:** `mutationKey` prevents duplicate in-flight requests for the same action. For bulk actions (e.g., deleting multiple rows), each delete gets its own overlay entry — if one fails, only that row rolls back. If the component unmounts mid-mutation, `onSettled` still fires and cleans up the overlay.
+> **Concurrent mutations:** `mutationKey` is used to group and identify related mutations (for defaults, devtools, and `useIsMutating`); it does **not** deduplicate in-flight requests. For bulk actions (e.g., deleting multiple rows), each delete gets its own overlay entry — if one fails, only that row rolls back. If the component unmounts mid-mutation, `onSettled` still fires and cleans up the overlay.
 
 ## When `setQueryData` Is Appropriate
 
