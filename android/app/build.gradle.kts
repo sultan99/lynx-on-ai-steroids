@@ -24,6 +24,9 @@ android {
       )
     }
   }
+  buildFeatures {
+    buildConfig = true
+  }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
@@ -65,4 +68,8 @@ dependencies {
   // Lynx XElement (extended native elements)
   implementation("org.lynxsdk.lynx:xelement:3.6.0")
   implementation("org.lynxsdk.lynx:xelement-input:3.6.0")
+
+  // Lynx DevTools (debug only)
+  debugImplementation("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+  debugImplementation("org.lynxsdk.lynx:lynx-service-devtool:3.6.0")
 }
