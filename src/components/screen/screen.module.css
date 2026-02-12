@@ -77,6 +77,32 @@ text {
   }
 }
 
+@keyframes slide-from-right {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-from-right {
+  animation: slide-from-right 0.3s ease-out;
+}
+
+.slide-from-left {
+  animation: slide-from-left 0.3s ease-out;
+}
+
 .content {
   display: flex;
   flex-direction: column;

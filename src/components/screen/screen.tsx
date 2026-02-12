@@ -10,6 +10,7 @@ type ScreenProps = {
   logoSrc: string
   logoClassName: string
   navigateTo: string
+  slideDirection?: 'left' | 'right'
 }
 
 export function Screen({
@@ -17,6 +18,7 @@ export function Screen({
   logoSrc,
   logoClassName,
   navigateTo,
+  slideDirection,
 }: ScreenProps) {
   const navigate = useNavigate()
 
@@ -25,7 +27,15 @@ export function Screen({
   }, [navigate, navigateTo])
 
   return (
-    <view>
+    <view
+      className={
+        slideDirection === 'left'
+          ? css.slideFromLeft
+          : slideDirection === 'right'
+            ? css.slideFromRight
+            : undefined
+      }
+    >
       <view className={css.background} />
       <view className={css.screen}>
         <view className={css.banner}>

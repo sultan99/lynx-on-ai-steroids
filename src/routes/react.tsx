@@ -27,6 +27,7 @@ function ReactRoute() {
       logoClassName={css.logoReact}
       logoSrc={reactLogo}
       navigateTo='/lynx'
+      slideDirection='right'
     >
       <text className={css.title}>React</text>
       <text className={css.subtitle}>on Lynx</text>

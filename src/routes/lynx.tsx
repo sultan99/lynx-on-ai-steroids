@@ -18,12 +18,22 @@ export const Route = createFileRoute('/lynx')({
   component: LynxRoute,
 })
 
+let isFirstVisit = true
+
 function LynxRoute() {
   const { data } = useQuery(lynxQueryOptions)
   console.log('[/lynx]', data?.message)
 
+  const slideDirection = isFirstVisit ? undefined : ('left' as const)
+  isFirstVisit = false
+
   return (
-    <Screen logoClassName={css.logoLynx} logoSrc={lynxLogo} navigateTo='/react'>
+    <Screen
+      logoClassName={css.logoLynx}
+      logoSrc={lynxLogo}
+      navigateTo='/react'
+      slideDirection={slideDirection}
+    >
       <text className={css.title}>Lynx</text>
       <text className={css.subtitle}>on React</text>
     </Screen>
