@@ -1,8 +1,3 @@
-:root {
-  --color-text: #fff;
-  background-color: #000;
-}
-
 .background {
   position: fixed;
   top: -60vw;
@@ -20,7 +15,7 @@
   transform: rotate(15.25deg);
 }
 
-.app {
+.screen {
   position: relative;
   display: flex;
   flex-direction: column;
