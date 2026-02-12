@@ -1,6 +1,6 @@
 package com.lynxonaisteroids.app
 
 object DevToolsInitializer {
-  fun registerService() {}
-  fun enableDebugSwitches() {}
+  fun registerService() = Unit
+  fun enableDebugSwitches() = Unit
 }

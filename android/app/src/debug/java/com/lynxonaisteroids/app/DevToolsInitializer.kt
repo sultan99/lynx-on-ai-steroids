@@ -6,11 +6,11 @@ import com.lynx.tasm.service.LynxServiceCenter
 
 object DevToolsInitializer {
   fun registerService() {
-    val service = LynxDevToolService.INSTANCE
-    LynxServiceCenter.inst().registerService(service)
-    service.setLynxDebugPresetValue(true)
-    service.setLogBoxPresetValue(true)
-    service.setLoadJsBridge(true)
+    val devToolService = LynxDevToolService.INSTANCE
+    LynxServiceCenter.inst().registerService(devToolService)
+    devToolService.setLynxDebugPresetValue(true)
+    devToolService.setLogBoxPresetValue(true)
+    devToolService.setLoadJsBridge(true)
   }
 
   fun enableDebugSwitches() {
