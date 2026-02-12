@@ -8,6 +8,7 @@ exclude_patterns = [
   "dist/**",
   "node_modules/**",
   "src/components/icon/glyph-map.ts",
+  "src/route-tree.gen.ts",
 ]
 
 test_patterns = [
