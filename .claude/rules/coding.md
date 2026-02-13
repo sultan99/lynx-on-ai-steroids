@@ -84,7 +84,8 @@ When TypeScript complains about types:
 ## Code Style
 
 - Use `const` and immutability; avoid `let`
-- Use arrow functions for direct value returns
+- Always use arrow functions — avoid `function` declarations
+- Use implicit return (no `return` keyword) when the body is a single expression
 - Minimize `if-else` and `switch`; prefer early returns
 - No comments unless explaining workarounds or non-obvious logic
 - Use descriptive naming instead of comments
@@ -102,6 +103,24 @@ When TypeScript complains about types:
 For testing conventions, see `.claude/rules/testing.md`.
 
 ## Examples
+
+### Arrow Functions
+
+```tsx
+// Prefer
+const RootComponent = () => <Outlet />
+
+const getUser = (id: string) => users.find(u => u.id === id)
+
+// Avoid
+function RootComponent() {
+  return <Outlet />
+}
+
+const getUser = (id: string) => {
+  return users.find(u => u.id === id)
+}
+```
 
 ### Conditional Syntax
 

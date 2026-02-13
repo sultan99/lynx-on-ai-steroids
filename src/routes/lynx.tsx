@@ -12,15 +12,9 @@ const lynxQueryOptions = queryOptions({
     }),
 })
 
-export const Route = createFileRoute('/lynx')({
-  loader: ({ context }) =>
-    context.queryClient.ensureQueryData(lynxQueryOptions),
-  component: LynxRoute,
-})
-
 let isFirstVisit = true
 
-function LynxRoute() {
+const LynxRoute = () => {
   useQuery(lynxQueryOptions)
 
   const slideDirection = isFirstVisit ? undefined : 'left'
@@ -38,3 +32,9 @@ function LynxRoute() {
     </Screen>
   )
 }
+
+export const Route = createFileRoute('/lynx')({
+  loader: ({ context }) =>
+    context.queryClient.ensureQueryData(lynxQueryOptions),
+  component: LynxRoute,
+})

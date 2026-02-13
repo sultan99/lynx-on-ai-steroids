@@ -13,13 +13,13 @@ type ScreenProps = {
   slideDirection?: 'left' | 'right'
 }
 
-export function Screen({
+export const Screen = ({
   children,
   logoSrc,
   logoClassName,
   navigateTo,
   slideDirection,
-}: ScreenProps) {
+}: ScreenProps) => {
   const navigate = useNavigate()
 
   const onTap = useCallback(() => {

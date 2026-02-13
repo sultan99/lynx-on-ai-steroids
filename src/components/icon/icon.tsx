@@ -18,7 +18,7 @@ export const resolveValue = (value: string | number): string => {
   return value
 }
 
-export function Icon({
+export const Icon = ({
   className,
   color,
   glyph,
@@ -26,7 +26,7 @@ export function Icon({
   rotate,
   size = '16px',
   ...rest
-}: IconProps) {
+}: IconProps) => {
   if (!isVisible) return null
 
   const style: Record<string, string> = { fontFamily: 'icons' }
