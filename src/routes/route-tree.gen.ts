@@ -8,10 +8,10 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as ReactRouteImport } from './routes/react'
-import { Route as LynxRouteImport } from './routes/lynx'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as rootRouteImport } from './__root'
+import { Route as ReactRouteImport } from './react'
+import { Route as LynxRouteImport } from './lynx'
+import { Route as IndexRouteImport } from './index'
 
 const ReactRoute = ReactRouteImport.update({
   id: '/react',
