@@ -13,13 +13,13 @@ type ScreenProps = {
   slideDirection?: 'left' | 'right'
 }
 
-export function Screen({
+export const Screen = ({
   children,
   logoSrc,
   logoClassName,
   navigateTo,
   slideDirection,
-}: ScreenProps) {
+}: ScreenProps) => {
   const navigate = useNavigate()
 
   const onTap = useCallback(() => {
@@ -39,7 +39,7 @@ export function Screen({
       <view className={css.background} />
       <view className={css.screen}>
         <view className={css.banner}>
-          <view className={css.logo} bindtap={onTap}>
+          <view className={css.logo} data-testid='logo' bindtap={onTap}>
             <image className={logoClassName} src={logoSrc} />
           </view>
           {children}

@@ -2,7 +2,7 @@
 
 ## Scope
 
-These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude/skills/`, and any other code files.
+These rules apply to ALL code in the repository — `android`, `src/`,  and any other code files.
 
 ## General Principles
 
@@ -33,7 +33,7 @@ These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude
 // Prefer
 <image
   className={css.avatar}
-  data-testid="user-avatar"
+  data-testid='user-avatar'
   src={avatarUrl}
   bindtap={handleTap}
   onLoad={handleLoad}
@@ -45,7 +45,7 @@ These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude
   src={avatarUrl}
   className={css.avatar}
   onLoad={handleLoad}
-  data-testid="user-avatar"
+  data-testid='user-avatar'
 />
 ```
 
@@ -84,7 +84,9 @@ When TypeScript complains about types:
 ## Code Style
 
 - Use `const` and immutability; avoid `let`
-- Use arrow functions for direct value returns
+- Always use arrow functions — avoid `function` declarations
+- Use implicit return (no `return` keyword) when the body is a single expression
+- Arrow functions (`const`) don't hoist — declare before use
 - Minimize `if-else` and `switch`; prefer early returns
 - No comments unless explaining workarounds or non-obvious logic
 - Use descriptive naming instead of comments
@@ -102,6 +104,24 @@ When TypeScript complains about types:
 For testing conventions, see `.claude/rules/testing.md`.
 
 ## Examples
+
+### Arrow Functions
+
+```tsx
+// Prefer
+const RootComponent = () => <Outlet />
+
+const getUser = (id: string) => users.find(u => u.id === id)
+
+// Avoid
+function RootComponent() {
+  return <Outlet />
+}
+
+const getUser = (id: string) => {
+  return users.find(u => u.id === id)
+}
+```
 
 ### Conditional Syntax
 

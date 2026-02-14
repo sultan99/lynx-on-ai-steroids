@@ -12,13 +12,7 @@ const reactQueryOptions = queryOptions({
     }),
 })
 
-export const Route = createFileRoute('/react')({
-  loader: ({ context }) =>
-    context.queryClient.ensureQueryData(reactQueryOptions),
-  component: ReactRoute,
-})
-
-function ReactRoute() {
+const ReactRoute = () => {
   useQuery(reactQueryOptions)
 
   return (
@@ -33,3 +27,9 @@ function ReactRoute() {
     </Screen>
   )
 }
+
+export const Route = createFileRoute('/react')({
+  loader: ({ context }) =>
+    context.queryClient.ensureQueryData(reactQueryOptions),
+  component: ReactRoute,
+})

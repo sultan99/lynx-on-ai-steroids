@@ -1,28 +1,7 @@
 import '@testing-library/jest-dom'
-import {
-  fireEvent,
-  getQueriesForElement,
-  render,
-} from '@lynx-js/react/testing-library'
+import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-
-vi.mock('@/components/screen/screen.module.css', () => ({
-  background: 'background',
-  screen: 'screen',
-  banner: 'banner',
-  logo: 'logo',
-  content: 'content',
-  arrow: 'arrow',
-  title: 'title',
-  subtitle: 'subtitle',
-  description: 'description',
-  hint: 'hint',
-  logoLynx: 'logo-lynx',
-  logoReact: 'logo-react',
-  spacer: 'spacer',
-  slideFromLeft: 'slide-from-left',
-  slideFromRight: 'slide-from-right',
-}))
+import { queryRoot } from '../utils/test'
 
 const navigateMock = vi.fn()
 const navigateComponentMock = vi.fn((_props: Record<string, unknown>) => null)
@@ -39,12 +18,6 @@ vi.mock('@tanstack/react-query', () => ({
   queryOptions: (opts: Record<string, unknown>) => opts,
   useQuery: () => ({ data: { message: 'Hello' } }),
 }))
-
-const queryRoot = () => {
-  const root = elementTree.root
-  if (!root) throw new Error('root not rendered')
-  return getQueriesForElement(root)
-}
 
 beforeEach(() => {
   vi.clearAllMocks()
@@ -101,11 +74,8 @@ describe('App routes', () => {
     if (!Component) throw new Error('component not defined')
     render(<Component />)
 
-    const root = elementTree.root
-    if (!root) throw new Error('root not rendered')
-    const logo = root.querySelector('view.logo')
-    if (!logo) throw new Error('logo view not found')
-    fireEvent.tap(logo)
+    const { getByTestId } = queryRoot()
+    fireEvent.tap(getByTestId('logo'))
 
     expect(navigateMock).toHaveBeenCalledWith({ to: '/react' })
   })
@@ -116,11 +86,8 @@ describe('App routes', () => {
     if (!Component) throw new Error('component not defined')
     render(<Component />)
 
-    const root = elementTree.root
-    if (!root) throw new Error('root not rendered')
-    const logo = root.querySelector('view.logo')
-    if (!logo) throw new Error('logo view not found')
-    fireEvent.tap(logo)
+    const { getByTestId } = queryRoot()
+    fireEvent.tap(getByTestId('logo'))
 
     expect(navigateMock).toHaveBeenCalledWith({ to: '/lynx' })
   })

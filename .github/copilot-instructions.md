@@ -30,3 +30,5 @@ These are the most common mistakes reviewers should catch in this project:
 - Test imports from `@testing-library/react` — must use `@lynx-js/react/testing-library`
 - Missing tests for new features or bug fixes
 - Inline styles — must use CSS modules. Exception: dynamic styles computed at runtime (e.g. icon size, color)
+- `function` declarations — must use arrow functions (`const Foo = () => ...`)
+- `return` keyword in single-expression arrow functions — use implicit return
