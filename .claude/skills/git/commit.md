@@ -53,4 +53,4 @@ If invalid → warn user before proceeding.
 
 ### Step 4: Create commit(s)
 
-Use the message format above. Present the proposed commit message and list of files to the developer and wait for explicit confirmation before proceeding.
+Use the message format above. When `/git commit` is invoked explicitly, proceed without confirmation — the invocation itself is the permission for both committing and pushing. Confirmation is only needed when committing or pushing as part of another workflow (e.g., main thread decides to commit/push on its own).
