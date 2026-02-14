@@ -1,13 +1,8 @@
 import '@testing-library/jest-dom'
-import { getQueriesForElement, render } from '@lynx-js/react/testing-library'
+import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { getRoot, queryRoot } from '../../utils/test'
 import { Icon, resolveValue } from './icon'
-
-const queryRoot = () => {
-  const root = elementTree.root
-  if (!root) throw new Error('root not rendered')
-  return getQueriesForElement(root)
-}
 
 beforeEach(() => {
   vi.clearAllMocks()
@@ -30,9 +25,7 @@ describe('resolveValue', () => {
 describe('Icon', () => {
   test('renders nothing when isVisible is false', () => {
     render(<Icon glyph='house' isVisible={false} />)
-    const root = elementTree.root
-    if (!root) throw new Error('root not rendered')
-    expect(root.childNodes).toHaveLength(0)
+    expect(getRoot().childNodes).toHaveLength(0)
   })
 
   test('renders glyph character', () => {

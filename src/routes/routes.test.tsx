@@ -1,10 +1,7 @@
 import '@testing-library/jest-dom'
-import {
-  fireEvent,
-  getQueriesForElement,
-  render,
-} from '@lynx-js/react/testing-library'
+import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { queryRoot } from '../utils/test'
 
 const navigateMock = vi.fn()
 const navigateComponentMock = vi.fn((_props: Record<string, unknown>) => null)
@@ -21,12 +18,6 @@ vi.mock('@tanstack/react-query', () => ({
   queryOptions: (opts: Record<string, unknown>) => opts,
   useQuery: () => ({ data: { message: 'Hello' } }),
 }))
-
-const queryRoot = () => {
-  const root = elementTree.root
-  if (!root) throw new Error('root not rendered')
-  return getQueriesForElement(root)
-}
 
 beforeEach(() => {
   vi.clearAllMocks()

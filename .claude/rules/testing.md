@@ -71,23 +71,24 @@ npx vitest run
 
 ```ts
 import '@testing-library/jest-dom'
-import { getQueriesForElement, render } from '@lynx-js/react/testing-library'
+import { render } from '@lynx-js/react/testing-library'
 import { expect, test, vi } from 'vitest'
+import { getRoot, queryRoot } from '../utils/test'
 ```
 
 ## Querying Rendered Output
 
-Use a helper to avoid `!` assertions on `elementTree.root`:
+Use helpers from `src/utils/test.ts` to avoid `!` assertions on `elementTree.root`:
+
+- `queryRoot()` — returns query functions (`getByText`, `getByTestId`, etc.)
+- `getRoot()` — returns the root element directly (for structural checks like `childNodes`)
 
 ```ts
-const queryRoot = () => {
-  const root = elementTree.root
-  if (!root) throw new Error('root not rendered')
-  return getQueriesForElement(root)
-}
-
-// Usage
+// Query by text/testid
 const { getByText } = queryRoot()
+
+// Access root element directly
+expect(getRoot().childNodes).toHaveLength(0)
 ```
 
 ## Testing Route Loaders
