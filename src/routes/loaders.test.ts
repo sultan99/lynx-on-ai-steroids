@@ -11,21 +11,29 @@ beforeEach(() => {
 })
 
 describe('Route loaders', () => {
-  test('/lynx query fetches data', async () => {
+  test('/lynx loader fetches query data', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true })
-    const { lynxQueryOptions } = await import('./lynx')
+    const { Route } = await import('./lynx')
+    const loader = Route.options.loader
+    if (!loader) throw new Error('loader not defined')
 
-    const data = await queryClient.ensureQueryData(lynxQueryOptions)
+    // @ts-expect-error — partial context, only queryClient is needed by loader
+    await loader({ context: { queryClient } })
+    const data = queryClient.getQueryData(['route', 'lynx'])
 
     expect(data).toEqual({ message: 'Hello from Lynx' })
     vi.useRealTimers()
   })
 
-  test('/react query fetches data', async () => {
+  test('/react loader fetches query data', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true })
-    const { reactQueryOptions } = await import('./react')
+    const { Route } = await import('./react')
+    const loader = Route.options.loader
+    if (!loader) throw new Error('loader not defined')
 
-    const data = await queryClient.ensureQueryData(reactQueryOptions)
+    // @ts-expect-error — partial context, only queryClient is needed by loader
+    await loader({ context: { queryClient } })
+    const data = queryClient.getQueryData(['route', 'react'])
 
     expect(data).toEqual({ message: 'Hello from React' })
     vi.useRealTimers()

@@ -24,6 +24,7 @@ const config = defineConfig({
         'src/index.tsx',
         'src/query-client.ts',
         'src/routes/route-tree.gen.ts',
+        'src/routes/router.ts',
         'src/shims/**',
         'src/test-setup.ts',
       ],

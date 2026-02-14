@@ -4,7 +4,7 @@ import reactLogo from '@/assets/react-logo.png'
 import { Screen } from '@/components'
 import * as css from '@/components/screen/screen.module.css'
 
-export const reactQueryOptions = queryOptions({
+const reactQueryOptions = queryOptions({
   queryKey: ['route', 'react'],
   queryFn: () =>
     new Promise<{ message: string }>((resolve) => {
