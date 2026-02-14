@@ -26,6 +26,10 @@ enabled = true
   environment = ["nodejs", "browser", "vitest"]
   plugins = ["react"]
 
+  disabled_checks = [
+    "JS-0455" # Unknown JSX properties (bindtap / Lynx events)
+  ]
+
 [[analyzers]]
 name = "kotlin"
 enabled = true
