@@ -28,6 +28,7 @@ android/                # Native Android wrapper (Kotlin, Gradle, LynxView)
 |------|-------------|
 | `src/components/icon/icons.ttf` | `/forge icons` |
 | `src/components/icon/glyph-map.ts` | `/forge icons` |
+| `src/routes/route-tree.gen.ts` | TanStack Router (auto-generated) |
 | `android/app/src/main/assets/main.lynx.bundle` | `/build apk` or `/build aab` |
 
 ## Scripts

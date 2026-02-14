@@ -86,6 +86,7 @@ When TypeScript complains about types:
 - Use `const` and immutability; avoid `let`
 - Always use arrow functions — avoid `function` declarations
 - Use implicit return (no `return` keyword) when the body is a single expression
+- Arrow functions (`const`) don't hoist — declare before use
 - Minimize `if-else` and `switch`; prefer early returns
 - No comments unless explaining workarounds or non-obvious logic
 - Use descriptive naming instead of comments

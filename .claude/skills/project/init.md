@@ -100,8 +100,10 @@ cd <project-root>/android
 
 If `android/local.properties` is missing, create it:
 
-```properties
-sdk.dir=C\:\\Users\\sulta\\AppData\\Local\\Android\\Sdk
+Detect the SDK path dynamically and write it:
+
+```bash
+echo "sdk.dir=$(echo $LOCALAPPDATA/Android/Sdk | sed 's|/|\\\\|g')" > android/local.properties
 ```
 
 ## Step 9: Install DeepSource CLI
