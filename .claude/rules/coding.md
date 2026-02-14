@@ -2,7 +2,7 @@
 
 ## Scope
 
-These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude/skills/`, and any other code files.
+These rules apply to ALL code in the repository — `android`, `src/`,  and any other code files.
 
 ## General Principles
 
@@ -33,7 +33,7 @@ These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude
 // Prefer
 <image
   className={css.avatar}
-  data-testid="user-avatar"
+  data-testid='user-avatar'
   src={avatarUrl}
   bindtap={handleTap}
   onLoad={handleLoad}
@@ -45,7 +45,7 @@ These rules apply to ALL code in the repository — `src/`, `scripts/`, `.claude
   src={avatarUrl}
   className={css.avatar}
   onLoad={handleLoad}
-  data-testid="user-avatar"
+  data-testid='user-avatar'
 />
 ```
 
