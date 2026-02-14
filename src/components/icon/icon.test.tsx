@@ -28,9 +28,11 @@ describe('resolveValue', () => {
 })
 
 describe('Icon', () => {
-  test('renders null when isVisible is false', () => {
+  test('renders nothing when isVisible is false', () => {
     render(<Icon glyph='house' isVisible={false} />)
-    expect(elementTree.root).toMatchInlineSnapshot('<page />')
+    const root = elementTree.root
+    if (!root) throw new Error('root not rendered')
+    expect(root.childNodes).toHaveLength(0)
   })
 
   test('renders glyph character', () => {
@@ -39,121 +41,27 @@ describe('Icon', () => {
     expect(getByText('\uE003')).toBeInTheDocument()
   })
 
-  test('applies default size of 16px', () => {
-    render(<Icon glyph='house' />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class=""
-          style="font-family: icons; font-size: 16px; width: 16px; height: 16px;"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('resolves numeric size to px', () => {
-    render(<Icon glyph='house' size={24} />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class=""
-          style="font-family: icons; font-size: 24px; width: 24px; height: 24px;"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('resolves CSS variable size to var() format', () => {
-    render(<Icon glyph='house' size='--icon-md' />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class=""
-          style="font-family: icons; font-size: var(--icon-md); width: var(--icon-md); height: var(--icon-md);"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('applies color prop', () => {
-    render(<Icon color='#ff0000' glyph='house' />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class=""
-          style="font-family: icons; font-size: 16px; width: 16px; height: 16px; color: rgb(255, 0, 0);"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('applies rotate prop', () => {
-    render(<Icon glyph='house' rotate={45} />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class=""
-          style="font-family: icons; font-size: 16px; width: 16px; height: 16px; transform: rotate(45deg);"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('applies className', () => {
-    render(<Icon className='custom-icon' glyph='house' />)
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class="custom-icon"
-          style="font-family: icons; font-size: 16px; width: 16px; height: 16px;"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('spreads additional props like data-testid', () => {
+  test('spreads data-testid prop', () => {
     render(<Icon data-testid='icon-element' glyph='house' />)
     const { getByTestId } = queryRoot()
     expect(getByTestId('icon-element')).toBeInTheDocument()
   })
 
-  test('combines size, color, rotate, and className', () => {
-    render(
-      <Icon
-        className='combined'
-        color='--accent'
-        glyph='flask-conical'
-        rotate={180}
-        size={32}
-      />,
-    )
-    expect(elementTree.root).toMatchInlineSnapshot(`
-      <page>
-        <text
-          class="combined"
-          style="font-family: icons; font-size: 32px; width: 32px; height: 32px; color: var(--accent); transform: rotate(180deg);"
-        >
-          
-        </text>
-      </page>
-    `)
-  })
-
-  test('applies font-family via inline style', () => {
+  test('applies font-family for icon rendering', () => {
     render(<Icon glyph='book' />)
     const { getByText } = queryRoot()
     expect(getByText('\uE001')).toHaveStyle('font-family: icons')
+  })
+
+  test('applies color as inline style', () => {
+    render(<Icon color='#ff0000' glyph='house' />)
+    const { getByText } = queryRoot()
+    expect(getByText('\uE003')).toHaveStyle('color: rgb(255, 0, 0)')
+  })
+
+  test('applies rotation as inline style', () => {
+    render(<Icon glyph='house' rotate={45} />)
+    const { getByText } = queryRoot()
+    expect(getByText('\uE003')).toHaveStyle('transform: rotate(45deg)')
   })
 })

@@ -39,7 +39,7 @@ export const Screen = ({
       <view className={css.background} />
       <view className={css.screen}>
         <view className={css.banner}>
-          <view className={css.logo} bindtap={onTap}>
+          <view className={css.logo} data-testid="logo" bindtap={onTap}>
             <image className={logoClassName} src={logoSrc} />
           </view>
           {children}
