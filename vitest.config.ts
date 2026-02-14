@@ -13,6 +13,7 @@ const config = defineConfig({
     },
   },
   test: {
+    setupFiles: ['src/test-setup.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'cobertura'],
@@ -20,11 +21,11 @@ const config = defineConfig({
       exclude: [
         'src/**/*.test.ts',
         'src/**/*.test.tsx',
-        'src/routes/route-tree.gen.ts',
         'src/index.tsx',
-        'src/routes/router.ts',
         'src/query-client.ts',
+        'src/routes/route-tree.gen.ts',
         'src/shims/**',
+        'src/test-setup.ts',
       ],
     },
   },

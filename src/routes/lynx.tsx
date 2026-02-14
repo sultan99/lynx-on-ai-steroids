@@ -4,7 +4,7 @@ import lynxLogo from '@/assets/lynx-logo.png'
 import { Screen } from '@/components'
 import * as css from '@/components/screen/screen.module.css'
 
-const lynxQueryOptions = queryOptions({
+export const lynxQueryOptions = queryOptions({
   queryKey: ['route', 'lynx'],
   queryFn: () =>
     new Promise<{ message: string }>((resolve) => {
