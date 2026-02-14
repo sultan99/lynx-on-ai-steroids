@@ -20,9 +20,9 @@ const config = defineConfig({
       exclude: [
         'src/**/*.test.ts',
         'src/**/*.test.tsx',
-        'src/route-tree.gen.ts',
+        'src/routes/route-tree.gen.ts',
         'src/index.tsx',
-        'src/router.ts',
+        'src/routes/router.ts',
         'src/query-client.ts',
         'src/shims/**',
       ],
