@@ -58,7 +58,8 @@ npx vitest run
 - Use `render` from `@lynx-js/react/testing-library` — never `@testing-library/react`
 - Never use `elementTree.root!` — Biome forbids `!` assertions. Use a `queryRoot()` helper instead (see Querying Rendered Output below)
 - Prefer behavioral queries: `getByText`, `getByTestId` — avoid structural selectors when possible
-- Mock at system boundaries (APIs, navigation) — not internal components
+- Mock at system boundaries (framework hooks for rendering, HTTP APIs) — not internal components
+- Test loaders and query functions directly with real `QueryClient` — no mocking needed
 - Use Arrange-Act-Assert pattern
 - Clear mocks: `vi.clearAllMocks()` in `beforeEach`
 - Use `.at(0)` instead of `[0]!` for array access (Biome forbids `!` assertions)
@@ -88,6 +89,31 @@ const queryRoot = () => {
 // Usage
 const { getByText } = queryRoot()
 ```
+
+## Testing Route Loaders
+
+Loaders are plain async functions — test them directly with a real `QueryClient`, no rendering needed:
+
+```ts
+import { QueryClient } from '@tanstack/react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { retry: false } },
+})
+
+test('loader fetches query data', async () => {
+  vi.useFakeTimers({ shouldAdvanceTime: true })
+  const { Route } = await import('./route-file')
+
+  await Route.options.loader({ context: { queryClient } })
+  const data = queryClient.getQueryData(['route', 'key'])
+
+  expect(data).toEqual({ message: 'expected' })
+  vi.useRealTimers()
+})
+```
+
+**Why separate from component tests:** Lynx tests render with Preact — TanStack providers use React hooks internally and can't run in the Lynx test environment. Test loaders as functions, test components with mocked hooks.
 
 ## Fake Timers
 
