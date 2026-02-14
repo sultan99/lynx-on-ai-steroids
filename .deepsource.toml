@@ -27,7 +27,7 @@ enabled = true
   plugins = ["react"]
 
   disabled_checks = [
-    "JS-0455" # Unknown JSX properties (bindtap / Lynx events)
+    "JS-0455"
   ]
 
 [[analyzers]]
