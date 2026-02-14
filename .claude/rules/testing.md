@@ -23,7 +23,7 @@ Test behavior, not implementation. Tests verify what users see and do — not CS
 - CSS classnames or structural snapshots
 - Element hierarchy / DOM structure
 - Implementation details (internal state shape, hook calls)
-- Inline styles or style strings
+- Inline styles or style strings (exception: dynamic styles computed at runtime, e.g. icon size/color/rotation, where CSS modules cannot apply)
 
 ## Running Tests
 
@@ -97,19 +97,26 @@ Loaders are plain async functions — test them directly with a real `QueryClien
 ```ts
 import { QueryClient } from '@tanstack/react-query'
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: false } },
+let queryClient: QueryClient
+
+beforeEach(() => {
+  vi.useFakeTimers({ shouldAdvanceTime: true })
+  queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  })
+})
+
+afterEach(() => {
+  vi.useRealTimers()
 })
 
 test('loader fetches query data', async () => {
-  vi.useFakeTimers({ shouldAdvanceTime: true })
   const { Route } = await import('./route-file')
 
   await Route.options.loader({ context: { queryClient } })
   const data = queryClient.getQueryData(['route', 'key'])
 
   expect(data).toEqual({ message: 'expected' })
-  vi.useRealTimers()
 })
 ```
 
