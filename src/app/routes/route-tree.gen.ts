@@ -9,20 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './__root'
-import { Route as ReactRouteImport } from './react'
-import { Route as LynxRouteImport } from './lynx'
 import { Route as IndexRouteImport } from './index'
 
-const ReactRoute = ReactRouteImport.update({
-  id: '/react',
-  path: '/react',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LynxRoute = LynxRouteImport.update({
-  id: '/lynx',
-  path: '/lynx',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,50 +19,28 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/lynx': typeof LynxRoute
-  '/react': typeof ReactRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/lynx': typeof LynxRoute
-  '/react': typeof ReactRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/lynx': typeof LynxRoute
-  '/react': typeof ReactRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/lynx' | '/react'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lynx' | '/react'
-  id: '__root__' | '/' | '/lynx' | '/react'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LynxRoute: typeof LynxRoute
-  ReactRoute: typeof ReactRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/react': {
-      id: '/react'
-      path: '/react'
-      fullPath: '/react'
-      preLoaderRoute: typeof ReactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lynx': {
-      id: '/lynx'
-      path: '/lynx'
-      fullPath: '/lynx'
-      preLoaderRoute: typeof LynxRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -87,8 +53,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LynxRoute: LynxRoute,
-  ReactRoute: ReactRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
