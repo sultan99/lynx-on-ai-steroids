@@ -44,39 +44,6 @@ text {
   margin-bottom: 8px;
 }
 
-.logo-react {
-  width: 100px;
-  height: 100px;
-  animation: logo-spin infinite 20s linear;
-}
-
-.logo-lynx {
-  width: 100px;
-  height: 100px;
-  animation: logo-shake infinite 0.5s ease;
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes logo-shake {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 @keyframes slide-from-right {
   from {
     transform: translateX(100vw);
@@ -113,18 +80,6 @@ text {
 .arrow {
   width: 24px;
   height: 24px;
-}
-
-.title {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.subtitle {
-  margin-bottom: 8px;
-  font-size: 22px;
-  font-style: italic;
-  font-weight: 600;
 }
 
 .description {

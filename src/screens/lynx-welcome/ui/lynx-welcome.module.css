@@ -1,0 +1,29 @@
+.logo-lynx {
+  width: 100px;
+  height: 100px;
+  animation: logo-shake infinite 0.5s ease;
+}
+
+@keyframes logo-shake {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 600;
+}

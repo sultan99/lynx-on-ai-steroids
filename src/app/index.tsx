@@ -1,6 +1,6 @@
-import './shims/window.js'
+import '@/shared/config/shims/window.js'
 import 'url-search-params-polyfill'
-import './styles/tokens.css'
+import '@/shared/ui/tokens.css'
 import '@lynx-js/preact-devtools'
 import '@lynx-js/react/debug'
 import { root } from '@lynx-js/react'

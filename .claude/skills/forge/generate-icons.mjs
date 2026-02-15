@@ -14,14 +14,14 @@ import { execSync } from 'node:child_process'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '../../..')
-const outputDir = resolve(root, 'src/components/icon')
+const outputDir = resolve(root, 'src/shared/ui/icon')
 const inputDir = resolve(outputDir, 'svgs')
 const tmpDir = resolve(outputDir, '.tmp')
 
 const svgFiles = readdirSync(inputDir).filter((f) => f.endsWith('.svg'))
 
 if (svgFiles.length === 0) {
-  console.error('No SVG files found in src/components/icon/svgs/')
+  console.error('No SVG files found in src/shared/ui/icon/svgs/')
   process.exit(1)
 }
 
