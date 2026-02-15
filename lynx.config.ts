@@ -55,7 +55,7 @@ export default defineConfig({
     pluginReactLynx(),
     pluginTypeCheck({
       forkTsCheckerOptions: {
-        issue: { exclude: [{ file: '**/*.test.{ts,tsx}' }, { file: '**/shared/lib/test.ts' }] },
+        issue: { exclude: [{ file: '**/*.test.{ts,tsx}' }] },
       },
     }),
   ],
