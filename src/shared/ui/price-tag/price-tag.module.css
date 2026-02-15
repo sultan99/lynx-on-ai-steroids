@@ -1,0 +1,14 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--color-bg-pink-tint);
+  border-radius: var(--radius-full);
+}
+
+.price {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
