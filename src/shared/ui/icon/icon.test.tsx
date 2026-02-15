@@ -24,37 +24,37 @@ describe('resolveValue', () => {
 
 describe('Icon', () => {
   test('renders nothing when isVisible is false', () => {
-    render(<Icon glyph='house' isVisible={false} />)
+    render(<Icon glyph='home' isVisible={false} />)
     expect(getRoot().childNodes).toHaveLength(0)
   })
 
   test('renders glyph character', () => {
-    render(<Icon glyph='house' />)
+    render(<Icon glyph='home' />)
     const { getByText } = queryRoot()
-    expect(getByText('\uE003')).toBeInTheDocument()
+    expect(getByText('\uE009')).toBeInTheDocument()
   })
 
   test('spreads data-testid prop', () => {
-    render(<Icon data-testid='icon-element' glyph='house' />)
+    render(<Icon data-testid='icon-element' glyph='home' />)
     const { getByTestId } = queryRoot()
     expect(getByTestId('icon-element')).toBeInTheDocument()
   })
 
   test('applies font-family for icon rendering', () => {
-    render(<Icon glyph='book' />)
+    render(<Icon glyph='arrow-left' />)
     const { getByText } = queryRoot()
     expect(getByText('\uE001')).toHaveStyle('font-family: icons')
   })
 
   test('applies color as inline style', () => {
-    render(<Icon color='#ff0000' glyph='house' />)
+    render(<Icon color='#ff0000' glyph='home' />)
     const { getByText } = queryRoot()
-    expect(getByText('\uE003')).toHaveStyle('color: rgb(255, 0, 0)')
+    expect(getByText('\uE009')).toHaveStyle('color: rgb(255, 0, 0)')
   })
 
   test('applies rotation as inline style', () => {
-    render(<Icon glyph='house' rotate={45} />)
+    render(<Icon glyph='home' rotate={45} />)
     const { getByText } = queryRoot()
-    expect(getByText('\uE003')).toHaveStyle('transform: rotate(45deg)')
+    expect(getByText('\uE009')).toHaveStyle('transform: rotate(45deg)')
   })
 })

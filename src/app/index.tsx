@@ -1,5 +1,6 @@
 import '@/shared/config/shims/window.js'
 import 'url-search-params-polyfill'
+import '@/shared/ui/font/font.css'
 import '@/shared/ui/tokens.css'
 import '@lynx-js/preact-devtools'
 import '@lynx-js/react/debug'
