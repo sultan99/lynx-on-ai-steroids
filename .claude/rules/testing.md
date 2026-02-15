@@ -73,12 +73,12 @@ npx vitest run
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { expect, test, vi } from 'vitest'
-import { getRoot, queryRoot } from '../utils/test'
+import { getRoot, queryRoot } from '@/shared/lib/test'
 ```
 
 ## Querying Rendered Output
 
-Use helpers from `src/utils/test.ts` to avoid `!` assertions on `elementTree.root`:
+Use helpers from `src/shared/lib/test.ts` to avoid `!` assertions on `elementTree.root`:
 
 - `queryRoot()` — returns query functions (`getByText`, `getByTestId`, etc.)
 - `getRoot()` — returns the root element directly (for structural checks like `childNodes`)
