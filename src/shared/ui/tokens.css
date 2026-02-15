@@ -1,9 +1,84 @@
 :root {
-  --color-text: #fff;
+  /* Colors — Primary */
+  --color-primary: #ff4d6d;
+  --color-primary-light: #ff8fa3;
+  --color-primary-dark: #e63956;
+
+  /* Colors — Background */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-bg-card: #ffffff;
+  --color-bg-pink-tint: #fff0f3;
+
+  /* Colors — Text */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-text-inverse: #ffffff;
+
+  /* Colors — Accent */
+  --color-accent-cta: #ff4d6d;
+  --color-accent-star: #ffb800;
+  --color-accent-success: #34c759;
+  --color-accent-error: #ff3b30;
+
+  /* Typography — Font Family */
+  --font-family: Inter;
+
+  /* Typography — Font Size */
+  --font-size-heading: 28px;
+  --font-size-heading-sm: 24px;
+  --font-size-subheading: 20px;
+  --font-size-subheading-sm: 18px;
+  --font-size-body: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-caption: 12px;
+
+  /* Typography — Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Typography — Line Height */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-card-padding: 16px;
+  --space-section-gap: 24px;
+  --space-screen-padding: 16px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --radius-chip: 20px;
+  --radius-input: 12px;
+  --radius-full: 9999px;
+
+  /* Icon Sizes */
   --icon-xs: 12px;
   --icon-sm: 16px;
   --icon-md: 24px;
   --icon-lg: 32px;
   --icon-xl: 48px;
-  background-color: #000;
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
 }
