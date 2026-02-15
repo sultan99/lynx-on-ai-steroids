@@ -24,7 +24,7 @@ Read the JSON output to parse issues. Each issue has: issue code, title, file pa
 
 For each unique file path in the issues:
 
-- Skip generated files (`src/components/icon/icons.ttf`, `src/components/icon/glyph-map.ts`, `android/app/src/main/assets/main.lynx.bundle`)
+- Skip generated files (`src/shared/ui/icon/icons.ttf`, `src/shared/ui/icon/glyph-map.ts`, `android/app/src/main/assets/main.lynx.bundle`)
 - Read the file to understand context around reported lines
 
 ### Step 3: Evaluate each issue

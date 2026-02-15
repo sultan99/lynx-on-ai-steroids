@@ -13,7 +13,7 @@ Generate assets from source files.
 
 | Argument | Required | Description |
 |----------|----------|-------------|
-| `icons` | Yes | Generate icon font from SVGs in `src/components/icon/svgs/` |
+| `icons` | Yes | Generate icon font from SVGs in `src/shared/ui/icon/svgs/` |
 
 ## Usage
 
