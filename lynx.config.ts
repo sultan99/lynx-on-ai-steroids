@@ -9,10 +9,15 @@ import { tanstackRouter } from '@tanstack/router-plugin/rspack'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+  source: {
+    entry: {
+      main: resolve(__dirname, 'src/app/index.tsx'),
+    },
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      'react$': resolve(__dirname, 'src/shims/react.ts'),
+      'react$': resolve(__dirname, 'src/shared/config/shims/react.ts'),
       '@tanstack/router-core/isServer': resolve(
         __dirname,
         'node_modules/@tanstack/router-core/dist/esm/isServer/client.js',
@@ -34,8 +39,8 @@ export default defineConfig({
         tanstackRouter({
           target: 'react',
           autoCodeSplitting: false,
-          routesDirectory: resolve(__dirname, 'src/routes'),
-          generatedRouteTree: resolve(__dirname, 'src/routes/route-tree.gen.ts'),
+          routesDirectory: resolve(__dirname, 'src/app/routes'),
+          generatedRouteTree: resolve(__dirname, 'src/app/routes/route-tree.gen.ts'),
           routeFileIgnorePattern: '(router|route-tree\\.gen|\\.test)\\.tsx?$',
         }),
       ],
@@ -48,6 +53,10 @@ export default defineConfig({
       },
     }),
     pluginReactLynx(),
-    pluginTypeCheck(),
+    pluginTypeCheck({
+      forkTsCheckerOptions: {
+        issue: { exclude: [{ file: '**/*.test.{ts,tsx}' }, { file: '**/shared/lib/test.ts' }] },
+      },
+    }),
   ],
 })

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { getRoot, queryRoot } from '../../utils/test'
+import { getRoot, queryRoot } from '@/shared/lib/test'
 import { Icon, resolveValue } from './icon'
 
 beforeEach(() => {

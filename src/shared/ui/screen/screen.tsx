@@ -1,8 +1,8 @@
 import type { ReactNode } from '@lynx-js/react'
 import { useCallback } from '@lynx-js/react'
 import { useNavigate } from '@tanstack/react-router'
-import arrow from '@/assets/arrow.png'
-import { Icon } from '@/components/icon/icon'
+import arrow from '@/shared/ui/assets/arrow.png'
+import { Icon } from '@/shared/ui/icon/icon'
 import * as css from './screen.module.css'
 
 type ScreenProps = {
