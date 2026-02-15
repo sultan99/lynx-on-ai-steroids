@@ -28,6 +28,7 @@ const config = defineConfig({
         'src/app/routes/router.ts',
         'src/shared/config/shims/**',
         'src/app/test-setup.ts',
+        'src/**/index.ts',
       ],
     },
   },

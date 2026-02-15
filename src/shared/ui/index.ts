@@ -1,1 +1,7 @@
+export { CategoryChip } from './category-chip/category-chip'
 export { Icon } from './icon/icon'
+export { LocationBar } from './location-bar/location-bar'
+export { PriceTag } from './price-tag/price-tag'
+export { QuantitySelector } from './quantity-selector/quantity-selector'
+export { Rating } from './rating/rating'
+export { TopBar } from './top-bar/top-bar'

@@ -19,9 +19,9 @@ Run all validation commands in parallel using background agents and report resul
 **During development, use targeted commands instead:**
 
 ```bash
-npm exec vitest run src/path/to/file.test.tsx   # Run specific test
-npm exec biome check --write ./src              # Lint + auto-fix
-npm exec tsc --noEmit                           # Type check
+npx vitest run src/path/to/file.test.tsx   # Run specific test
+npx biome check --write ./src              # Lint + auto-fix
+npx tsc --noEmit                           # Type check
 ```
 
 ## Usage
@@ -36,9 +36,9 @@ npm exec tsc --noEmit                           # Type check
 
 | Check | Command |
 | ----- | ------- |
-| Lint  | `npm exec biome check --write ./src` |
-| Types | `npm exec tsc --noEmit` |
-| Tests | `npm exec vitest run` |
+| Lint  | `npx biome check --write ./src && npx biome check ./src` |
+| Types | `npx tsc --noEmit` |
+| Tests | `npx vitest run` |
 
 **IMPORTANT:** All 3 agents MUST be spawned as parallel Task tool calls in a single message.
 
@@ -48,7 +48,7 @@ Example Task call:
 Task tool:
   subagent_type: "runner"
   description: "Run lint check"
-  prompt: "Run command: npm exec @biomejs/biome check ./src"
+  prompt: "Run command: npx biome check --write ./src && npx biome check ./src"
 ```
 
 ## Output
