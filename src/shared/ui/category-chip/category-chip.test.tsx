@@ -25,14 +25,7 @@ describe('CategoryChip', () => {
 
   test('renders icon when active', () => {
     const onTap = vi.fn()
-    render(
-      <CategoryChip
-        icon='search'
-        isActive={true}
-        label='Donuts'
-        onTap={onTap}
-      />,
-    )
+    render(<CategoryChip icon='search' isActive label='Donuts' onTap={onTap} />)
     const { getByText } = queryRoot()
     expect(getByText('\uE010')).toBeInTheDocument()
   })
