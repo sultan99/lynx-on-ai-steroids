@@ -1,4 +1,3 @@
-import type {} from '@lynx-js/react/testing-library'
 import { getQueriesForElement } from '@lynx-js/react/testing-library'
 
 export const getRoot = () => {
