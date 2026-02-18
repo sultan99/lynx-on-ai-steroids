@@ -1,0 +1,139 @@
+.screen {
+  background-color: var(--gray-50);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+.scrollable {
+  flex: 1;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  padding-bottom: 32px;
+}
+
+.avatar-section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.avatar-circle {
+  align-items: center;
+  background-color: var(--petal);
+  border-radius: var(--radius-full);
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 80px;
+}
+
+.user-name {
+  color: var(--gray-900);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+}
+
+.user-email {
+  color: var(--gray-600);
+  font-size: 14px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  color: var(--gray-900);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.stats-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.stat-item {
+  align-items: center;
+  background-color: var(--gray-50);
+  border-radius: 12px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+.stat-label {
+  color: var(--gray-600);
+  font-size: 12px;
+}
+
+.chips-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.quantity-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.quantity-label {
+  color: var(--gray-900);
+  font-size: 16px;
+}
+
+.icons-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.icon-cell {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 60px;
+}
+
+.icon-name {
+  color: var(--gray-500);
+  font-size: 10px;
+  text-align: center;
+}
+
+.card-note {
+  color: var(--gray-500);
+  font-size: 14px;
+  text-align: center;
+}

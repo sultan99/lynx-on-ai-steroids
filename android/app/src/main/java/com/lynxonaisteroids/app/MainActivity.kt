@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import com.lynx.tasm.LynxView
 import com.lynx.tasm.LynxViewBuilder
@@ -22,7 +23,17 @@ class MainActivity : Activity() {
     )
     val lynxView: LynxView = buildLynxView()
     setContentView(lynxView)
-    lynxView.renderTemplateUrl("main.lynx.bundle", "")
+
+    window.insetsController?.setSystemBarsAppearance(
+      WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+      WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+    )
+
+    val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+    val statusBarHeightPx = if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
+    val statusBarHeightDp = (statusBarHeightPx / resources.displayMetrics.density).toInt()
+
+    lynxView.renderTemplateUrl("main.lynx.bundle", """{"statusBarHeight":$statusBarHeightDp}""")
   }
 
   private fun buildLynxView(): LynxView {
