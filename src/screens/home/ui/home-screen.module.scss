@@ -1,0 +1,20 @@
+.screen {
+  background-color: var(--gray-50);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.stub-text {
+  color: var(--gray-500);
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+}

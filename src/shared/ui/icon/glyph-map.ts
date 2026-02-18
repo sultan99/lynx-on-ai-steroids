@@ -1,44 +1,60 @@
 export type IconGlyph =
-  | 'arrow-left'
-  | 'bookmark'
+  | 'chart-gantt'
+  | 'chevron-left'
   | 'clock'
-  | 'close'
-  | 'filter'
+  | 'cross'
+  | 'delivery'
+  | 'donut-classic'
+  | 'donut-decadent'
+  | 'donut-filled'
+  | 'donut-fruity'
+  | 'donut-nutty'
+  | 'flag'
   | 'flame'
   | 'heart'
   | 'heart-filled'
-  | 'home'
-  | 'location-pin'
   | 'map-pin'
   | 'menu'
   | 'minus'
+  | 'newspaper'
   | 'phone'
   | 'plus'
   | 'search'
+  | 'settings'
+  | 'shopping-bag'
   | 'star'
   | 'star-filled'
-  | 'truck'
+  | 'tool-case'
+  | 'truck-electric'
   | 'user'
 
 export const glyphMap: Record<IconGlyph, string> = {
-  'arrow-left': '\uE001',
-  bookmark: '\uE002',
+  'chart-gantt': '\uE001',
+  'chevron-left': '\uE002',
   clock: '\uE003',
-  close: '\uE004',
-  filter: '\uE005',
-  flame: '\uE006',
-  heart: '\uE008',
-  'heart-filled': '\uE007',
-  home: '\uE009',
-  'location-pin': '\uE00A',
-  'map-pin': '\uE00B',
-  menu: '\uE00C',
-  minus: '\uE00D',
-  phone: '\uE00E',
-  plus: '\uE00F',
-  search: '\uE010',
-  star: '\uE012',
-  'star-filled': '\uE011',
-  truck: '\uE013',
-  user: '\uE014',
+  cross: '\uE004',
+  delivery: '\uE005',
+  'donut-classic': '\uE006',
+  'donut-decadent': '\uE007',
+  'donut-filled': '\uE008',
+  'donut-fruity': '\uE009',
+  'donut-nutty': '\uE00A',
+  flag: '\uE00B',
+  flame: '\uE00C',
+  heart: '\uE00E',
+  'heart-filled': '\uE00D',
+  'map-pin': '\uE00F',
+  menu: '\uE010',
+  minus: '\uE011',
+  newspaper: '\uE012',
+  phone: '\uE013',
+  plus: '\uE014',
+  search: '\uE015',
+  settings: '\uE016',
+  'shopping-bag': '\uE017',
+  star: '\uE019',
+  'star-filled': '\uE018',
+  'tool-case': '\uE01A',
+  'truck-electric': '\uE01B',
+  user: '\uE01C',
 }

@@ -12,7 +12,7 @@ Generate icon font assets from SVG files in `src/shared/ui/icon/svgs/`.
 ## What it does NOT modify
 
 - `src/shared/ui/icon/icon.tsx` — the Icon component is hand-written
-- `src/styles/tokens.css` — design tokens are managed separately
+- `src/styles/tokens.scss` — design tokens are managed separately
 
 ## Steps
 

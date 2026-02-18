@@ -1,8 +1,8 @@
 ---
 name: git
-description: Git commands for branching, committing, merging, and rebasing. Use when developer needs to create branches, commit changes, merge or rebase branches.
+description: Git commands for branching, committing, merging, rebasing, and squashing. Use when developer needs to create branches, commit changes, merge or rebase branches, or squash commits.
 user-invocable: true
-argument-hint: <branch|commit|merge|rebase> [issue-number | branch]
+argument-hint: <branch|commit|merge|rebase|squash> [issue-number | branch]
 ---
 
 # /git $ARGUMENTS
@@ -13,7 +13,7 @@ Git workflow commands.
 
 | Argument | Required | Description |
 |----------|----------|-------------|
-| `<branch\|commit\|merge\|rebase>` | Yes | Git operation to perform |
+| `<branch\|commit\|merge\|rebase\|squash>` | Yes | Git operation to perform |
 | `[issue-number]` | No | GitHub issue number for `branch` (e.g., `12`) |
 | `[branch]` | No | Target branch for `merge`/`rebase` (default: `main`) |
 
@@ -27,6 +27,7 @@ Git workflow commands.
 /git merge develop       # Merge develop into current branch
 /git rebase              # Rebase current branch onto main
 /git rebase develop      # Rebase current branch onto develop
+/git squash              # Squash all branch commits into clean commit(s)
 ```
 
 ## Rules
@@ -41,5 +42,6 @@ Read the command-specific instruction file and follow it exactly:
 - **commit** → Read `.claude/skills/git/commit.md` and follow all steps
 - **merge** → Read `.claude/skills/git/merge.md` and follow all steps
 - **rebase** → Read `.claude/skills/git/rebase.md` and follow all steps
+- **squash** → Read `.claude/skills/git/squash.md` and follow all steps
 
 If no command is provided, list the available commands and ask the user which one to run.

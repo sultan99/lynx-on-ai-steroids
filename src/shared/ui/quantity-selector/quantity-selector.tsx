@@ -1,5 +1,5 @@
 import { Icon } from '../icon/icon.js'
-import * as css from './quantity-selector.module.css'
+import * as css from './quantity-selector.module.scss'
 
 type QuantitySelectorProps = {
   value: number
@@ -12,13 +12,13 @@ export const QuantitySelector = ({
   onDecrement,
   onIncrement,
 }: QuantitySelectorProps) => (
-  <view className={css.container}>
+  <view className={css.root}>
     <view className={css.button} bindtap={onDecrement}>
-      <Icon color='--color-primary' glyph='minus' size='--icon-sm' />
+      <Icon className={css.icon} glyph='minus' />
     </view>
     <text className={css.count}>{value}</text>
     <view className={css.button} bindtap={onIncrement}>
-      <Icon color='--color-primary' glyph='plus' size='--icon-sm' />
+      <Icon className={css.icon} glyph='plus' />
     </view>
   </view>
 )

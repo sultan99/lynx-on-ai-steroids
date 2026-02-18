@@ -22,18 +22,18 @@ Files in scope:
 - `.claude/rules/state-boundaries.md` — state management rules
 - `.github/copilot-instructions.md` — Copilot code review instructions
 
-## Step 1: Audit for Issues
+### Step 1: Audit for Issues
 
 Read all `.md` files in `.claude/`, `.github/`, and `CLAUDE.md`. Check for:
 
-### Duplications
+#### Duplications
 
 - Same rule stated in multiple files (e.g., rule in both `coding.md` and `copilot-instructions.md`)
 - Same rule stated twice within the same file
 - `.github/copilot-instructions.md` should reference `.claude/rules/` — not duplicate their content
 - Rules belong in `.claude/rules/`. Copilot file only contains: rule file references, requirement verification, and key flags summary
 
-### Wrong or Stale References
+#### Wrong or Stale References
 
 - File paths that point to files that don't exist
 - References to old file names or removed sections
@@ -41,7 +41,7 @@ Read all `.md` files in `.claude/`, `.github/`, and `CLAUDE.md`. Check for:
 - `skill-up.md` Targets list matches actual files on disk
 - `CLAUDE.md` Skills section matches actual SKILL.md files
 
-### Skills.md Compliance
+#### Skills.md Compliance
 
 Check every `SKILL.md` against `.claude/rules/skills.md` requirements:
 
@@ -51,20 +51,20 @@ Check every `SKILL.md` against `.claude/rules/skills.md` requirements:
 - Instructions section delegates to subcommand `.md` files (router pattern)
 - Subcommand files start at Step 1, have clear headings, are self-contained
 
-### CLAUDE.md Consistency
+#### CLAUDE.md Consistency
 
 - Project Structure section lists only top-level directories (no deep file trees)
 - Generated Files table matches actual generated files
 - Skills section lists all skills registered in `.claude/skills/*/SKILL.md`
 - No stale entries for removed skills or files
 
-### Cross-file Sync
+#### Cross-file Sync
 
 - New rules added to `.claude/rules/` should be reflected in `.github/copilot-instructions.md` key flags (if Lynx-specific or commonly missed)
 - New skills added to `.claude/skills/` should be registered in `CLAUDE.md` Skills section
 - New build targets added to `/build` should be in `CLAUDE.md` Skills section
 
-## Step 2: Learn from Accepted CR Feedback
+### Step 2: Learn from Accepted CR Feedback
 
 Fetch recent PRs and their resolved review comments to find patterns worth codifying as rules.
 
@@ -92,7 +92,7 @@ Skip:
 
 Focus on patterns that appear across multiple PRs or that indicate a gap in the rules.
 
-## Step 3: Session Learnings
+### Step 3: Session Learnings
 
 Reflect on the current session for new learnings:
 
@@ -125,17 +125,17 @@ Audit Results:
 
 CR Learnings (from accepted review feedback):
 
-1. 🗨️[.claude/rules/coding.md]
+4. 🗨️[.claude/rules/coding.md]
    Add: "Always null-check props before spreading"
    Source: PR #12 — reviewer caught 2 instances, fixed in abc123
 
-2. 🗨️[.github/copilot-instructions.md > Key Things to Flag]
+5. 🗨️[.github/copilot-instructions.md > Key Things to Flag]
    Add: "Hooks called conditionally"
    Source: PR #15, #18 — same issue caught twice across PRs
 
 Session Improvements:
 
-1. 🎯[.claude/rules/coding.md]
+6. 🎯[.claude/rules/coding.md]
    Add: "Use `bindtap` with `'background only'` for heavy tap handlers"
    Reason: Developer corrected my approach twice
 ```

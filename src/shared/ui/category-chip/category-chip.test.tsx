@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { queryRoot } from '@/shared/lib/test'
+import { queryRoot } from '@/shared/lib/test-utils'
+import { glyphMap } from '../icon/glyph-map.js'
 import { CategoryChip } from './category-chip.js'
 
 beforeEach(() => {
@@ -27,7 +28,7 @@ describe('CategoryChip', () => {
     const onTap = vi.fn()
     render(<CategoryChip icon='search' isActive label='Donuts' onTap={onTap} />)
     const { getByText } = queryRoot()
-    expect(getByText('\uE010')).toBeInTheDocument()
+    expect(getByText(glyphMap.search)).toBeInTheDocument()
   })
 
   test('renders icon when inactive', () => {
@@ -41,6 +42,6 @@ describe('CategoryChip', () => {
       />,
     )
     const { getByText } = queryRoot()
-    expect(getByText('\uE010')).toBeInTheDocument()
+    expect(getByText(glyphMap.search)).toBeInTheDocument()
   })
 })

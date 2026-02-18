@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { queryRoot } from '@/shared/lib/test'
+import { queryRoot } from '@/shared/lib/test-utils'
 import { PriceTag } from './price-tag.js'
 
 beforeEach(() => {

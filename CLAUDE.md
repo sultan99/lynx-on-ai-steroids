@@ -78,6 +78,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/git commit` — Smart commit with auto-grouping
 - `/git merge [branch]` — Merge branch into current
 - `/git rebase [branch]` — Rebase current branch onto another
+- `/git squash` — Squash all branch commits into clean commit(s)
 - `/project init` — Set up the project from scratch
 - `/project skill-up` — Suggest improvements to instructions and rules based on session learnings
 - `/ship` — Ship experimental changes (create issue from diff, rename branch, open PR)

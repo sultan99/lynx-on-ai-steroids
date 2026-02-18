@@ -1,3 +1,4 @@
+export { BottomNavigationBar } from './bottom-navigation-bar/bottom-navigation-bar'
 export { CategoryChip } from './category-chip/category-chip'
 export { Icon } from './icon/icon'
 export { LocationBar } from './location-bar/location-bar'

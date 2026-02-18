@@ -5,11 +5,11 @@
 *.tsbuildinfo
 .DS_Store
 Thumbs.db
+bugreport-*.zip
 
 .claude/progress/
 .idea/
 .vscode/*
-bugreport-*.zip
 coverage/
 dist/
 node_modules/

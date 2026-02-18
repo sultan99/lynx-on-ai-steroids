@@ -30,3 +30,7 @@ git merge origin/<branch-name>   # default: main
    ```
 
 4. **If stuck:** `git merge --abort` and ask for help.
+
+### Step 3: Report result
+
+Inform the developer whether the merge succeeded or if conflicts were resolved. Show the current branch status.

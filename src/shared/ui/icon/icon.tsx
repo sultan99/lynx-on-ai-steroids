@@ -1,47 +1,30 @@
 import type { IconGlyph } from './glyph-map.js'
+import { cssUnit, pickCss, useCssVars } from '@/shared/lib/css-utils'
 import { glyphMap } from './glyph-map.js'
-import './icon.css'
+import * as css from './icon.module.scss'
 
 type IconProps = {
   'data-testid'?: string
+  bindtap?: () => void
   className?: string
-  color?: string
   glyph: IconGlyph
-  isVisible?: boolean
   rotate?: number
-  size?: string | number
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
-export const resolveValue = (value: string | number): string => {
-  if (typeof value === 'number') return `${value}px`
-  if (value.startsWith('--')) return `var(${value})`
-  return value
-}
+const cssIcon = pickCss(css, 'icon')
 
 export const Icon = ({
   className,
-  color,
   glyph,
-  isVisible = true,
   rotate,
-  size = '16px',
+  size,
   ...rest
 }: IconProps) => {
-  if (!isVisible) return null
-
-  const style: Record<string, string> = { fontFamily: 'icons' }
-
-  if (size) {
-    const resolved = resolveValue(size)
-    style.fontSize = resolved
-    style.width = resolved
-    style.height = resolved
-  }
-  if (color) style.color = resolveValue(color)
-  if (rotate !== undefined) style.transform = `rotate(${rotate}deg)`
+  const id = useCssVars({ rotate: cssUnit(rotate, 'deg') })
 
   return (
-    <text {...rest} className={className} style={style}>
+    <text {...rest} className={cssIcon({ size }, className)} id={id}>
       {glyphMap[glyph]}
     </text>
   )

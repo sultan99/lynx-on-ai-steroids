@@ -1,0 +1,33 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.icon {
+  color: var(--gray-500);
+  font-size: 40px;
+
+  &-is-active {
+    color: var(--coral);
+  }
+}
+
+.label {
+  color: var(--gray-500);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+
+  &-is-active {
+    color: var(--coral);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.indicator {
+  background-color: var(--coral);
+  border-radius: var(--radius-full);
+  height: 3px;
+  width: 100%;
+}

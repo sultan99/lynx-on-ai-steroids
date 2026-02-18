@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { pluginQRCode } from '@lynx-js/qrcode-rsbuild-plugin'
 import { pluginReactLynx } from '@lynx-js/react-rsbuild-plugin'
 import { defineConfig } from '@lynx-js/rspeedy'
+import { pluginSass } from '@rsbuild/plugin-sass'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { tanstackRouter } from '@tanstack/router-plugin/rspack'
 
@@ -53,6 +54,7 @@ export default defineConfig({
       },
     }),
     pluginReactLynx(),
+    pluginSass(),
     pluginTypeCheck({
       forkTsCheckerOptions: {
         issue: { exclude: [{ file: '**/*.test.{ts,tsx}' }] },

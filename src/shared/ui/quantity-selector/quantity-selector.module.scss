@@ -1,0 +1,29 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.button {
+  align-items: center;
+  border: 1.5px solid var(--coral);
+  border-radius: var(--radius-full);
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.icon {
+  color: var(--coral);
+  font-size: 16px;
+}
+
+.count {
+  color: var(--gray-900);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  min-width: 24px;
+  text-align: center;
+}
