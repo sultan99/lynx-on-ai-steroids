@@ -1,0 +1,27 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 56px;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.zone {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+
+.title {
+  color: var(--gray-900);
+  flex: 1;
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}

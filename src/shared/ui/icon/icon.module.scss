@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./icons.ttf?inline') format('truetype');
+}
+
+.icon {
+  --rotate: 0deg;
+  font-family: 'icons';
+  font-size: 16px;
+  transform: rotate(var(--rotate));
+
+  &-size-xs {
+    font-size: 12px;
+  }
+  &-size-sm {
+    font-size: 16px;
+  }
+  &-size-md {
+    font-size: 24px;
+  }
+  &-size-lg {
+    font-size: 32px;
+  }
+  &-size-xl {
+    font-size: 48px;
+  }
+}

@@ -1,0 +1,17 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.star {
+  color: var(--amber);
+  font-size: 16px;
+}
+
+.value {
+  color: var(--gray-900);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}

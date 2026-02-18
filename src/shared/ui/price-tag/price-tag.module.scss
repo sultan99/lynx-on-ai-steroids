@@ -1,0 +1,11 @@
+.root {
+  align-items: center;
+  background-color: var(--petal);
+  border-radius: var(--radius-full);
+  color: var(--coral);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  justify-content: center;
+  padding: 4px 12px;
+}
