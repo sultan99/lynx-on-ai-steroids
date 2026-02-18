@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { queryRoot } from '@/shared/lib/test'
+import { queryRoot } from '@/shared/lib/test-utils'
+import { glyphMap } from '../icon/glyph-map.js'
 import { QuantitySelector } from './quantity-selector.js'
 
 beforeEach(() => {
@@ -34,7 +35,7 @@ describe('QuantitySelector', () => {
       />,
     )
     const { getByText } = queryRoot()
-    expect(getByText('\uE00D')).toBeInTheDocument()
+    expect(getByText(glyphMap.minus)).toBeInTheDocument()
   })
 
   test('renders plus icon', () => {
@@ -48,6 +49,6 @@ describe('QuantitySelector', () => {
       />,
     )
     const { getByText } = queryRoot()
-    expect(getByText('\uE00F')).toBeInTheDocument()
+    expect(getByText(glyphMap.plus)).toBeInTheDocument()
   })
 })
