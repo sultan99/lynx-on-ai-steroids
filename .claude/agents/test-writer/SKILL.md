@@ -41,7 +41,7 @@ Skip files that don't need tests:
 - Config files (`lynx.config.ts`, `tsconfig.json`, `biome.json`)
 - Re-exports and barrel files (`index.ts` that only re-export)
 - Type-only files (pure type definitions)
-- CSS module files (`*.module.css`)
+- CSS module files (`*.module.scss`)
 - Asset files (`*.png`, `*.jpg`)
 
 **2. Analyze each changed file:**

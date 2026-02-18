@@ -2,13 +2,13 @@
 
 Fetches issues from a specific DeepSource analysis run via the GraphQL API — required for run-scoped data like test-coverage issues.
 
-## Sub-step 1: Extract run UUID
+### Step 1: Extract run UUID
 
 Parse the `--run` value:
 - If it's a full URL (contains `/run/`), extract the UUID segment after `/run/` (strip any trailing path like `/test-coverage`)
 - If it's already a UUID, use it directly
 
-## Sub-step 2: Fetch via GraphQL
+### Step 2: Fetch via GraphQL
 
 ```bash
 TOKEN=$(grep "^token " ~/.deepsource/config.toml | sed 's/.*= *"//;s/".*//')
@@ -21,7 +21,7 @@ curl -s "https://api.deepsource.io/graphql/" \
   -o /tmp/deepsource-graphql-raw.json
 ```
 
-## Sub-step 3: Transform to CLI JSON format
+### Step 3: Transform to CLI JSON format
 
 Convert the GraphQL response to the same JSON structure the CLI produces, so the review workflow continues unchanged:
 
@@ -53,4 +53,4 @@ require('fs').writeFileSync('/tmp/deepsource-issues.json', JSON.stringify(result
 "
 ```
 
-Output is written to `/tmp/deepsource-issues.json` — return to `review.md` Step 2.
+Output is written to `/tmp/deepsource-issues.json`. Report the issue count to the developer, then return to `review.md` Step 2.

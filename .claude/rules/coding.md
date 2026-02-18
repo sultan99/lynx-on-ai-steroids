@@ -18,7 +18,25 @@ These rules apply to ALL code in the repository — `android`, `src/`,  and any 
 
 ## Lynx Elements
 
-- Use `<view>`, `<text>`, `<image>` — never HTML tags (`<div>`, `<span>`, `<img>`, `<p>`, `<button>`, `<input>`)
+Lynx is NOT a browser. It has its own set of built-in elements — do not use HTML tags.
+
+**Lynx built-in elements** (use these):
+
+| Element | Purpose |
+|---------|---------|
+| `<view>` | Container (replaces `<div>`, `<section>`, `<article>`, `<nav>`, `<header>`, `<footer>`) |
+| `<text>` | Text content (replaces `<span>`, `<p>`, `<h1>`–`<h6>`, `<label>`) |
+| `<image>` | Images (replaces `<img>`) |
+| `<input>` | Single-line text input (native Lynx element, NOT HTML) |
+| `<textarea>` | Multi-line text input (native Lynx element, NOT HTML) |
+| `<scroll-view>` | Scrollable container |
+| `<list>` | Virtualized list |
+| `<page>` | Page-level container |
+| `<frame>` | Frame container |
+| `<overlay>` | Overlay positioning |
+
+**Forbidden HTML tags** (never use): `<div>`, `<span>`, `<img>`, `<p>`, `<h1>`–`<h6>`, `<button>`, `<form>`, `<section>`, `<article>`, `<nav>`, `<header>`, `<footer>`, `<label>`, `<select>`, `<table>`, `<ul>`, `<ol>`, `<li>`, `<a>`
+
 - Use `bindtap` for tap handlers, not `onClick`
 - Use `className` for styling
 - Avoid unnecessary wrapper `<view>` elements; use the fewest elements possible
@@ -56,11 +74,12 @@ These rules apply to ALL code in the repository — `android`, `src/`,  and any 
 
 ## Styling
 
-- Use CSS modules: `import * as css from './component.module.css'`
-- Never use `import styles from` or bare `import './component.css'` — always `import * as css`
+- Use CSS modules: `import * as css from './component.module.scss'`
+- Never use `import styles from` or bare `import './component.scss'` — always `import * as css`
 - Global CSS imports are allowed only for: the app entry point (e.g. `src/index.tsx`) importing tokens/reset files, and `@font-face` declarations in font components
 - Write class names in kebab-case in CSS (`logo-react`), reference as camelCase in TS (`css.logoReact`)
 - No inline styles — use CSS modules instead. Exception: dynamic styles computed at runtime (e.g. icon size, color) where CSS modules cannot apply
+- Sort CSS properties alphabetically within each rule block
 - Lynx layout engine is not identical to browser CSS — test on device
 
 ## TypeScript
@@ -87,6 +106,7 @@ When TypeScript complains about types:
 - Always use arrow functions — avoid `function` declarations
 - Use implicit return (no `return` keyword) when the body is a single expression
 - Arrow functions (`const`) don't hoist — declare before use
+- Avoid `for`/`for...of` loops — prefer chaining array methods (`.map`, `.filter`, `.reduce`, `Object.fromEntries`, etc.)
 - Minimize `if-else` and `switch`; prefer early returns
 - No comments unless explaining workarounds or non-obvious logic
 - Use descriptive naming instead of comments

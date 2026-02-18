@@ -66,6 +66,7 @@ npx vitest run
 - Use `vitest` — never `jest`
 - Avoid raw `setTimeout`/`setInterval` in tests — use fake timers instead
 - No `toMatchInlineSnapshot()` for structural assertions — assert specific behavior instead
+- No hardcoded `data-testid` in `shared/ui` components — they can appear multiple times per page, causing duplicate IDs. Consumers pass `data-testid` via props if needed
 
 ## Imports
 
@@ -73,12 +74,12 @@ npx vitest run
 import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { expect, test, vi } from 'vitest'
-import { getRoot, queryRoot } from '@/shared/lib/test'
+import { getRoot, queryRoot } from '@/shared/lib/test-utils'
 ```
 
 ## Querying Rendered Output
 
-Use helpers from `src/shared/lib/test.ts` to avoid `!` assertions on `elementTree.root`:
+Use helpers from `src/shared/lib/test-utils.ts` to avoid `!` assertions on `elementTree.root`:
 
 - `queryRoot()` — returns query functions (`getByText`, `getByTestId`, etc.)
 - `getRoot()` — returns the root element directly (for structural checks like `childNodes`)

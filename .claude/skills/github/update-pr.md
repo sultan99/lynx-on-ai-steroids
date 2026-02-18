@@ -46,3 +46,5 @@ gh pr edit <pr-number> --title "<title>" --body "<description>"
 ```
 
 ### Step 8: Output the PR URL
+
+Show the PR URL returned by `gh pr edit` to the developer.

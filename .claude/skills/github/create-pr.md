@@ -40,3 +40,5 @@ gh pr create --title "<title>" --body "<description>"
 ```
 
 ### Step 7: Output the PR URL
+
+Show the PR URL returned by `gh pr create` to the developer.

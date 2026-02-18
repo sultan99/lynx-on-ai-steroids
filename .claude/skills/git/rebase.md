@@ -30,3 +30,7 @@ git rebase origin/<branch-name>   # default: main
    ```
 
 4. **If stuck:** `git rebase --abort` and ask for help.
+
+### Step 3: Report result
+
+Inform the developer whether the rebase succeeded or if conflicts were resolved. Show the current branch status.

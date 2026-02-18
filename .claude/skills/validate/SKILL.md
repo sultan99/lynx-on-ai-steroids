@@ -1,12 +1,12 @@
 ---
 name: validate
-description: Run code validation (lint, type-check, test) in parallel. Use when developer wants to validate code before committing or after making changes.
+description: Run code validation (lint, type-check, test, build) in parallel. Use when developer wants to validate code before committing or after making changes.
 user-invocable: true
 ---
 
-# Validate Code
+# /validate
 
-Run all validation commands in parallel using background agents and report results.
+Run all validation commands in parallel and report results.
 
 ## When to Run
 
@@ -22,6 +22,7 @@ Run all validation commands in parallel using background agents and report resul
 npx vitest run src/path/to/file.test.tsx   # Run specific test
 npx biome check --write ./src              # Lint + auto-fix
 npx tsc --noEmit                           # Type check
+npx rspeedy build                          # Build JS bundle
 ```
 
 ## Usage
@@ -30,17 +31,18 @@ npx tsc --noEmit                           # Type check
 /validate
 ```
 
-## Execution
+## Instructions
 
-**Spawn 3 `runner` agents in parallel** using the Task tool with `subagent_type: "runner"`.
+### Step 1: Run all checks in parallel
+
+Spawn 4 `runner` agents in parallel using the Task tool with `subagent_type: "runner"`. All 4 MUST be spawned as parallel Task tool calls in a single message.
 
 | Check | Command |
 | ----- | ------- |
 | Lint  | `npx biome check --write ./src && npx biome check ./src` |
 | Types | `npx tsc --noEmit` |
 | Tests | `npx vitest run` |
-
-**IMPORTANT:** All 3 agents MUST be spawned as parallel Task tool calls in a single message.
+| Build | `npx rspeedy build` |
 
 Example Task call:
 
@@ -51,7 +53,7 @@ Task tool:
   prompt: "Run command: npx biome check --write ./src && npx biome check ./src"
 ```
 
-## Output
+### Step 2: Report results
 
 After all agents complete, present a summary table:
 
@@ -62,6 +64,7 @@ Validation Results:
 | Lint        | PASS / FAIL |
 | Types       | PASS / FAIL |
 | Tests       | PASS / FAIL |
+| Build       | PASS / FAIL |
 ```
 
 - If ALL pass: report success

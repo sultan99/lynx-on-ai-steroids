@@ -7,6 +7,8 @@ argument-hint: <issue-number>
 
 # /dev $ARGUMENTS
 
+Feature implementation workflow — from issue to PR.
+
 ## Arguments
 
 | Argument | Required | Description |
@@ -54,7 +56,7 @@ Before starting the workflow, check if a progress file exists:
 
 ---
 
-## Workflow
+## Instructions
 
 ### Step 1: Understand Requirements
 
