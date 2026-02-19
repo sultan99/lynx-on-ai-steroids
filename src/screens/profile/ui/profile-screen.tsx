@@ -1,6 +1,7 @@
 import type { IconGlyph } from '@/shared/ui/icon/glyph-map'
 import { useState } from '@lynx-js/react'
 import { useNavigate } from '@tanstack/react-router'
+import { BakeryPromo, bakeries } from '@/entities/bakery'
 import { DonutCard, donuts } from '@/entities/donut'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import {
@@ -142,6 +143,13 @@ export const ProfileScreen = () => {
                 />
               </view>
             </view>
+          </view>
+
+          <view className={css.section}>
+            <text className={css.sectionTitle}>BakeryPromo</text>
+            {bakeries.map((bakery) => (
+              <BakeryPromo bakery={bakery} key={bakery.id} />
+            ))}
           </view>
 
           <view className={css.section}>
