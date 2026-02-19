@@ -132,6 +132,18 @@
   text-align: center;
 }
 
+.donut-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.donut-grid > * {
+  flex: 1;
+  min-width: 140px;
+}
+
 .card-note {
   color: var(--gray-500);
   font-size: 14px;
