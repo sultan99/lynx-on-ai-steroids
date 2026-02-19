@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import type { Donut } from '../model/types'
-import { render } from '@lynx-js/react/testing-library'
+import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '@/shared/ui/icon/glyph-map'
@@ -60,6 +60,20 @@ describe('DonutCard', () => {
     render(<DonutCard donut={baseDonut} />)
     const { getByText } = queryRoot()
     expect(getByText('4.8')).toBeInTheDocument()
+  })
+
+  test('calls onLike with donut id on heart tap', () => {
+    const onLike = vi.fn()
+    render(<DonutCard donut={baseDonut} onLike={onLike} />)
+    const { getByText } = queryRoot()
+    fireEvent.tap(getByText(glyphMap.heart))
+    expect(onLike).toHaveBeenCalledWith('1')
+  })
+
+  test('does not throw when heart is tapped without onLike', () => {
+    render(<DonutCard donut={baseDonut} />)
+    const { getByText } = queryRoot()
+    expect(() => fireEvent.tap(getByText(glyphMap.heart))).not.toThrow()
   })
 
   test('passes restProps to root element', () => {
