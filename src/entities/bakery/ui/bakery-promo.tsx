@@ -6,11 +6,13 @@ import * as css from './bakery-promo.module.scss'
 
 type BakeryPromoProps = {
   bakery: Bakery
+  onOrder?: (orderLink: string) => void
 } & Omit<JSX.IntrinsicElements['view'], 'children'>
 
 export const BakeryPromo = ({
   bakery,
   className,
+  onOrder,
   ...rest
 }: BakeryPromoProps) => (
   <view {...rest} className={joinCss(css.root, className)}>
@@ -21,7 +23,10 @@ export const BakeryPromo = ({
       </view>
       <view className={css.promo}>
         <text className={css.promoText}>{bakery.promoText}</text>
-        <view className={css.orderButton}>
+        <view
+          className={css.orderButton}
+          bindtap={() => onOrder?.(bakery.orderLink)}
+        >
           <text className={css.orderButtonText}>Order Now</text>
         </view>
       </view>

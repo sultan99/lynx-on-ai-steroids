@@ -1,6 +1,6 @@
 import type { Bakery } from '../model/types'
 import '@testing-library/jest-dom'
-import { render } from '@lynx-js/react/testing-library'
+import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '@/shared/ui/icon/glyph-map'
@@ -65,6 +65,22 @@ describe('BakeryPromo', () => {
     render(<BakeryPromo bakery={baseBakery} />)
     const { getByText } = queryRoot()
     expect(getByText(glyphMap['star-filled'])).toBeInTheDocument()
+  })
+
+  test('calls onOrder with orderLink on Order Now tap', () => {
+    const onOrder = vi.fn()
+    render(<BakeryPromo bakery={baseBakery} onOrder={onOrder} />)
+    const { getByText } = queryRoot()
+    const orderText = getByText('Order Now')
+    fireEvent.tap(orderText.parentNode as Element)
+    expect(onOrder).toHaveBeenCalledWith('https://www.dunkindonuts.com')
+  })
+
+  test('does not throw when Order Now is tapped without onOrder', () => {
+    render(<BakeryPromo bakery={baseBakery} />)
+    const { getByText } = queryRoot()
+    const orderText = getByText('Order Now')
+    expect(() => fireEvent.tap(orderText.parentNode as Element)).not.toThrow()
   })
 
   test('passes restProps to root element', () => {
