@@ -1,6 +1,6 @@
-import type { IconGlyph } from '../icon/glyph-map.js'
-import { pickCss } from '../../lib/css-utils.js'
-import { Icon } from '../icon/icon.js'
+import type { IconGlyph } from '../icon/glyph-map'
+import { pickCss } from '../../lib/css-utils'
+import { Icon } from '../icon/icon'
 import * as css from './category-chip.module.scss'
 
 type CategoryChipProps = {

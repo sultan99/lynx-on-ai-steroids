@@ -1,6 +1,6 @@
 import type { NodesRef } from '@lynx-js/types'
 import { useEffect, useRef } from '@lynx-js/react'
-import { Icon } from '../icon/icon.js'
+import { Icon } from '../icon/icon'
 import * as css from './location-bar.module.scss'
 
 type LocationBarProps = {

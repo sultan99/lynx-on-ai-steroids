@@ -1,6 +1,7 @@
 import type { IconGlyph } from '@/shared/ui/icon/glyph-map'
 import { useState } from '@lynx-js/react'
 import { useNavigate } from '@tanstack/react-router'
+import { DonutCard, donuts } from '@/entities/donut'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import {
   BottomNavigationBar,
@@ -140,6 +141,15 @@ export const ProfileScreen = () => {
                   onTap={() => setActiveChip('nutty')}
                 />
               </view>
+            </view>
+          </view>
+
+          <view className={css.section}>
+            <text className={css.sectionTitle}>DonutCard</text>
+            <view className={css.donutGrid}>
+              {donuts.map((donut) => (
+                <DonutCard donut={donut} key={donut.id} />
+              ))}
             </view>
           </view>
 

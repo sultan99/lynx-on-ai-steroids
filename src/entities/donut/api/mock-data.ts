@@ -1,0 +1,148 @@
+import type { Donut } from '../model/types'
+import classicImg from '../assets/classic.png'
+import creemyImg from '../assets/creemy.png'
+import decadentImg from '../assets/decadent.png'
+import filledImg from '../assets/filled.png'
+
+export const donuts: Donut[] = [
+  {
+    brand: 'Krispy Kreme',
+    calories: 350,
+    deliveryType: 'Free',
+    description:
+      'Rich chocolate glaze over a fluffy yeast donut, topped with chocolate sprinkles.',
+    id: '1',
+    image: classicImg,
+    isFavorite: true,
+    name: 'Chocolate',
+    prepTime: 15,
+    price: 5,
+    rating: 4.8,
+  },
+  {
+    brand: 'Dunkin',
+    calories: 420,
+    deliveryType: 'Free',
+    description:
+      'Soft donut filled with smooth vanilla custard and dusted with powdered sugar.',
+    id: '2',
+    image: filledImg,
+    isFavorite: false,
+    name: 'Cream Filled',
+    prepTime: 20,
+    price: 7,
+    rating: 4.6,
+  },
+  {
+    brand: 'Krispy Kreme',
+    calories: 380,
+    deliveryType: 'Paid',
+    description:
+      'Velvety cream cheese frosting swirled on a cinnamon-spiced donut.',
+    id: '3',
+    image: creemyImg,
+    isFavorite: false,
+    name: 'Careemy',
+    prepTime: 18,
+    price: 6,
+    rating: 4.9,
+  },
+  {
+    brand: 'Dunkin',
+    calories: 450,
+    deliveryType: 'Free',
+    description:
+      'Triple-layered chocolate donut with dark ganache and cocoa nibs.',
+    id: '4',
+    image: decadentImg,
+    isFavorite: true,
+    name: 'Decadent',
+    prepTime: 25,
+    price: 8,
+    rating: 4.7,
+  },
+  {
+    brand: 'Krispy Kreme',
+    calories: 340,
+    deliveryType: 'Free',
+    description:
+      'Classic donut with a thick chocolate frost coating and rainbow sprinkles.',
+    id: '5',
+    image: classicImg,
+    isFavorite: false,
+    name: 'Chocolate Frost',
+    prepTime: 12,
+    price: 4,
+    rating: 4.5,
+  },
+  {
+    brand: 'Duck Donuts',
+    calories: 390,
+    deliveryType: 'Paid',
+    description:
+      'Golden donut topped with crushed walnuts, almonds, and a honey drizzle.',
+    id: '6',
+    image: creemyImg,
+    isFavorite: false,
+    name: 'Nutty Crunch',
+    prepTime: 20,
+    price: 6,
+    rating: 4.4,
+  },
+  {
+    brand: 'Duck Donuts',
+    calories: 310,
+    deliveryType: 'Free',
+    description:
+      'Light donut glazed with mixed berry compote and topped with fresh fruit bits.',
+    id: '7',
+    image: filledImg,
+    isFavorite: true,
+    name: 'Berry Bliss',
+    prepTime: 15,
+    price: 5,
+    rating: 4.3,
+  },
+  {
+    brand: 'Krispy Kreme',
+    calories: 290,
+    deliveryType: 'Free',
+    description:
+      'The original classic — light, airy, and coated in a sweet sugar glaze.',
+    id: '8',
+    image: classicImg,
+    isFavorite: false,
+    name: 'Classic Glazed',
+    prepTime: 10,
+    price: 4,
+    rating: 4.6,
+  },
+  {
+    brand: 'Dunkin',
+    calories: 410,
+    deliveryType: 'Paid',
+    description:
+      'Caramel-drizzled donut with sea salt flakes and a buttery crumb topping.',
+    id: '9',
+    image: decadentImg,
+    isFavorite: false,
+    name: 'Salted Caramel',
+    prepTime: 22,
+    price: 6,
+    rating: 4.8,
+  },
+  {
+    brand: 'Duck Donuts',
+    calories: 360,
+    deliveryType: 'Free',
+    description:
+      'Strawberry-frosted donut with white chocolate chips and a pink glaze.',
+    id: '10',
+    image: filledImg,
+    isFavorite: false,
+    name: 'Strawberry Dream',
+    prepTime: 16,
+    price: 5,
+    rating: 4.5,
+  },
+]

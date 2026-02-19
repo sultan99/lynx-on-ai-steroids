@@ -1,6 +1,6 @@
-import type { IconGlyph } from './glyph-map.js'
+import type { IconGlyph } from './glyph-map'
 import { cssUnit, pickCss, useCssVars } from '@/shared/lib/css-utils'
-import { glyphMap } from './glyph-map.js'
+import { glyphMap } from './glyph-map'
 import * as css from './icon.module.scss'
 
 type IconProps = {

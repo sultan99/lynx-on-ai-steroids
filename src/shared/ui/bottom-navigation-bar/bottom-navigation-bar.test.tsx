@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
-import { glyphMap } from '../icon/glyph-map.js'
+import { glyphMap } from '../icon/glyph-map'
 import { BottomNavigationBar } from './bottom-navigation-bar'
 
 const mockNavigate = vi.fn()

@@ -66,7 +66,7 @@ npx vitest run
 - Use `vitest` — never `jest`
 - Avoid raw `setTimeout`/`setInterval` in tests — use fake timers instead
 - No `toMatchInlineSnapshot()` for structural assertions — assert specific behavior instead
-- No hardcoded `data-testid` in `shared/ui` components — they can appear multiple times per page, causing duplicate IDs. Consumers pass `data-testid` via props if needed
+- No hardcoded `data-testid` in reusable components (`shared/ui`, `entities/ui`) — they can appear multiple times per page, causing duplicate IDs. Instead, spread `...restProps` on the root element so consumers (including tests) can pass `data-testid` from outside
 
 ## Imports
 

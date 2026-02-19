@@ -38,6 +38,9 @@ const toClassNames =
         ? `${rootClass}-${toKebab(key)}-${value}`
         : undefined
 
+export const joinCss = (...classNames: (string | undefined)[]) =>
+  classNames.filter(Boolean).join(' ')
+
 export const pickCss =
   (css: CssModule, rootClass: string, ...restClasses: (string | undefined)[]) =>
   (props: Props = {}, ...extraClasses: (string | undefined)[]) =>
