@@ -6,9 +6,6 @@ import { queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '@/shared/ui/icon/glyph-map'
 import { DonutCard } from './donut-card'
 
-vi.mock('../assets/classic.png', () => ({ default: 'classic.png' }))
-vi.mock('../assets/filled.png', () => ({ default: 'filled.png' }))
-
 const baseDonut: Donut = {
   brand: 'Krispy Kreme',
   calories: 350,
@@ -44,7 +41,7 @@ describe('DonutCard', () => {
     render(<DonutCard donut={baseDonut} />)
     const { getByText } = queryRoot()
     expect(getByText('$')).toBeInTheDocument()
-    expect(getByText('5')).toBeInTheDocument()
+    expect(getByText('5.00')).toBeInTheDocument()
   })
 
   test('renders heart icon when donut is not a favorite', () => {

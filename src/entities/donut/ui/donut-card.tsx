@@ -1,16 +1,17 @@
 import type { Donut } from '../model/types'
+import { joinCss } from '@/shared/lib/css-utils'
 import { Icon } from '@/shared/ui/icon/icon'
 import { Rating } from '@/shared/ui/rating/rating'
 import * as css from './donut-card.module.scss'
 
 type DonutCardProps = {
   donut: Donut
-}
+} & Omit<JSX.IntrinsicElements['view'], 'children'>
 
-export const DonutCard = ({ donut, ...rest }: DonutCardProps) => (
-  <view {...rest} className={css.root}>
+export const DonutCard = ({ className, donut, ...rest }: DonutCardProps) => (
+  <view {...rest} className={joinCss(css.root, className)}>
     <view className={css.priceTag}>
-      <text className={css.price}>${donut.price}</text>
+      <text className={css.price}>${donut.price.toFixed(2)}</text>
     </view>
     <view className={css.imageContainer}>
       <image auto-size src={donut.image} />
