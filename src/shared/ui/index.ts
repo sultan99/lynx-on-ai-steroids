@@ -1,6 +1,7 @@
 export { BottomNavigationBar } from './bottom-navigation-bar/bottom-navigation-bar'
 export { CategoryChip } from './category-chip/category-chip'
 export { Icon } from './icon/icon'
+export { Info } from './info/info'
 export { LocationBar } from './location-bar/location-bar'
 export { PriceTag } from './price-tag/price-tag'
 export { QuantitySelector } from './quantity-selector/quantity-selector'

@@ -1,0 +1,17 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.icon {
+  color: var(--gray-500);
+  font-size: 14px;
+}
+
+.text {
+  color: var(--gray-900);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+}
