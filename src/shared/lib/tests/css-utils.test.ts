@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { pickCss } from '../css-utils'
+import { cssUnit, joinCss, pickCss } from '../css-utils'
 
 const css: Record<string, string> = {
   button: 'button_hash',
@@ -15,6 +15,42 @@ const css: Record<string, string> = {
   tabIcon: 'tab-icon_hash',
   tabIconIsActive: 'tab-icon-is-active_hash',
 }
+
+describe('cssUnit', () => {
+  test('appends unit to number value', () => {
+    expect(cssUnit(42, 'px')).toBe('42px')
+  })
+
+  test('appends unit to string value', () => {
+    expect(cssUnit('90', 'deg')).toBe('90deg')
+  })
+
+  test('returns empty string for undefined', () => {
+    expect(cssUnit(undefined, 'px')).toBe('')
+  })
+
+  test('handles zero value', () => {
+    expect(cssUnit(0, 'px')).toBe('0px')
+  })
+})
+
+describe('joinCss', () => {
+  test('joins multiple class names', () => {
+    expect(joinCss('foo', 'bar', 'baz')).toBe('foo bar baz')
+  })
+
+  test('filters out undefined values', () => {
+    expect(joinCss('foo', undefined, 'bar')).toBe('foo bar')
+  })
+
+  test('returns empty string when all values are undefined', () => {
+    expect(joinCss(undefined, undefined)).toBe('')
+  })
+
+  test('returns single class name as-is', () => {
+    expect(joinCss('foo')).toBe('foo')
+  })
+})
 
 describe('pickCss', () => {
   test('returns root class only when called with no props', () => {
