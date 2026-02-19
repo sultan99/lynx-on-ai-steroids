@@ -2,8 +2,8 @@ import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
-import { glyphMap } from '../icon/glyph-map.js'
-import { TopBar } from './top-bar.js'
+import { glyphMap } from '../icon/glyph-map'
+import { TopBar } from './top-bar'
 
 beforeEach(() => {
   vi.clearAllMocks()

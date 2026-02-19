@@ -67,6 +67,24 @@ Lynx is NOT a browser. It has its own set of built-in elements — do not use HT
 />
 ```
 
+## Rest Props
+
+- Reusable components (`shared/ui`, `entities/ui`) must spread `...restProps` on the root element
+- This allows consumers and tests to pass `data-testid` and other attributes without the component listing them explicitly
+- Never hardcode `data-testid` inside reusable components
+
+```tsx
+type CardProps = {
+  title: string
+}
+
+export const Card = ({ title, ...restProps }: CardProps) => (
+  <view {...restProps}>
+    <text>{title}</text>
+  </view>
+)
+```
+
 ## Threads
 
 - Code inside `'background only'` string literal runs on background thread
@@ -81,6 +99,11 @@ Lynx is NOT a browser. It has its own set of built-in elements — do not use HT
 - No inline styles — use CSS modules instead. Exception: dynamic styles computed at runtime (e.g. icon size, color) where CSS modules cannot apply
 - Sort CSS properties alphabetically within each rule block
 - Lynx layout engine is not identical to browser CSS — test on device
+
+## Imports
+
+- Never use file extensions in imports — write `'./foo'` not `'./foo.js'` or `'./foo.ts'`
+- All source code in `src/` is TypeScript — the bundler resolves `.ts`/`.tsx` files without extensions
 
 ## TypeScript
 

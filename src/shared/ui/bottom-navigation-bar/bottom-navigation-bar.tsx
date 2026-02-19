@@ -1,6 +1,6 @@
 import { useNavigate } from '@tanstack/react-router'
-import { pickCss } from '../../lib/css-utils.js'
-import { Icon } from '../icon/icon.js'
+import { pickCss } from '../../lib/css-utils'
+import { Icon } from '../icon/icon'
 import * as css from './bottom-navigation-bar.module.scss'
 
 export type NavTab = 'home' | 'orders' | 'cart' | 'bookmarks' | 'profile'

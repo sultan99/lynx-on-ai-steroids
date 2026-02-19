@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
-import { PriceTag } from './price-tag.js'
+import { PriceTag } from './price-tag'
 
 beforeEach(() => {
   vi.clearAllMocks()
