@@ -1,0 +1,29 @@
+{
+  // === Formatting — Biome ===
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "notebook.defaultFormatter": "biomejs.biome",
+  "[css]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+  "[typescriptreact]": { "editor.defaultFormatter": "biomejs.biome" },
+
+  // === Built-in Formatters (disabled — Biome handles these) ===
+  "javascript.format.enable": false,
+  "json.format.enable": false,
+  "typescript.format.enable": false,
+
+  // === TypeScript ===
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // === Biome ===
+  "biome.suggestInstallingGlobally": false,
+
+  // === Spelling ===
+  "cSpell.ignoreWords": ["bindtap", "testid"],
+  "cSpell.words": ["bindconfirm"]
+}
