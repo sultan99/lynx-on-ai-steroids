@@ -22,8 +22,8 @@ flowchart TD
   end
 
   subgraph Entities["entities"]
-    E_donut["Donut\n(DonutCard, queries, types)"]
-    E_bakery["Bakery\n(BakeryPromo, queries, types)"]
+    E_donut["Donut<br/>(DonutCard, queries, types)"]
+    E_bakery["Bakery<br/>(BakeryPromo, queries, types)"]
   end
 
   R_home --> S_home
