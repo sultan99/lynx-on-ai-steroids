@@ -1,20 +1,6 @@
----
-name: ship
-description: Ship experimental changes — creates GitHub issue from diff, creates branch, commits, opens PR. Use when developer has been experimenting and wants to formalize.
-user-invocable: true
----
-
-# /ship
+# Ship
 
 Ship experimental changes by analyzing your diff, creating a GitHub issue, branching, committing, and opening a PR.
-
-## Usage
-
-```
-/ship                    # Analyze changes, create issue, branch, commit, open PR
-```
-
-## Instructions
 
 ### Step 1: Verify branch and analyze changes
 
@@ -24,7 +10,7 @@ Verify the current branch is `main`:
 git branch --show-current
 ```
 
-If not on `main` — stop and tell the developer: "/ship works only from the main branch. Switch to main first or use the individual skills (/github create issue, /git branch, /git commit, /github create pr)."
+If not on `main` — stop and tell the developer: "/github ship works only from the main branch. Switch to main first or use the individual skills (/github create issue, /git branch, /git commit, /github create pr)."
 
 Check for changes:
 
