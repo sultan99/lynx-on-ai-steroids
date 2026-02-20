@@ -1,7 +1,7 @@
 import type { QueryClient } from '@tanstack/react-query'
 import { createMemoryHistory, createRouter } from '@tanstack/react-router'
 import { queryClient } from '../query-client'
-import { routeTree } from './route-tree.gen'
+import { routeTree } from './__route-tree.gen'
 
 export type RouterContext = {
   queryClient: QueryClient
