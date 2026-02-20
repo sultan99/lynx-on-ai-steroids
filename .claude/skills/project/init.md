@@ -27,12 +27,13 @@ code --version 2>/dev/null
 
 If VS Code is detected, ask: "Would you like to install the recommended VS Code extensions for this project?"
 
-If they agree:
+If they agree, read `.vscode/extensions.json` and install each recommended extension:
 
 ```bash
-cat .vscode/extensions.json
-code --install-extension <id>  # for each extension in "recommendations"
+code --install-extension biomejs.biome --install-extension vitest.explorer  # etc.
 ```
+
+Pass all IDs from the `recommendations` array as separate `--install-extension` flags in a single command.
 
 If VS Code is not detected, skip this step silently.
 
