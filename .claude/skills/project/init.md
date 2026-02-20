@@ -17,7 +17,27 @@ cd <project-root>
 npm install
 ```
 
-### Step 3: Check Android Studio
+### Step 3: Install recommended VS Code extensions
+
+Check if the developer is using VS Code:
+
+```bash
+code --version 2>/dev/null
+```
+
+If VS Code is detected, ask: "Would you like to install the recommended VS Code extensions for this project?"
+
+If they agree, read `.vscode/extensions.json` and install each recommended extension:
+
+```bash
+code --install-extension biomejs.biome --install-extension vitest.explorer  # etc.
+```
+
+Pass all IDs from the `recommendations` array as separate `--install-extension` flags in a single command.
+
+If VS Code is not detected, skip this step silently.
+
+### Step 4: Check Android Studio
 
 Verify Android Studio is installed:
 
@@ -27,7 +47,7 @@ ls "/c/Program Files/Android/Android Studio/bin" 2>&1
 
 If not found, tell the user to install Android Studio from https://developer.android.com/studio.
 
-### Step 4: Check Android SDK
+### Step 5: Check Android SDK
 
 ```bash
 ls "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" 2>&1
@@ -35,7 +55,7 @@ ls "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" 2>&1
 
 If not found, tell the user to install the Android SDK via Android Studio's SDK Manager.
 
-### Step 5: Set environment variables
+### Step 6: Set environment variables
 
 Check if `JAVA_HOME` and `ANDROID_HOME` are set:
 
@@ -65,7 +85,7 @@ foreach ($dir in $additions) {
 [System.Environment]::SetEnvironmentVariable("Path", $currentPath, "User")
 ```
 
-### Step 6: Set up Android device for debugging
+### Step 7: Set up Android device for debugging
 
 Inform the user to enable these on their Android device:
 
@@ -83,7 +103,7 @@ adb devices
 
 The device should appear in the list.
 
-### Step 7: Check Gradle wrapper
+### Step 8: Check Gradle wrapper
 
 If `android/gradle/wrapper/gradle-wrapper.jar` is missing, regenerate it:
 
@@ -96,7 +116,7 @@ cd <project-root>/android
 /tmp/gradle-extract/gradle-8.7/bin/gradle wrapper --gradle-version 8.7
 ```
 
-### Step 8: Check local.properties
+### Step 9: Check local.properties
 
 If `android/local.properties` is missing, create it:
 
@@ -106,7 +126,7 @@ Detect the SDK path dynamically and write it:
 echo "sdk.dir=$(echo $LOCALAPPDATA/Android/Sdk | sed 's|/|\\\\|g')" > android/local.properties
 ```
 
-### Step 9: Install DeepSource CLI
+### Step 10: Install DeepSource CLI
 
 Download and install the DeepSource CLI from GitHub releases:
 
@@ -140,7 +160,7 @@ Confirm auth succeeded:
 ~/bin/deepsource.exe auth status
 ```
 
-### Step 10: Set up DeepSource
+### Step 11: Set up DeepSource
 
 DeepSource provides automated code quality analysis and test coverage tracking on pull requests.
 
@@ -163,7 +183,7 @@ git remote get-url origin
   gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
   ```
 
-### Step 11: Install Lynx DevTools
+### Step 12: Install Lynx DevTools
 
 Lynx DevTools is a desktop application for debugging Lynx apps on-device. It provides Elements, Console, Sources, and Trace panels — similar to Chrome DevTools but for the Lynx rendering engine.
 
@@ -175,7 +195,7 @@ Tell the user:
 2. Install and launch it
 3. Connect the Android device via USB — the app will be detected automatically
 
-### Step 12: Verify setup
+### Step 13: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -191,6 +211,7 @@ After all steps, report a checklist:
 
 - [ ] Node.js >= 18
 - [ ] npm dependencies installed
+- [ ] VS Code extensions installed (if applicable)
 - [ ] Android Studio installed
 - [ ] Android SDK available
 - [ ] JAVA_HOME set

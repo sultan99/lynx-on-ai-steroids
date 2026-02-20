@@ -2,13 +2,15 @@
 
 These rules apply to ALL GitHub operations.
 
+## Confirmations
+
+Critical GitHub actions (`issue create`, `pr create`, `pr edit`, `push`) require developer confirmation unless `-y` was passed or `/autopilot` is active. See `.claude/rules/skills.md` > Confirmations.
+
 ## Restrictions
 
-- Never push without explicit permission
 - Never merge PRs without permission
 - Never dismiss reviews without permission
 - Never add promotional text like "Generated with Claude Code" to PR descriptions
-- Never commit or push changes without showing them to the developer first
 - When posting PR comment replies, include the commit SHA and description of what was fixed
 
 ## Resolving Issue Number

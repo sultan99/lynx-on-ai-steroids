@@ -31,24 +31,19 @@ Split into separate files to save context — only the relevant subcommand file 
 name: <skill-name>
 description: <short description for skill registry>
 user-invocable: true
-argument-hint: [optional-arg]
+argument-hint: [--flag]
 ---
 
 # /<skill-name> $ARGUMENTS
 
 <One-line description.>
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `[--flag]` | No | ... |
-
 ## Usage
 
 \```
-/<skill-name>              # Description
-/<skill-name> --flag       # Description
+/<skill-name>          Description
+/<skill-name> --flag   Description
+    --flag             Description of what the flag does
 \```
 
 ## Instructions
@@ -69,25 +64,22 @@ argument-hint: [optional-arg]
 name: <skill-name>
 description: <short description for skill registry>
 user-invocable: true
-argument-hint: <arg1|arg2> [optional-arg]
+argument-hint: <action> [--flag]
 ---
 
 # /<skill-name> $ARGUMENTS
 
 <One-line description.>
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `<arg1\|arg2>` | Yes | ... |
-| `[--flag]` | No | ... |
-
 ## Usage
 
 \```
-/<skill-name> arg1         # Description
-/<skill-name> arg2         # Description
+/<skill-name>
+    arg1                  Description
+    arg1 --flag           Description
+    arg2                  Description
+
+    --flag                Global flag description
 \```
 
 ## Instructions
@@ -98,6 +90,42 @@ Read the subcommand-specific instruction file and follow it exactly:
 - **arg2** → Read `<path>` and follow all steps
 
 If no argument is provided, list available commands and ask the user.
+```
+
+## Confirmations
+
+Skills must confirm before performing critical actions. The developer can bypass confirmations with `-y` or by activating `/autopilot`.
+
+### Auto-confirm check
+
+Before every confirmation gate, check in this order:
+
+1. Was `-y` passed to the current skill invocation?
+2. Was `/autopilot` activated earlier in the session?
+
+If either is true → skip confirmation and proceed. Otherwise → show what will happen and wait for developer approval.
+
+### Critical actions (require confirmation)
+
+- `git commit` — committing changes
+- `git push` — pushing to remote
+- `git merge` — merging branches
+- `git rebase` — rebasing branches
+- `git reset` — resetting commits
+- `gh issue create` — creating GitHub issues
+- `gh pr create` — creating pull requests
+- `gh pr edit` — updating pull requests
+
+### The `-y` flag
+
+All skills that perform critical actions accept `-y` (long form: `--yes`). Composite skills (`/github ship`, `/dev`) pass auto-confirm through to all sub-skill invocations.
+
+### Confirmation gate format
+
+```
+Show: concise summary of what will happen
+Ask: "Proceed?"
+Wait for response.
 ```
 
 ## Instruction Steps Format

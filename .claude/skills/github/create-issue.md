@@ -26,7 +26,7 @@ After processing the input, ask:
 
 Wait for the developer's response. If they add more details, incorporate them and repeat this question. Once they confirm there's nothing else, proceed to Step 3.
 
-### Step 3: Present draft
+### Step 3: Present draft and confirm
 
 Show the fully formatted issue:
 
@@ -48,21 +48,9 @@ Show the fully formatted issue:
 <implementation hints, affected areas, or constraints>
 ```
 
-Then ask:
+**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → proceed to create. Otherwise → ask "Want to change anything, or should I create it?" and wait. If the developer requests changes, apply them, re-present the draft, and ask again. Loop until confirmed.
 
-> Want to change anything, or should I create it?
-
-### Step 4: Iterate
-
-If the developer requests changes:
-
-1. Apply the requested changes
-2. Re-present the full draft (Step 3 format)
-3. Ask again: "Want to change anything, or should I create it?"
-
-Loop until the developer confirms.
-
-### Step 5: Create issue
+### Step 4: Create issue
 
 Create the issue using `gh`:
 
@@ -91,6 +79,6 @@ gh label create "<label>" --description "<description>"
 
 Then retry the issue creation.
 
-### Step 6: Output
+### Step 5: Output
 
 Show the issue URL returned by `gh issue create`.

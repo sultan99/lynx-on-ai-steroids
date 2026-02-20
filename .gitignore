@@ -1,6 +1,8 @@
 !.vscode/extensions.json
+!.vscode/settings.json
 *.heapdump
 *.local
+*.local.*
 *.log*
 *.tsbuildinfo
 .DS_Store

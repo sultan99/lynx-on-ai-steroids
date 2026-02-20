@@ -4,14 +4,21 @@ Rebase current branch onto another branch.
 
 ## Steps
 
-### Step 1: Fetch and rebase
+### Step 1: Fetch and confirm
 
 ```bash
 git fetch origin
+```
+
+**Confirmation gate:** Show which branch the current branch will be rebased onto. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Rebase `<current>` onto `origin/<branch>`?" and wait.
+
+### Step 2: Rebase
+
+```bash
 git rebase origin/<branch-name>   # default: main
 ```
 
-### Step 2: Resolve conflicts (if any)
+### Step 3: Resolve conflicts (if any)
 
 1. **Analyze both sides:**
    - Ours (HEAD) = your implemented changes
@@ -31,6 +38,6 @@ git rebase origin/<branch-name>   # default: main
 
 4. **If stuck:** `git rebase --abort` and ask for help.
 
-### Step 3: Report result
+### Step 4: Report result
 
 Inform the developer whether the rebase succeeded or if conflicts were resolved. Show the current branch status.

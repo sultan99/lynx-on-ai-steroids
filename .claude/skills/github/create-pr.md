@@ -33,7 +33,9 @@ Use [pull_request_template.md](../../../.github/pull_request_template.md) as the
 
 Fill in each section based on the GitHub issue and branch analysis.
 
-### Step 6: Create PR
+### Step 6: Confirm and create PR
+
+**Confirmation gate:** Show the PR title, target branch, and commit count. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Push and create PR?" and wait.
 
 ```bash
 gh pr create --title "<title>" --body "<description>"

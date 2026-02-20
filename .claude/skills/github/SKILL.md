@@ -2,30 +2,24 @@
 name: github
 description: GitHub commands (issues, PRs, ship). Use when developer needs to create issues, create/update PRs, address review comments, or ship experimental changes.
 user-invocable: true
-argument-hint: <create issue|create pr|update pr|resolve cr|ship> [pull-request-id]
+argument-hint: <action> [pr-number] [-y]
 ---
 
 # /github $ARGUMENTS
 
 GitHub commands using `gh` CLI.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `<create issue\|create pr\|update pr\|resolve cr\|ship>` | Yes | Operation to perform |
-| `[pull-request-id]` | No | PR number (auto-detected from branch, PR commands only) |
-
 ## Usage
 
 ```
-/github create issue       # Conversational issue creation
-/github create pr          # Create PR from current branch
-/github update pr          # Update current branch's PR
-/github update pr 230      # Update PR #230
-/github resolve cr         # Resolve code review feedback on current PR
-/github resolve cr 230     # Resolve code review feedback on PR #230
-/github ship               # Ship experimental changes (issue → branch → commit → PR)
+/github
+    create issue              Conversational issue creation
+    create pr                 Create PR from current branch
+    update pr [number]        Update PR title and description
+    resolve cr [number]       Resolve code review feedback
+    ship                      Ship experimental changes (issue → branch → commit → PR)
+
+    -y, --yes                 Skip confirmations
 ```
 
 ## Rules

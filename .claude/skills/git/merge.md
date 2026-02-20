@@ -4,14 +4,21 @@ Merge a branch into the current branch.
 
 ## Steps
 
-### Step 1: Fetch and merge
+### Step 1: Fetch and confirm
 
 ```bash
 git fetch origin
+```
+
+**Confirmation gate:** Show which branch will be merged into the current branch. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Merge `origin/<branch>` into `<current>`?" and wait.
+
+### Step 2: Merge
+
+```bash
 git merge origin/<branch-name>   # default: main
 ```
 
-### Step 2: Resolve conflicts (if any)
+### Step 3: Resolve conflicts (if any)
 
 1. **Analyze both sides:**
    - Ours (HEAD) = your implemented changes
@@ -31,6 +38,6 @@ git merge origin/<branch-name>   # default: main
 
 4. **If stuck:** `git merge --abort` and ask for help.
 
-### Step 3: Report result
+### Step 4: Report result
 
 Inform the developer whether the merge succeeded or if conflicts were resolved. Show the current branch status.

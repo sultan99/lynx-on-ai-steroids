@@ -53,7 +53,9 @@ If invalid → warn user before proceeding.
 
 ### Step 4: Create commit(s)
 
-Use the message format above. When `/git commit` is invoked explicitly, proceed without confirmation — the invocation itself is the permission for both committing and pushing. Confirmation is only needed when committing or pushing as part of another workflow (e.g., main thread decides to commit/push on its own).
+Use the message format above.
+
+**Confirmation gate:** Show the planned commit message(s) and files. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Proceed with commit?" and wait.
 
 ### Step 5: Report result
 

@@ -26,7 +26,7 @@ List all commits that will be squashed:
 git log --oneline <merge-base>..HEAD
 ```
 
-Show the commit count and ask the user to confirm before proceeding.
+**Confirmation gate:** Show the commit count and list. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Squash these N commits?" and wait.
 
 ### Step 3: Soft reset to base
 
