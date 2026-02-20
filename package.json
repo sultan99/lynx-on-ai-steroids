@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "claude": "clear && claude --dangerously-skip-permissions",
-    "dev": "clear && emulator @Medium_Phone_API_36.1",
+    "emu": "clear && emulator @Medium_Phone_API_36.1",
     "start": "clear && rspeedy dev"
   },
   "dependencies": {

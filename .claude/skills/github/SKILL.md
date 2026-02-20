@@ -1,8 +1,8 @@
 ---
 name: github
-description: GitHub commands (issues, PRs). Use when developer needs to create issues, create/update PRs, or address review comments.
+description: GitHub commands (issues, PRs, ship). Use when developer needs to create issues, create/update PRs, address review comments, or ship experimental changes.
 user-invocable: true
-argument-hint: <create issue|create pr|update pr|resolve cr> [pull-request-id]
+argument-hint: <create issue|create pr|update pr|resolve cr|ship> [pull-request-id]
 ---
 
 # /github $ARGUMENTS
@@ -13,7 +13,7 @@ GitHub commands using `gh` CLI.
 
 | Argument | Required | Description |
 |----------|----------|-------------|
-| `<create issue\|create pr\|update pr\|resolve cr>` | Yes | Operation to perform |
+| `<create issue\|create pr\|update pr\|resolve cr\|ship>` | Yes | Operation to perform |
 | `[pull-request-id]` | No | PR number (auto-detected from branch, PR commands only) |
 
 ## Usage
@@ -25,6 +25,7 @@ GitHub commands using `gh` CLI.
 /github update pr 230      # Update PR #230
 /github resolve cr         # Resolve code review feedback on current PR
 /github resolve cr 230     # Resolve code review feedback on PR #230
+/github ship               # Ship experimental changes (issue → branch → commit → PR)
 ```
 
 ## Rules
@@ -39,5 +40,6 @@ Read the command-specific instruction file and follow it exactly:
 - **create pr** → Read `.claude/skills/github/create-pr.md` and follow all steps
 - **update pr** → Read `.claude/skills/github/update-pr.md` and follow all steps
 - **resolve cr** → Read `.claude/skills/github/resolve-cr.md` and follow all steps
+- **ship** → Read `.claude/skills/github/ship.md` and follow all steps
 
 If no command is provided, list the available commands and ask the user which one to run.
