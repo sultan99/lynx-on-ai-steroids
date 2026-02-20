@@ -70,6 +70,7 @@ Create a Mermaid `flowchart` diagram following these rules:
 - Group by domain or responsibility
 - Use `subgraph` blocks for FSD layers when helpful
 - Prefer conceptual clarity over completeness
+- Use `<br/>` for line breaks in node labels — `\n` renders literally in Mermaid
 
 ### Step 3: Write output
 

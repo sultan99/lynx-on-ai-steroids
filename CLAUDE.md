@@ -66,27 +66,38 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 
 ## Skills
 
+**Build & Deploy:**
 - `/build apk` — Build Android debug APK
 - `/build apk --release` — Build Android release APK
 - `/build aab` — Build Android debug App Bundle
 - `/build aab --release` — Build Android release App Bundle for Google Play
+
+**Development:**
 - `/dev <issue-number>` — Feature implementation workflow (plan, implement, test, commit)
-- `/forge icons` — Generate icon font from SVGs in `src/shared/ui/icon/svgs/` (uses `oslllo-svg-fixer` for stroke→fill, `svgtofont` for SVG→TTF)
-- `/github create issue` — Conversational issue creation (refines rough input into structured ticket)
-- `/github create pr` — Create PR with description from GitHub issue
-- `/github update pr [pr-number]` — Update existing PR title and description
-- `/github resolve cr [pr-number]` — Resolve code review feedback on a PR
+- `/validate` — Run lint, type-check, and tests in parallel
+- `/deepsource review` — Interactive review of DeepSource static analysis issues
+
+**Git:**
 - `/git branch [issue]` — Create branch from GitHub issue
 - `/git commit` — Smart commit with auto-grouping
 - `/git merge [branch]` — Merge branch into current
 - `/git rebase [branch]` — Rebase current branch onto another
 - `/git squash` — Squash all branch commits into clean commit(s)
+
+**GitHub:**
+- `/github create issue` — Conversational issue creation (refines rough input into structured ticket)
+- `/github create pr` — Create PR with description from GitHub issue
+- `/github update pr [pr-number]` — Update existing PR title and description
+- `/github resolve cr [pr-number]` — Resolve code review feedback on a PR
+- `/github ship` — Ship experimental changes (create issue from diff, branch, commit, open PR)
+
+**Project:**
 - `/project init` — Set up the project from scratch
 - `/project skill-up` — Suggest improvements to instructions and rules based on session learnings
 - `/project diagram` — Generate Mermaid architecture diagram to `docs/architecture-diagram.md`
-- `/github ship` — Ship experimental changes (create issue from diff, branch, commit, open PR)
-- `/deepsource review` — Interactive review of DeepSource static analysis issues
-- `/validate` — Run lint, type-check, and tests in parallel
+
+**Assets:**
+- `/forge icons` — Generate icon font from SVGs in `src/shared/ui/icon/svgs/` (uses `oslllo-svg-fixer` for stroke→fill, `svgtofont` for SVG→TTF)
 
 ## Key Conventions
 
@@ -114,7 +125,9 @@ For state & data management boundaries (TanStack Query, Zustand, Router responsi
 - Never add `Co-Authored-By`, "Generated with Claude Code", or any AI/tool attribution to commits, PRs, or messages
 - Never commit or push without explicit developer permission
 
-### Architecture
+## Architecture
+
+See [`docs/architecture-diagram.md`](docs/architecture-diagram.md) for a Mermaid diagram of screens, entities, and cross-domain interactions.
 
 1. JS code in `src/` is bundled by Rspeedy into `main.lynx.bundle`
 2. The bundle is copied into `android/app/src/main/assets/`
@@ -123,10 +136,9 @@ For state & data management boundaries (TanStack Query, Zustand, Router responsi
 
 The Android wrapper and JS code are decoupled — you can modify one without touching the other.
 
-### Build Artifacts
+## Build Artifacts
 
 - `dist/` — JS build output (gitignored)
-- `android/app/src/main/assets/main.lynx.bundle` — Generated asset for Android
 - `android/app/build/` — Gradle build output
 
 ## Reference Docs
