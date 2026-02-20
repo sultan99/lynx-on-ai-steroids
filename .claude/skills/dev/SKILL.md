@@ -2,26 +2,26 @@
 name: dev
 description: Feature implementation workflow. Use when developer wants to implement a feature or fix - creates branch, plans, implements, and validates.
 user-invocable: true
-argument-hint: <issue-number>
+argument-hint: <issue-number> [-y]
 ---
 
 # /dev $ARGUMENTS
 
 Feature implementation workflow — from issue to PR.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `<issue-number>` | Yes | GitHub issue number (e.g., `12`) |
-
-**If no issue number provided:** Ask the developer for the issue number. Do not proceed without one.
-
 ## Usage
 
 ```
-/dev 12                  # Implement GitHub issue #12
+/dev
+    <issue-number>        Implement GitHub issue (e.g., /dev 12)
+    <issue-number> -y     Implement with auto-confirm (autopilot mode, auto-commit and PR)
+
+    -y, --yes             Skip confirmations, default to autopilot mode
 ```
+
+**If no issue number provided:** Ask the developer for the issue number. Do not proceed without one.
+
+If `-y` or `AUTO_CONFIRM` is active, all sub-skill invocations inherit auto-confirm.
 
 ---
 
@@ -107,7 +107,7 @@ git branch --show-current
 >    - **Autopilot** — I implement all plan items, then ask you to verify
 >    - **Pair programming** — I implement one plan item at a time, you review each before I continue"
 
-**Wait for response before continuing.**
+**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → default to Autopilot mode and proceed. Otherwise → wait for response before continuing.
 
 #### Save Progress
 
@@ -167,17 +167,14 @@ After all items are done, proceed to Step 5.
 
 ### Step 5: Developer Verification
 
-**Ask developer:**
+**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → proceed to Step 6. Otherwise → ask:
 
 > "All plan items are implemented. Please test the feature and let me know:
 >
 > 1. **All good** — continue to tests
 > 2. **Needs changes** — describe what to fix/refine"
 
-**Wait for developer response.**
-
-- **If all good** → proceed to Step 6
-- **If needs changes** → apply fixes, update progress file if plan items change, then ask again
+Wait for response. If needs changes → apply fixes, update progress file, ask again.
 
 ### Step 6: Write Tests
 
@@ -195,17 +192,11 @@ Fix any errors before completing.
 
 ### Step 8: Commit & PR
 
-**Ask developer:**
+**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → invoke `/git commit` and `/github create pr`, then proceed to Step 9. Otherwise → ask:
 
-> "Would you like to commit the changes?"
+> "Would you like to commit the changes and create a PR?"
 
-- **If yes** → invoke `/git commit`
-- **If no** → proceed to Step 9
-
-**Then ask:**
-> "Would you like to create a PR?"
-
-- **If yes** → invoke `/github create pr`
+- **If yes** → invoke `/git commit`, then `/github create pr`
 - **If no** → proceed to Step 9
 
 ### Step 9: Suggest Instruction Improvements

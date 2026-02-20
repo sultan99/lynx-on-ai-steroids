@@ -73,23 +73,24 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/build aab --release` — Build Android release App Bundle for Google Play
 
 **Development:**
-- `/dev <issue-number>` — Feature implementation workflow (plan, implement, test, commit)
+- `/dev <issue-number> [-y]` — Feature implementation workflow (plan, implement, test, commit)
 - `/validate` — Run lint, type-check, and tests in parallel
 - `/deepsource review` — Interactive review of DeepSource static analysis issues
+- `/autopilot` — Skip all skill confirmations for the rest of the session
 
 **Git:**
 - `/git branch [issue]` — Create branch from GitHub issue
-- `/git commit` — Smart commit with auto-grouping
-- `/git merge [branch]` — Merge branch into current
-- `/git rebase [branch]` — Rebase current branch onto another
-- `/git squash` — Squash all branch commits into clean commit(s)
+- `/git commit [-y]` — Smart commit with auto-grouping
+- `/git merge [branch] [-y]` — Merge branch into current
+- `/git rebase [branch] [-y]` — Rebase current branch onto another
+- `/git squash [-y]` — Squash all branch commits into clean commit(s)
 
 **GitHub:**
-- `/github create issue` — Conversational issue creation (refines rough input into structured ticket)
-- `/github create pr` — Create PR with description from GitHub issue
-- `/github update pr [pr-number]` — Update existing PR title and description
-- `/github resolve cr [pr-number]` — Resolve code review feedback on a PR
-- `/github ship` — Ship experimental changes (create issue from diff, branch, commit, open PR)
+- `/github create issue [-y]` — Conversational issue creation (refines rough input into structured ticket)
+- `/github create pr [-y]` — Create PR with description from GitHub issue
+- `/github update pr [pr-number] [-y]` — Update existing PR title and description
+- `/github resolve cr [pr-number] [-y]` — Resolve code review feedback on a PR
+- `/github ship [-y]` — Ship experimental changes (create issue from diff, branch, commit, open PR)
 
 **Project:**
 - `/project init` — Set up the project from scratch

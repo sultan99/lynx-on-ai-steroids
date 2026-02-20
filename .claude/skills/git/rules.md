@@ -2,11 +2,12 @@
 
 These rules apply to ALL git operations — main thread and all agents.
 
+## Confirmations
+
+Critical git actions (`commit`, `push`, `merge`, `rebase`, `reset`) require developer confirmation unless `-y` was passed or `/autopilot` is active. See `.claude/rules/skills.md` > Confirmations.
+
 ## Restrictions
 
-- Never use `git commit` without explicit permission
-- Never use `git reset` without explicit permission
-- Never use `git push` without explicit permission
 - Never use `git push --force` to main/master — warn user if requested
 - Never skip hooks (`--no-verify`, `--no-gpg-sign`) unless explicitly requested
 - Never commit sensitive files (`.env`, credentials, secrets)

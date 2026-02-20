@@ -2,32 +2,24 @@
 name: git
 description: Git commands for branching, committing, merging, rebasing, and squashing. Use when developer needs to create branches, commit changes, merge or rebase branches, or squash commits.
 user-invocable: true
-argument-hint: <branch|commit|merge|rebase|squash> [issue-number | branch]
+argument-hint: <branch|commit|merge|rebase|squash> [args] [-y]
 ---
 
 # /git $ARGUMENTS
 
 Git workflow commands.
 
-## Arguments
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `<branch\|commit\|merge\|rebase\|squash>` | Yes | Git operation to perform |
-| `[issue-number]` | No | GitHub issue number for `branch` (e.g., `12`) |
-| `[branch]` | No | Target branch for `merge`/`rebase` (default: `main`) |
-
 ## Usage
 
 ```
-/git branch 12           # Create branch from GitHub issue #12
-/git branch              # Create branch (will ask for details)
-/git commit              # Smart commit with auto-grouping
-/git merge               # Merge main into current branch
-/git merge develop       # Merge develop into current branch
-/git rebase              # Rebase current branch onto main
-/git rebase develop      # Rebase current branch onto develop
-/git squash              # Squash all branch commits into clean commit(s)
+/git
+    branch [issue]        Create branch from GitHub issue
+    commit                Smart commit with auto-grouping
+    merge [branch]        Merge branch into current (default: main)
+    rebase [branch]       Rebase current branch onto another (default: main)
+    squash                Squash all branch commits into clean commit(s)
+
+    -y, --yes             Skip confirmations
 ```
 
 ## Rules

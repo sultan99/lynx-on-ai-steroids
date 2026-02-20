@@ -65,11 +65,7 @@ If there are no comments from one group, omit that section header.
 
 ### Step 5: Implement fixes
 
-**IMPORTANT:** Before implementing fixes:
-
-- Show the developer what changes you plan to make
-- Wait for approval before committing or pushing
-- Only commit and push after the developer explicitly approves
+**Confirmation gate:** Show the developer what changes you plan to make. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → wait for approval before committing or pushing.
 
 ### Step 6: Validate
 
