@@ -3,6 +3,7 @@
     "bierner.markdown-mermaid",
     "biomejs.biome",
     "clinyong.vscode-css-modules",
+    "material-extensions.vscode-material-icon-theme",
     "vitest.explorer"
   ],
   "unwantedRecommendations": [
