@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "isolatedModules": true,
+    "lib": ["ES2022"],
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,

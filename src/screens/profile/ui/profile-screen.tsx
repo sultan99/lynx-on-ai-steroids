@@ -2,6 +2,12 @@ import type { IconGlyph } from '@/shared/ui/icon/glyph-map'
 import { useState } from '@lynx-js/react'
 import { useNavigate } from '@tanstack/react-router'
 import { BakeryPromo, bakeries } from '@/entities/bakery'
+import {
+  CartItemCard,
+  CartSummary,
+  selectSubTotal,
+  useCartStore,
+} from '@/entities/cart'
 import { DonutCard, donuts } from '@/entities/donut'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import {
@@ -42,11 +48,24 @@ const allIcons: IconGlyph[] = [
   'user',
 ]
 
+const seedCart = () => {
+  const { addItem, items } = useCartStore.getState()
+  if (items.length === 0) {
+    donuts.slice(0, 3).forEach(addItem)
+  }
+}
+
 export const ProfileScreen = () => {
   const paddingTop = useStatusBarHeight('px')
   const navigate = useNavigate()
   const [activeChip, setActiveChip] = useState('classic')
   const [quantity, setQuantity] = useState(2)
+  const cartItems = useCartStore((s) => s.items)
+  const subTotal = useCartStore(selectSubTotal)
+  const updateQuantity = useCartStore((s) => s.updateQuantity)
+  const removeItem = useCartStore((s) => s.removeItem)
+
+  useState(() => seedCart())
 
   return (
     <view className={css.screen} style={{ paddingTop }}>
@@ -159,6 +178,28 @@ export const ProfileScreen = () => {
                 <DonutCard donut={donut} key={donut.id} />
               ))}
             </view>
+          </view>
+
+          <view className={css.section}>
+            <text className={css.sectionTitle}>CartItemCard</text>
+            {cartItems.map((item) => (
+              <CartItemCard
+                item={item}
+                key={item.donutId}
+                onDecrement={(id) => updateQuantity(id, item.quantity - 1)}
+                onIncrement={(id) => updateQuantity(id, item.quantity + 1)}
+                onRemove={removeItem}
+              />
+            ))}
+          </view>
+
+          <view className={css.section}>
+            <text className={css.sectionTitle}>CartSummary</text>
+            <CartSummary
+              deliveryCharges={0}
+              promoDiscount={4}
+              subTotal={subTotal}
+            />
           </view>
 
           <view className={css.section}>
