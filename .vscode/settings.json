@@ -25,5 +25,36 @@
 
   // === Spelling ===
   "cSpell.ignoreWords": ["bindtap", "testid"],
-  "cSpell.words": ["bindconfirm"]
+  "cSpell.words": ["bindconfirm"],
+
+  // === Material Icon Theme ===
+  "material-icon-theme.activeIconPack": "react",
+  "material-icon-theme.saturation": 0.9,
+  "material-icon-theme.opacity": 0.9,
+  "material-icon-theme.files.associations": {
+    "*.claudeignore": "claude",
+    "__root.tsx": "routing",
+    "__route-tree.gen.ts": "routing"
+  },
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "deepsource-rules",
+      "base": "rules",
+      "color": "#43a047",
+      "folderNames": ["deepsource"]
+    }
+  ],
+  "material-icon-theme.folders.associations": {
+    "agents": "admin",
+    "autopilot": "robot",
+    "cart": "",
+    "deepsource": "rules",
+    "entities": "element",
+    "forge": "forgejo",
+    "home": "",
+    "progress": "tasks",
+    "screens": "desktop",
+    "skills": "bicep",
+    "validate": "resolver"
+  }
 }
