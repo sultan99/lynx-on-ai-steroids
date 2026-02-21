@@ -4,7 +4,7 @@ import { Icon } from '@/shared/ui/icon/icon'
 import { Info } from '@/shared/ui/info/info'
 import { QuantitySelector } from '@/shared/ui/quantity-selector/quantity-selector'
 import { Rating } from '@/shared/ui/rating/rating'
-import * as css from './cart-item.module.scss'
+import * as css from './cart-item-card.module.scss'
 
 type CartItemProps = {
   item: CartItemType
@@ -13,7 +13,7 @@ type CartItemProps = {
   onRemove: (donutId: string) => void
 } & Omit<JSX.IntrinsicElements['view'], 'children'>
 
-export const CartItem = ({
+export const CartItemCard = ({
   className,
   item,
   onDecrement,

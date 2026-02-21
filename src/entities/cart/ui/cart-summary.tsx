@@ -25,9 +25,9 @@ type CartSummaryProps = {
 export const CartSummary = ({
   className,
   deliveryCharges,
-  onOrder,
   promoDiscount,
   subTotal,
+  onOrder,
   ...restProps
 }: CartSummaryProps) => {
   const total = subTotal - promoDiscount + deliveryCharges

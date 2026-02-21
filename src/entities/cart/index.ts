@@ -1,4 +1,8 @@
 export type { CartItem } from './model/types'
-export { useCartStore } from './model/cart-store'
-export { CartItem as CartItemCard } from './ui/cart-item'
+export {
+  selectSubTotal,
+  selectTotalItems,
+  useCartStore,
+} from './model/cart-store'
+export { CartItemCard } from './ui/cart-item-card'
 export { CartSummary } from './ui/cart-summary'

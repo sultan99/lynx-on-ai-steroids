@@ -1,6 +1,6 @@
 import type { Donut } from '@/entities/donut'
 import { beforeEach, describe, expect, test } from 'vitest'
-import { useCartStore } from './cart-store'
+import { selectSubTotal, selectTotalItems, useCartStore } from './cart-store'
 
 const makeDonut = (overrides: Partial<Donut> = {}): Donut => ({
   brand: 'Krispy Kreme',
@@ -113,33 +113,33 @@ describe('useCartStore — clearCart', () => {
   })
 })
 
-describe('useCartStore — totalItems', () => {
+describe('selectTotalItems', () => {
   test('returns 0 for an empty cart', () => {
-    expect(useCartStore.getState().totalItems()).toBe(0)
+    expect(selectTotalItems(useCartStore.getState())).toBe(0)
   })
 
   test('returns the sum of all quantities', () => {
     useCartStore.getState().addItem(makeDonut({ id: '1' }))
     useCartStore.getState().addItem(makeDonut({ id: '1' }))
     useCartStore.getState().addItem(makeDonut({ id: '2' }))
-    expect(useCartStore.getState().totalItems()).toBe(3)
+    expect(selectTotalItems(useCartStore.getState())).toBe(3)
   })
 })
 
-describe('useCartStore — subTotal', () => {
+describe('selectSubTotal', () => {
   test('returns 0 for an empty cart', () => {
-    expect(useCartStore.getState().subTotal()).toBe(0)
+    expect(selectSubTotal(useCartStore.getState())).toBe(0)
   })
 
   test('returns price × quantity for a single item', () => {
     useCartStore.getState().addItem(makeDonut({ id: '1', price: 5 }))
     useCartStore.getState().addItem(makeDonut({ id: '1', price: 5 }))
-    expect(useCartStore.getState().subTotal()).toBe(10)
+    expect(selectSubTotal(useCartStore.getState())).toBe(10)
   })
 
   test('sums prices across multiple distinct items', () => {
     useCartStore.getState().addItem(makeDonut({ id: '1', price: 5 }))
     useCartStore.getState().addItem(makeDonut({ id: '2', price: 3 }))
-    expect(useCartStore.getState().subTotal()).toBe(8)
+    expect(selectSubTotal(useCartStore.getState())).toBe(8)
   })
 })

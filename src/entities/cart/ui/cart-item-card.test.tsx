@@ -4,7 +4,7 @@ import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '@/shared/ui/icon/glyph-map'
-import { CartItem as CartItemComponent } from './cart-item'
+import { CartItemCard } from './cart-item-card'
 
 const baseItem: CartItem = {
   donut: {
@@ -28,10 +28,10 @@ beforeEach(() => {
   vi.clearAllMocks()
 })
 
-describe('CartItem', () => {
+describe('CartItemCard', () => {
   test('renders donut name', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -44,7 +44,7 @@ describe('CartItem', () => {
 
   test('renders price multiplied by quantity', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -57,7 +57,7 @@ describe('CartItem', () => {
 
   test('renders current quantity in selector', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -70,7 +70,7 @@ describe('CartItem', () => {
 
   test('renders cross icon for removal', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -83,7 +83,7 @@ describe('CartItem', () => {
 
   test('renders delivery type', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -97,7 +97,7 @@ describe('CartItem', () => {
   test('calls onRemove with donutId when cross icon is tapped', () => {
     const onRemove = vi.fn()
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={vi.fn()}
@@ -112,7 +112,7 @@ describe('CartItem', () => {
   test('calls onIncrement with donutId when plus button is tapped', () => {
     const onIncrement = vi.fn()
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={vi.fn()}
         onIncrement={onIncrement}
@@ -127,7 +127,7 @@ describe('CartItem', () => {
   test('calls onDecrement with donutId when minus button is tapped', () => {
     const onDecrement = vi.fn()
     render(
-      <CartItemComponent
+      <CartItemCard
         item={baseItem}
         onDecrement={onDecrement}
         onIncrement={vi.fn()}
@@ -141,7 +141,7 @@ describe('CartItem', () => {
 
   test('passes restProps to root element', () => {
     render(
-      <CartItemComponent
+      <CartItemCard
         data-testid='cart-item'
         item={baseItem}
         onDecrement={vi.fn()}

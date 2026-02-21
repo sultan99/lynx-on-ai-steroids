@@ -7,12 +7,16 @@ type CartState = {
   clearCart: () => void
   items: CartItem[]
   removeItem: (donutId: string) => void
-  subTotal: () => number
-  totalItems: () => number
   updateQuantity: (donutId: string, quantity: number) => void
 }
 
-export const useCartStore = create<CartState>()((set, get) => ({
+export const selectSubTotal = (state: CartState) =>
+  state.items.reduce((sum, item) => sum + item.donut.price * item.quantity, 0)
+
+export const selectTotalItems = (state: CartState) =>
+  state.items.reduce((sum, item) => sum + item.quantity, 0)
+
+export const useCartStore = create<CartState>()((set) => ({
   items: [],
 
   addItem: (donut) =>
@@ -38,14 +42,6 @@ export const useCartStore = create<CartState>()((set, get) => ({
     set((state) => ({
       items: state.items.filter((item) => item.donutId !== donutId),
     })),
-
-  subTotal: () =>
-    get().items.reduce(
-      (sum, item) => sum + item.donut.price * item.quantity,
-      0,
-    ),
-
-  totalItems: () => get().items.reduce((sum, item) => sum + item.quantity, 0),
 
   updateQuantity: (donutId, quantity) =>
     set((state) =>
