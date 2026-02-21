@@ -1,0 +1,55 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.divider {
+  border-top: 1px dashed var(--gray-400);
+  opacity: 0.3;
+}
+
+.label {
+  color: var(--gray-400);
+  font-size: 18px;
+}
+
+.value {
+  color: var(--gray-400);
+  font-size: 18px;
+}
+
+.total-label {
+  color: var(--gray-900);
+  font-size: 24px;
+  font-weight: var(--font-weight-medium);
+}
+
+.total-value {
+  color: var(--tomato);
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+}
+
+.order-button {
+  align-items: center;
+  background-color: var(--tomato);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  height: 54px;
+  justify-content: center;
+}
+
+.order-label {
+  color: var(--white);
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+}
