@@ -27,8 +27,8 @@ describe('useCartStore — addItem', () => {
     useCartStore.getState().addItem(donut)
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(1)
-    expect(items.at(0)?.donutId).toBe('1')
-    expect(items.at(0)?.quantity).toBe(1)
+    expect(items[0]?.donutId).toBe('1')
+    expect(items[0]?.quantity).toBe(1)
   })
 
   test('increments quantity when the same donut is added again', () => {
@@ -37,7 +37,7 @@ describe('useCartStore — addItem', () => {
     useCartStore.getState().addItem(donut)
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(1)
-    expect(items.at(0)?.quantity).toBe(2)
+    expect(items[0]?.quantity).toBe(2)
   })
 
   test('adds distinct items as separate entries', () => {
@@ -65,7 +65,7 @@ describe('useCartStore — removeItem', () => {
     useCartStore.getState().removeItem('1')
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(1)
-    expect(items.at(0)?.donutId).toBe('2')
+    expect(items[0]?.donutId).toBe('2')
   })
 
   test('does nothing when donut id is not found', () => {
@@ -81,7 +81,7 @@ describe('useCartStore — updateQuantity', () => {
     const donut = makeDonut()
     useCartStore.getState().addItem(donut)
     useCartStore.getState().updateQuantity('1', 4)
-    expect(useCartStore.getState().items.at(0)?.quantity).toBe(4)
+    expect(useCartStore.getState().items[0]?.quantity).toBe(4)
   })
 
   test('removes item when quantity is set to zero', () => {
