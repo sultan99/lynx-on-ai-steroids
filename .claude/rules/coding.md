@@ -42,6 +42,12 @@ Lynx is NOT a browser. It has its own set of built-in elements — do not use HT
 - Avoid unnecessary wrapper `<view>` elements; use the fewest elements possible
 - Use `flex` + `gap` for spacing between elements; avoid margins for gaps
 
+## Lynx Runtime Limitations
+
+- Main thread supports ES2019, background thread ES2015 — SWC transpiles syntax but does NOT polyfill runtime APIs
+- `Array.prototype.at()` is NOT supported — use bracket notation (`arr[0]`, `arr[arr.length - 1]`) instead
+- CSS properties do NOT inherit by default (unlike browsers) — set `color`, `font-size`, etc. explicitly on each `<text>` element. Parent `<view>` styles won't cascade to children. Enable `enableCSSInheritance` in `pluginReactLynx` config if global inheritance is needed
+
 ## JSX Props
 
 - Properties first, then callbacks — sorted alphabetically within each group
