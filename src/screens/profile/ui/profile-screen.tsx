@@ -8,7 +8,7 @@ import {
   selectSubTotal,
   useCartStore,
 } from '@/entities/cart'
-import { DonutCard, donuts } from '@/entities/donut'
+import { donuts } from '@/entities/donut'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import {
   BottomNavigationBar,
@@ -20,6 +20,7 @@ import {
   Rating,
   TopBar,
 } from '@/shared/ui'
+import { DonutList } from '@/widgets/donut-list'
 import * as css from './profile-screen.module.scss'
 
 const allIcons: IconGlyph[] = [
@@ -64,7 +65,6 @@ export const ProfileScreen = () => {
   const subTotal = useCartStore(selectSubTotal)
   const updateQuantity = useCartStore((s) => s.updateQuantity)
   const removeItem = useCartStore((s) => s.removeItem)
-
   useState(() => seedCart())
 
   return (
@@ -172,12 +172,8 @@ export const ProfileScreen = () => {
           </view>
 
           <view className={css.section}>
-            <text className={css.sectionTitle}>DonutCard</text>
-            <view className={css.donutGrid}>
-              {donuts.map((donut) => (
-                <DonutCard donut={donut} key={donut.id} />
-              ))}
-            </view>
+            <text className={css.sectionTitle}>DonutList</text>
+            <DonutList />
           </view>
 
           <view className={css.section}>
