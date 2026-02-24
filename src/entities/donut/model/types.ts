@@ -1,6 +1,7 @@
 export type Donut = {
   brand: string
   calories: number
+  categoryId: string
   deliveryType: 'Free' | 'Paid'
   description: string
   id: string

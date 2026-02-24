@@ -1,4 +1,4 @@
-# Git Commit
+ # Git Commit
 
 Smart commit with auto-grouping of changes.
 
@@ -11,6 +11,7 @@ Structure: `<emoji><type>(<scope>): <description>`
 | 📦 | feat | New feature |
 | 🛠️ | fix | Bug fix |
 | 🔨 | refactor | Code change that neither fixes bug nor adds feature |
+| ⚡ | perf | Performance or optimization |
 | 🧪 | test | Adding or updating tests |
 | 🎨 | style | Formatting, whitespace (no code logic change) |
 | 📃 | docs | Documentation only |
@@ -45,6 +46,8 @@ If invalid → warn user before proceeding.
 |----------|--------|
 | Files already staged | Commit staged files only |
 | No files staged | Analyze all changes, group, create separate commits |
+
+Analyze git changes and create a commit message. Use present tense and explain "why" something has changed, not just "what" has changed.
 
 ### Step 3: Group changes by
 

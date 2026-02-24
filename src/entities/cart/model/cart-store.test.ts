@@ -5,6 +5,7 @@ import { selectSubTotal, selectTotalItems, useCartStore } from './cart-store'
 const makeDonut = (overrides: Partial<Donut> = {}): Donut => ({
   brand: 'Krispy Kreme',
   calories: 350,
+  categoryId: '1',
   deliveryType: 'Free',
   description: 'A classic donut.',
   id: '1',

@@ -1,0 +1,33 @@
+.root {
+  align-items: center;
+  background-color: var(--gray-100);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 10px 14px;
+}
+
+.search-icon {
+  color: var(--gray-400);
+}
+
+.input {
+  color: var(--gray-900);
+  flex: 1;
+  font-size: 14px;
+}
+
+.filter-button {
+  align-items: center;
+  background-color: var(--coral);
+  border-radius: 8px;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
+
+.filter-icon {
+  color: var(--white);
+}

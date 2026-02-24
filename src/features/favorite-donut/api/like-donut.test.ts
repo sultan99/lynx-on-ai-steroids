@@ -49,8 +49,8 @@ beforeEach(() => {
 })
 
 const getHook = async () => {
-  const { useToggleDonutFavorite } = await import('./toggle-donut-favorite')
-  useToggleDonutFavorite()
+  const { useLikeDonut } = await import('./like-donut')
+  useLikeDonut()
   return capturedConfig
 }
 
@@ -66,7 +66,7 @@ describe('donuts mock data favorite state', () => {
   })
 })
 
-describe('useToggleDonutFavorite', () => {
+describe('useLikeDonut', () => {
   test('onMutate sets optimistic favorite overlay', async () => {
     const config = await getHook()
     const unfavorited = donuts.filter((d) => !d.isFavorite).at(0)

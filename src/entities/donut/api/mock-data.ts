@@ -8,6 +8,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 350,
+    categoryId: '1',
     deliveryType: 'Free',
     description:
       'Rich chocolate glaze over a fluffy yeast donut, topped with chocolate sprinkles.',
@@ -22,6 +23,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 420,
+    categoryId: '2',
     deliveryType: 'Free',
     description:
       'Soft donut filled with smooth vanilla custard and dusted with powdered sugar.',
@@ -36,6 +38,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 380,
+    categoryId: '4',
     deliveryType: 'Paid',
     description:
       'Velvety cream cheese frosting swirled on a cinnamon-spiced donut.',
@@ -50,6 +53,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 450,
+    categoryId: '4',
     deliveryType: 'Free',
     description:
       'Triple-layered chocolate donut with dark ganache and cocoa nibs.',
@@ -64,6 +68,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 340,
+    categoryId: '1',
     deliveryType: 'Free',
     description:
       'Classic donut with a thick chocolate frost coating and rainbow sprinkles.',
@@ -78,6 +83,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 390,
+    categoryId: '5',
     deliveryType: 'Paid',
     description:
       'Golden donut topped with crushed walnuts, almonds, and a honey drizzle.',
@@ -92,6 +98,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 310,
+    categoryId: '3',
     deliveryType: 'Free',
     description:
       'Light donut glazed with mixed berry compote and topped with fresh fruit bits.',
@@ -106,6 +113,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 290,
+    categoryId: '1',
     deliveryType: 'Free',
     description:
       'The original classic — light, airy, and coated in a sweet sugar glaze.',
@@ -120,6 +128,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 410,
+    categoryId: '4',
     deliveryType: 'Paid',
     description:
       'Caramel-drizzled donut with sea salt flakes and a buttery crumb topping.',
@@ -134,6 +143,7 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 360,
+    categoryId: '3',
     deliveryType: 'Free',
     description:
       'Strawberry-frosted donut with white chocolate chips and a pink glaze.',

@@ -1,20 +1,19 @@
-import { DonutCard } from '@/entities/donut'
-import { useToggleDonutFavorite } from '@/features/favorite-donut'
-import { joinCss } from '@/shared/lib/css-utils'
+import { DonutList as DonutListView } from '@/entities/donut'
+import { useLikeDonut } from '@/features/favorite-donut'
 import { useDonuts } from '../lib/use-donuts'
-import * as css from './donut-list.module.scss'
 
-type DonutListProps = Omit<JSX.IntrinsicElements['view'], 'children'>
+type DonutListProps = Omit<JSX.IntrinsicElements['view'], 'children'> & {
+  categoryId?: string
+  searchQuery?: string
+}
 
-export const DonutList = ({ className, ...restProps }: DonutListProps) => {
-  const donuts = useDonuts()
-  const { mutate: toggleFavorite } = useToggleDonutFavorite()
+export const DonutList = ({
+  categoryId,
+  searchQuery,
+  ...restProps
+}: DonutListProps) => {
+  const donuts = useDonuts({ categoryId, searchQuery })
+  const { mutate: likeDonut } = useLikeDonut()
 
-  return (
-    <view {...restProps} className={joinCss(css.grid, className)}>
-      {donuts.map((donut) => (
-        <DonutCard donut={donut} key={donut.id} onLike={toggleFavorite} />
-      ))}
-    </view>
-  )
+  return <DonutListView {...restProps} donuts={donuts} onLike={likeDonut} />
 }

@@ -5,4 +5,5 @@ export {
   donutListQueryOptions,
 } from './api/donut-queries'
 export { donuts } from './api/mock-data'
-export { DonutCard } from './ui/donut-card'
+export { DonutCard } from './ui/donut-card/donut-card'
+export { DonutList } from './ui/donut-list/donut-list'

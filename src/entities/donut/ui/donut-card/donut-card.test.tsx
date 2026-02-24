@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import type { Donut } from '../model/types'
+import type { Donut } from '../../model/types'
 import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
@@ -9,6 +9,7 @@ import { DonutCard } from './donut-card'
 const baseDonut: Donut = {
   brand: 'Krispy Kreme',
   calories: 350,
+  categoryId: '1',
   deliveryType: 'Free',
   description: 'A classic donut.',
   id: '1',

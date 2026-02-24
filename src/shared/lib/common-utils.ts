@@ -6,4 +6,5 @@ export const toKebab = (str: string) =>
 export const toCamel = (str: string) =>
   str.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())
 
-export const useId = () => useRef(Math.random().toString(36).slice(2)).current
+export const useId = () =>
+  useRef(`id-${Math.random().toString(36).slice(2)}`).current

@@ -5,7 +5,7 @@ import { useDonutFavorites } from '../model/donut-favorites'
 const delay = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms))
 
-export const useToggleDonutFavorite = () => {
+export const useLikeDonut = () => {
   const queryClient = useQueryClient()
   const setFavorite = useDonutFavorites((s) => s.setFavorite)
   const clearFavorite = useDonutFavorites((s) => s.clearFavorite)
