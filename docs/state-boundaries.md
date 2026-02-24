@@ -135,36 +135,43 @@ const userKeys = {
 **Store — only IDs and patches, never full entities:**
 
 ```ts
-type TableState = {
+type UsersState = {
   selectedIds: Set<string>
-  optimisticDeletes: Set<string>
-  optimisticUpdates: Map<string, Partial<User>>
+  deletedIds: Set<string>
+  updatedRecords: Map<string, Partial<User>>
   select: (id: string) => void
+  markUpdated: (user: Partial<User>) => void
   markDeleted: (id: string) => void
   clearDeleted: (id: string) => void
 }
 
-const useTableStore = create<TableState>()((set) => ({
+const useUsersStore = create<UsersState>()((set) => ({
   selectedIds: new Set<string>(),
-  optimisticDeletes: new Set<string>(),
-  optimisticUpdates: new Map<string, Partial<User>>(),
+  deletedIds: new Set<string>(),
+  updatedRecords: new Map<string, Partial<User>>(),
 
-  select: (id) => set((s) => {
-    const next = new Set(s.selectedIds)
+  select: (id) => set(({ selectedIds }) => {
+    const next = new Set(selectedIds)
     next.has(id) ? next.delete(id) : next.add(id)
     return { selectedIds: next }
   }),
 
-  markDeleted: (id) => set((s) => {
-    const next = new Set(s.optimisticDeletes)
-    next.add(id)
-    return { optimisticDeletes: next }
+  markUpdated: (user: Partial<User>) => set(({ updatedRecords }) => {
+    const next = new Map(updatedRecords)
+    next.set(user.id, user)
+    return { updatedRecords: next }
   }),
 
-  clearDeleted: (id) => set((s) => {
-    const next = new Set(s.optimisticDeletes)
+  markDeleted: (id) => set(({ deletedIds }) => {
+    const next = new Set(deletedIds)
+    next.add(id)
+    return { deletedIds: next }
+  }),
+
+  clearDeleted: (id) => set(({ deletedIds }) => {
+    const next = new Set(deletedIds)
     next.delete(id)
-    return { optimisticDeletes: next }
+    return { deletedIds: next }
   }),
 }))
 ```
@@ -172,27 +179,27 @@ const useTableStore = create<TableState>()((set) => ({
 **Projection — derived at render time, never stored:**
 
 ```ts
-const useVisibleRows = () => {
+const useUserTable = () => {
   const { data } = useQuery(usersQueryOptions)
-  const { optimisticDeletes, optimisticUpdates, selectedIds } = useTableStore()
+  const { deletedIds, updatedRecords, selectedIds } = useUsersStore()
 
   return useMemo(() => {
     if (!data?.items) return []
 
     return data.items
-      .filter((row) => !optimisticDeletes.has(row.id))
-      .map((row) => ({
-        ...row,
-        ...optimisticUpdates.get(row.id),
-        selected: selectedIds.has(row.id),
+      .filter((item) => !deletedIds.has(item.id))
+      .map((item) => ({
+        ...item,
+        ...updatedRecords.get(item.id),
+        selected: selectedIds.has(item.id),
       }))
-  }, [data, optimisticDeletes, optimisticUpdates, selectedIds])
+  }, [data, deletedIds, updatedRecords, selectedIds])
 }
 ```
 
 `selected` is derived by joining `selectedIds` with query data. Selection never touches the cache.
 
-> **Note:** `useMemo` works here because Zustand returns new `Set`/`Map` references on each store update. The memoization re-triggers correctly — but only because the store actions create new instances (e.g., `new Set(s.selectedIds)`) rather than mutating in place.
+> **Note:** `useMemo` works here because Zustand returns new `Set`/`Map` references on each store update. The memoization re-triggers correctly — but only because the store actions create new instances (e.g., `new Set(s.selectedIds)`, `new Map(s.updatedRecords)`) rather than mutating in place.
 
 ## Optimistic UI via Overlays
 
@@ -202,7 +209,7 @@ Overlays modify the *view*, not the cache.
 
 ```ts
 const useDeleteUser = () => {
-  const { markDeleted, clearDeleted } = useTableStore()
+  const { markDeleted, clearDeleted } = useUsersStore()
 
   return useMutation({
     mutationKey: ['deleteUser'], // groups related mutations for identification
