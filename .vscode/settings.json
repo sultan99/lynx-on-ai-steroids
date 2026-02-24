@@ -24,8 +24,7 @@
   "biome.suggestInstallingGlobally": false,
 
   // === Spelling ===
-  "cSpell.ignoreWords": ["bindtap", "testid"],
-  "cSpell.words": ["bindconfirm"],
+  "cSpell.words": ["bindconfirm", "bindinput", "bindtap", "testid"],
 
   // === Material Icon Theme ===
   "material-icon-theme.activeIconPack": "react",
