@@ -39,12 +39,12 @@ const mockDonuts: Donut[] = [
   },
 ]
 
-vi.mock('../lib/use-donuts', () => ({
-  useDonuts: () => mockDonuts,
+vi.mock('../lib/use-donuts-data', () => ({
+  useDonutsData: () => mockDonuts,
 }))
 
-vi.mock('@/features/favorite-donut', () => ({
-  useLikeDonut: () => ({ mutate: mockToggle }),
+vi.mock('@/features/like-donut', () => ({
+  useUpdateDonutLike: () => ({ mutate: mockToggle }),
 }))
 
 beforeEach(() => {

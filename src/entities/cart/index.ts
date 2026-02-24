@@ -3,6 +3,6 @@ export {
   selectSubTotal,
   selectTotalItems,
   useCartStore,
-} from './model/cart-store'
+} from './model/use-cart-store'
 export { CartItemCard } from './ui/cart-item-card'
 export { CartSummary } from './ui/cart-summary'

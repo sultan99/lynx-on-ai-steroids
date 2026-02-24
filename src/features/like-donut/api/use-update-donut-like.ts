@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { donutKeys, donuts } from '@/entities/donut'
-import { useDonutFavorites } from '../model/donut-favorites'
+import { useDonutFavoritesStore } from '../model/use-donut-favorites-store'
 
 const delay = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms))
 
-export const useLikeDonut = () => {
+export const useUpdateDonutLike = () => {
   const queryClient = useQueryClient()
-  const setFavorite = useDonutFavorites((s) => s.setFavorite)
-  const clearFavorite = useDonutFavorites((s) => s.clearFavorite)
+  const setFavorite = useDonutFavoritesStore((s) => s.setFavorite)
+  const clearFavorite = useDonutFavoritesStore((s) => s.clearFavorite)
 
   return useMutation({
     mutationFn: async (donutId: string) => {

@@ -60,8 +60,8 @@ vi.mock('@lynx-js/react', () => ({
   useMemo: (fn: () => Donut[]) => fn(),
 }))
 
-vi.mock('@/features/favorite-donut', () => ({
-  useDonutFavorites: (
+vi.mock('@/features/like-donut', () => ({
+  useDonutFavoritesStore: (
     selector: (s: { favorites: Map<string, boolean> }) => Map<string, boolean>,
   ) => selector({ favorites: mockFavorites }),
 }))
@@ -70,17 +70,17 @@ beforeEach(() => {
   mockFavorites = new Map()
 })
 
-describe('useDonuts', () => {
+describe('useDonutsData', () => {
   test('returns all donuts when no filters applied', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts()
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData()
 
     expect(result).toHaveLength(3)
   })
 
   test('returns donuts with original favorite state when no overlay', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts()
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData()
 
     expect(result[0].isFavorite).toBe(false)
     expect(result[1].isFavorite).toBe(true)
@@ -88,23 +88,23 @@ describe('useDonuts', () => {
 
   test('overlay overrides donut favorite state', async () => {
     mockFavorites.set('1', true)
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts()
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData()
 
     expect(result[0].isFavorite).toBe(true)
   })
 
   test('overlay can unfavorite a donut', async () => {
     mockFavorites.set('2', false)
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts()
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData()
 
     expect(result[1].isFavorite).toBe(false)
   })
 
   test('preserves non-favorite donut properties', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts()
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData()
 
     expect(result[0].name).toBe('Chocolate')
     expect(result[0].brand).toBe('Krispy Kreme')
@@ -113,8 +113,8 @@ describe('useDonuts', () => {
   })
 
   test('filters by categoryId', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ categoryId: '1' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ categoryId: '1' })
 
     expect(result).toHaveLength(2)
     expect(result[0].name).toBe('Chocolate')
@@ -122,39 +122,39 @@ describe('useDonuts', () => {
   })
 
   test('filters by search query on name', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ searchQuery: 'choco' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ searchQuery: 'choco' })
 
     expect(result).toHaveLength(1)
     expect(result[0].name).toBe('Chocolate')
   })
 
   test('filters by search query on brand', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ searchQuery: 'dunkin' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ searchQuery: 'dunkin' })
 
     expect(result).toHaveLength(1)
     expect(result[0].name).toBe('Cream Filled')
   })
 
   test('search is case-insensitive', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ searchQuery: 'KRISPY' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ searchQuery: 'KRISPY' })
 
     expect(result).toHaveLength(2)
   })
 
   test('combines search and category filters', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ categoryId: '1', searchQuery: 'glazed' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ categoryId: '1', searchQuery: 'glazed' })
 
     expect(result).toHaveLength(1)
     expect(result[0].name).toBe('Classic Glazed')
   })
 
   test('returns empty array when no donuts match filters', async () => {
-    const { useDonuts } = await import('./use-donuts')
-    const result = useDonuts({ searchQuery: 'nonexistent' })
+    const { useDonutsData } = await import('./use-donuts-data')
+    const result = useDonutsData({ searchQuery: 'nonexistent' })
 
     expect(result).toHaveLength(0)
   })
