@@ -56,8 +56,8 @@ Optimistic behavior is implemented via **overlay layers**, not cache mutation.
 
 ```ts
 selectedIds: Set<string>
-optimisticDeletes: Set<string>
-optimisticUpdates: Map<string, Partial<Entity>>
+deletedIds: Set<string>
+updatedRecords: Map<string, Partial<Entity>>
 ```
 
 **Rationale:**

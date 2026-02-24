@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, test } from 'vitest'
-import { useDonutFavorites } from './donut-favorites'
+import { useDonutFavoritesStore } from './use-donut-favorites-store'
 
-const getState = () => useDonutFavorites.getState()
+const getState = () => useDonutFavoritesStore.getState()
 
 beforeEach(() => {
-  useDonutFavorites.setState({ favorites: new Map() })
+  useDonutFavoritesStore.setState({ favorites: new Map() })
 })
 
-describe('useDonutFavorites', () => {
+describe('useDonutFavoritesStore', () => {
   test('starts with empty favorites', () => {
     expect(getState().favorites.size).toBe(0)
   })

@@ -2,26 +2,26 @@ import type { Donut } from '@/entities/donut'
 import { useMemo } from '@lynx-js/react'
 import { useQuery } from '@tanstack/react-query'
 import { donutListQueryOptions } from '@/entities/donut'
-import { useDonutFavorites } from '@/features/favorite-donut'
+import { useDonutFavoritesStore } from '@/features/like-donut'
 
 type UseDonutsOptions = {
   categoryId?: string
   searchQuery?: string
 }
 
-export const useDonuts = ({
+export const useDonutsData = ({
   categoryId,
   searchQuery,
 }: UseDonutsOptions = {}) => {
-  const { data: donutList } = useQuery(donutListQueryOptions)
-  const favorites = useDonutFavorites((s) => s.favorites)
+  const { data: donuts } = useQuery(donutListQueryOptions)
+  const favorites = useDonutFavoritesStore((s) => s.favorites)
 
   return useMemo((): Donut[] => {
-    if (!donutList) return []
+    if (!donuts) return []
 
     const search = searchQuery?.trim().toLowerCase()
 
-    return donutList
+    return donuts
       .filter((donut) => {
         if (categoryId && donut.categoryId !== categoryId) return false
         if (search) {
@@ -35,5 +35,5 @@ export const useDonuts = ({
         ...donut,
         isFavorite: favorites.get(donut.id) ?? donut.isFavorite,
       }))
-  }, [donutList, favorites, categoryId, searchQuery])
+  }, [donuts, favorites, categoryId, searchQuery])
 }

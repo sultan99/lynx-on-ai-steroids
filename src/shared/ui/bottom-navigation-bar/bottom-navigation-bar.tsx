@@ -1,5 +1,6 @@
 import { useNavigate } from '@tanstack/react-router'
 import { pickCss } from '../../lib/css-utils'
+import { ActionButton } from '../action-button/action-button'
 import { Icon } from '../icon/icon'
 import * as css from './bottom-navigation-bar.module.scss'
 
@@ -28,7 +29,7 @@ export const BottomNavigationBar = ({ activeTab }: NavBarProps) => {
         glyph='tool-case'
         bindtap={go('orders')}
       />
-      <Icon
+      <ActionButton
         className={css.actionButton}
         glyph='shopping-bag'
         bindtap={go('cart')}

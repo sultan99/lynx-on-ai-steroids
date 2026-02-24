@@ -6,7 +6,7 @@ type FavoriteState = {
   setFavorite: (donutId: string, isFavorite: boolean) => void
 }
 
-export const useDonutFavorites = create<FavoriteState>()((set) => ({
+export const useDonutFavoritesStore = create<FavoriteState>()((set) => ({
   favorites: new Map(),
 
   setFavorite: (donutId, isFavorite) =>

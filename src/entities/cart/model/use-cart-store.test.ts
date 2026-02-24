@@ -1,6 +1,10 @@
 import type { Donut } from '@/entities/donut'
 import { beforeEach, describe, expect, test } from 'vitest'
-import { selectSubTotal, selectTotalItems, useCartStore } from './cart-store'
+import {
+  selectSubTotal,
+  selectTotalItems,
+  useCartStore,
+} from './use-cart-store'
 
 const makeDonut = (overrides: Partial<Donut> = {}): Donut => ({
   brand: 'Krispy Kreme',

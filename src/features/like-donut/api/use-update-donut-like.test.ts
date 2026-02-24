@@ -35,8 +35,8 @@ vi.mock('@tanstack/react-query', () => ({
   }),
 }))
 
-vi.mock('../model/donut-favorites', () => ({
-  useDonutFavorites: (selector: (s: Record<string, unknown>) => unknown) =>
+vi.mock('../model/use-donut-favorites-store', () => ({
+  useDonutFavoritesStore: (selector: (s: Record<string, unknown>) => unknown) =>
     selector({
       setFavorite: mockSetFavorite,
       clearFavorite: mockClearFavorite,
@@ -49,8 +49,8 @@ beforeEach(() => {
 })
 
 const getHook = async () => {
-  const { useLikeDonut } = await import('./like-donut')
-  useLikeDonut()
+  const { useUpdateDonutLike } = await import('./use-update-donut-like')
+  useUpdateDonutLike()
   return capturedConfig
 }
 
@@ -66,7 +66,7 @@ describe('donuts mock data favorite state', () => {
   })
 })
 
-describe('useLikeDonut', () => {
+describe('useUpdateDonutLike', () => {
   test('onMutate sets optimistic favorite overlay', async () => {
     const config = await getHook()
     const unfavorited = donuts.filter((d) => !d.isFavorite).at(0)

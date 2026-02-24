@@ -148,6 +148,38 @@ When TypeScript complains about types:
 - **Exports**: favor named exports
 - Avoid redundant naming: `user.id` not `user.userId`
 
+### Hooks
+
+| Type | Pattern | Example | File name |
+|------|---------|---------|-----------|
+| Zustand store | `use{Entity}Store` | `useCartStore`, `useDonutFavoritesStore` | `use-cart-store.ts` |
+| Query (data) | `use{Entity}Data` | `useDonutsData`, `useOrderData` | `use-donuts-data.ts` |
+| Mutation (create) | `useCreate{Entity}` | `useCreateOrder` | `use-create-order.ts` |
+| Mutation (update) | `useUpdate{Entity}` | `useUpdateDonutLike` | `use-update-donut-like.ts` |
+| Mutation (delete) | `useDelete{Entity}` | `useDeleteOrder` | `use-delete-order.ts` |
+
+File names mirror the hook name in kebab-case (e.g., `useCartStore` → `use-cart-store.ts`, `useUpdateDonutLike` → `use-update-donut-like.ts`).
+
+### Query Keys
+
+Centralize query keys via a factory object named `{entity}Keys`:
+
+```ts
+const donutKeys = {
+  all: ['donuts'] as const,
+  detail: (id: string) => [...donutKeys.all, id] as const,
+  list: () => [...donutKeys.all, 'list'] as const,
+}
+```
+
+- Factory name: `{entity}Keys` (camelCase, plural entity: `donutKeys`, `orderKeys`, `categoryKeys`)
+- `all` — base key for the entity, used for broad invalidation
+- `list()` — extends `all`, used for list queries
+- `detail(id)` — extends `all`, used for single-entity queries
+- All keys use `as const` for type safety
+- Keys build on `all` via spread — changing `all` propagates to all derived keys
+- When touching existing query files that use hardcoded arrays, migrate them to this spread-based pattern
+
 ## Testing
 
 For testing conventions, see `.claude/rules/testing.md`.

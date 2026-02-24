@@ -1,6 +1,6 @@
 import { DonutList as DonutListView } from '@/entities/donut'
-import { useLikeDonut } from '@/features/favorite-donut'
-import { useDonuts } from '../lib/use-donuts'
+import { useUpdateDonutLike } from '@/features/like-donut'
+import { useDonutsData } from '../lib/use-donuts-data'
 
 type DonutListProps = Omit<JSX.IntrinsicElements['view'], 'children'> & {
   categoryId?: string
@@ -12,8 +12,8 @@ export const DonutList = ({
   searchQuery,
   ...restProps
 }: DonutListProps) => {
-  const donuts = useDonuts({ categoryId, searchQuery })
-  const { mutate: likeDonut } = useLikeDonut()
+  const donuts = useDonutsData({ categoryId, searchQuery })
+  const { mutate: likeDonut } = useUpdateDonutLike()
 
   return <DonutListView {...restProps} donuts={donuts} onLike={likeDonut} />
 }
