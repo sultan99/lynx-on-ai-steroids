@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom'
-import type { Donut } from '@/entities/donut'
+import type { Donut } from '../../model/types'
 import { fireEvent, render } from '@lynx-js/react/testing-library'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '@/shared/ui/icon/glyph-map'
 import { DonutList } from './donut-list'
-
-const mockToggle = vi.fn()
 
 const mockDonuts: Donut[] = [
   {
@@ -39,36 +37,42 @@ const mockDonuts: Donut[] = [
   },
 ]
 
-vi.mock('../lib/use-donuts', () => ({
-  useDonuts: () => mockDonuts,
-}))
-
-vi.mock('@/features/favorite-donut', () => ({
-  useLikeDonut: () => ({ mutate: mockToggle }),
-}))
-
 beforeEach(() => {
   vi.clearAllMocks()
 })
 
-describe('DonutList widget', () => {
-  test('passes donuts from hook to entity DonutList', () => {
-    render(<DonutList />)
+describe('DonutList', () => {
+  test('renders all donut names', () => {
+    render(<DonutList donuts={mockDonuts} />)
     const { getByText } = queryRoot()
     expect(getByText('Chocolate')).toBeInTheDocument()
     expect(getByText('Cream Filled')).toBeInTheDocument()
   })
 
-  test('wires toggleFavorite to onLike', () => {
-    render(<DonutList />)
-    const { getAllByText } = queryRoot()
-    fireEvent.tap(getAllByText(glyphMap.heart)[0])
-    expect(mockToggle).toHaveBeenCalledWith('2')
+  test('renders all donut brands', () => {
+    render(<DonutList donuts={mockDonuts} />)
+    const { getByText } = queryRoot()
+    expect(getByText('Krispy Kreme')).toBeInTheDocument()
+    expect(getByText('Dunkin')).toBeInTheDocument()
   })
 
-  test('passes restProps through', () => {
-    render(<DonutList data-testid='widget-donut-list' />)
+  test('renders heart-filled icon for favorited donut', () => {
+    render(<DonutList donuts={mockDonuts} />)
+    const { getAllByText } = queryRoot()
+    expect(getAllByText(glyphMap['heart-filled'])).toHaveLength(1)
+  })
+
+  test('calls onLike when heart is tapped', () => {
+    const onLike = vi.fn()
+    render(<DonutList donuts={mockDonuts} onLike={onLike} />)
+    const { getAllByText } = queryRoot()
+    fireEvent.tap(getAllByText(glyphMap.heart)[0])
+    expect(onLike).toHaveBeenCalledWith('2')
+  })
+
+  test('passes restProps to root element', () => {
+    render(<DonutList data-testid='donut-list' donuts={mockDonuts} />)
     const { getByTestId } = queryRoot()
-    expect(getByTestId('widget-donut-list')).toBeInTheDocument()
+    expect(getByTestId('donut-list')).toBeInTheDocument()
   })
 })

@@ -4,9 +4,9 @@ export const orders: Order[] = [
   {
     courier: {
       avatar:
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200',
+        'https://plus.unsplash.com/premium_photo-1670588775983-666b23590ffc?w=64&h=64&fit=crop&crop=faces',
       id: '1',
-      name: 'Morris Jones',
+      name: 'Anna Bright',
       phone: '+1 234 567 890',
     },
     deliveryAddress: '00 Street, Area',

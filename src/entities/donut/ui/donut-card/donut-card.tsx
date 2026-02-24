@@ -1,4 +1,4 @@
-import type { Donut } from '../model/types'
+import type { Donut } from '../../model/types'
 import { joinCss } from '@/shared/lib/css-utils'
 import { Icon } from '@/shared/ui/icon/icon'
 import { Rating } from '@/shared/ui/rating/rating'

@@ -37,14 +37,14 @@ export const CartItemCard = ({
         <Info icon='truck-electric'>{item.donut.deliveryType}</Info>
       </view>
       <view className={css.footer}>
+        <text className={css.price}>
+          $ {(item.donut.price * item.quantity).toFixed(2)}
+        </text>
         <QuantitySelector
           value={item.quantity}
           onDecrement={() => onDecrement(item.donutId)}
           onIncrement={() => onIncrement(item.donutId)}
         />
-        <text className={css.price}>
-          $ {(item.donut.price * item.quantity).toFixed(2)}
-        </text>
       </view>
     </view>
   </view>
