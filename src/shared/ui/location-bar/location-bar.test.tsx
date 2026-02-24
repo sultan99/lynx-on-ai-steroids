@@ -5,6 +5,11 @@ import { getRoot, queryRoot } from '@/shared/lib/test-utils'
 import { glyphMap } from '../icon/glyph-map'
 import { LocationBar } from './location-bar'
 
+vi.mock('@lynx-js/react', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@lynx-js/react')>()),
+  useEffect: vi.fn(),
+}))
+
 beforeEach(() => {
   vi.clearAllMocks()
 })

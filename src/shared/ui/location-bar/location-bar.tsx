@@ -1,5 +1,5 @@
-import type { NodesRef } from '@lynx-js/types'
-import { useEffect, useRef } from '@lynx-js/react'
+import { useEffect } from '@lynx-js/react'
+import { useId } from '../../lib/common-utils'
 import { Icon } from '../icon/icon'
 import * as css from './location-bar.module.scss'
 
@@ -16,11 +16,15 @@ export const LocationBar = ({
   onInput,
   onSearch,
 }: LocationBarProps) => {
-  const inputRef = useRef<NodesRef>(null)
+  const id = useId()
 
   useEffect(() => {
-    inputRef.current?.invoke?.({ method: 'setValue', params: { value } })
-  }, [value])
+    lynx
+      .createSelectorQuery()
+      .select(`#${id}`)
+      .invoke({ method: 'setValue', params: { value } })
+      .exec()
+  }, [id, value])
 
   return (
     <view className={css.root}>
@@ -28,8 +32,8 @@ export const LocationBar = ({
       <input
         className={css.input}
         confirm-type='search'
+        id={id}
         placeholder={placeholder}
-        ref={inputRef}
         bindconfirm={onSearch}
         bindinput={onInput && ((e) => onInput(e.detail.value))}
       />
