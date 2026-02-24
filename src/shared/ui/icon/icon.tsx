@@ -3,7 +3,7 @@ import { cssUnit, pickCss, useCssVars } from '@/shared/lib/css-utils'
 import { glyphMap } from './glyph-map'
 import * as css from './icon.module.scss'
 
-type IconProps = {
+export type IconProps = {
   'data-testid'?: string
   bindtap?: () => void
   className?: string
