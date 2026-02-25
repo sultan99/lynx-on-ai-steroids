@@ -4,7 +4,7 @@ import { ActionButton } from '../action-button/action-button'
 import { Icon } from '../icon/icon'
 import * as css from './bottom-navigation-bar.module.scss'
 
-export type NavTab = 'home' | 'orders' | 'cart' | 'bookmarks' | 'profile'
+export type NavTab = '/' | 'home' | 'orders' | 'cart' | 'bookmarks' | 'profile'
 
 type NavBarProps = {
   activeTab: NavTab
@@ -37,7 +37,7 @@ export const BottomNavigationBar = ({ activeTab }: NavBarProps) => {
       <Icon
         className={cssIcon('bookmarks')}
         glyph='truck-electric'
-        bindtap={go('bookmarks')}
+        bindtap={go('/')}
       />
       <Icon
         className={cssIcon('profile')}
