@@ -1,0 +1,29 @@
+.screen {
+  background-color: var(--black);
+  height: 100%;
+  position: relative;
+}
+
+.hero {
+  height: 80%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  bottom: 40px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.tagline {
+  color: var(--white);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 40px;
+  opacity: 0.9;
+  text-align: center;
+}

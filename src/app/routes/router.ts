@@ -8,7 +8,7 @@ export type RouterContext = {
 }
 
 const memoryHistory = createMemoryHistory({
-  initialEntries: ['/home'],
+  initialEntries: ['/'],
 })
 
 export const router = createRouter({
