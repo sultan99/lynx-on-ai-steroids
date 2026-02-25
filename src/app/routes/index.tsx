@@ -1,16 +1,6 @@
-import { useEffect } from '@lynx-js/react'
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-
-const IndexRedirect = () => {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    navigate({ to: '/home' })
-  }, [navigate])
-
-  return <view />
-}
+import { createFileRoute } from '@tanstack/react-router'
+import { SplashScreen } from '@/screens/splash'
 
 export const Route = createFileRoute('/')({
-  component: IndexRedirect,
+  component: SplashScreen,
 })

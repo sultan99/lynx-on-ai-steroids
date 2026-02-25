@@ -1,0 +1,34 @@
+.screen {
+  background-color: #ff647d;
+  height: 100%;
+  position: relative;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 36%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  height: 70px;
+  width: 70px;
+}
+
+.title {
+  color: var(--white);
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.donuts {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}

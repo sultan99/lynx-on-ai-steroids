@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './__root'
 import { Route as ProfileRouteImport } from './profile'
 import { Route as OrdersRouteImport } from './orders'
+import { Route as OnboardingRouteImport } from './onboarding'
 import { Route as HomeRouteImport } from './home'
 import { Route as CartRouteImport } from './cart'
 import { Route as BookmarksRouteImport } from './bookmarks'
@@ -24,6 +25,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const OrdersRoute = OrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/home': typeof HomeRoute
+  '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/home': typeof HomeRoute
+  '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
 }
@@ -69,20 +77,36 @@ export interface FileRoutesById {
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/home': typeof HomeRoute
+  '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/bookmarks' | '/cart' | '/home' | '/orders' | '/profile'
+  fullPaths:
+    | '/'
+    | '/bookmarks'
+    | '/cart'
+    | '/home'
+    | '/onboarding'
+    | '/orders'
+    | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bookmarks' | '/cart' | '/home' | '/orders' | '/profile'
+  to:
+    | '/'
+    | '/bookmarks'
+    | '/cart'
+    | '/home'
+    | '/onboarding'
+    | '/orders'
+    | '/profile'
   id:
     | '__root__'
     | '/'
     | '/bookmarks'
     | '/cart'
     | '/home'
+    | '/onboarding'
     | '/orders'
     | '/profile'
   fileRoutesById: FileRoutesById
@@ -92,6 +116,7 @@ export interface RootRouteChildren {
   BookmarksRoute: typeof BookmarksRoute
   CartRoute: typeof CartRoute
   HomeRoute: typeof HomeRoute
+  OnboardingRoute: typeof OnboardingRoute
   OrdersRoute: typeof OrdersRoute
   ProfileRoute: typeof ProfileRoute
 }
@@ -110,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/orders'
       fullPath: '/orders'
       preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -148,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookmarksRoute: BookmarksRoute,
   CartRoute: CartRoute,
   HomeRoute: HomeRoute,
+  OnboardingRoute: OnboardingRoute,
   OrdersRoute: OrdersRoute,
   ProfileRoute: ProfileRoute,
 }
