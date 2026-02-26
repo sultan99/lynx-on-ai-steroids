@@ -71,6 +71,7 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/build apk --release` — Build Android release APK
 - `/build aab` — Build Android debug App Bundle
 - `/build aab --release` — Build Android release App Bundle for Google Play
+- `/build ipa` — Build iOS IPA (coming soon)
 
 **Development:**
 - `/dev <issue-number> [-y]` — Feature implementation workflow (plan, implement, test, commit)

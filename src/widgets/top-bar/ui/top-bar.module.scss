@@ -1,0 +1,18 @@
+.root {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 16px;
+}
+
+.location-bar {
+  flex: 1;
+}
+
+.avatar {
+  border-radius: 5px;
+  height: 34px;
+  width: 34px;
+}

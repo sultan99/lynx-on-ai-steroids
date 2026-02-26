@@ -11,13 +11,12 @@ Structure: `<emoji><type>(<scope>): <description>`
 | 📦 | feat | New feature |
 | 🛠️ | fix | Bug fix |
 | 🔨 | refactor | Code change that neither fixes bug nor adds feature |
-| ⚡ | perf | Performance or optimization |
+| 🚀 | perf | Performance or optimization |
 | 🧪 | test | Adding or updating tests |
 | 🎨 | style | Formatting, whitespace (no code logic change) |
 | 📃 | docs | Documentation only |
 | 🧹 | chore | Maintenance, dependencies update |
 | ✨ | ai | AI related changes |
-| 🚀 | perf | Performance improvement |
 | 🏗️ | build | Build system, external dependencies |
 | ⚙️ | ci | CI/CD configuration |
 | 🎏 | merge | Git branch merge |

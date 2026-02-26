@@ -1,161 +1,19 @@
 .screen {
-  background-color: var(--gray-50);
+  background-color: var(--white);
   display: flex;
   flex: 1;
   flex-direction: column;
   height: 100%;
 }
 
-.header {
-  background-color: var(--white);
-  border-radius: 0 0 24px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-}
-
-.top-row {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-}
-
-.location-bar-wrapper {
-  flex: 1;
-}
-
-.avatar {
-  border-radius: 5px;
-  height: 34px;
-  width: 34px;
-}
-
-.greeting {
-  color: var(--gray-900);
-  font-size: 18px;
-  font-weight: var(--font-weight-medium);
-}
-
-.section-title {
-  color: var(--gray-900);
-  font-size: 20px;
-  font-weight: var(--font-weight-bold);
-}
-
-.search-bar {
-  padding: 12px 16px 0;
-}
-
-.categories {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  justify-content: space-between;
-}
-
 .scrollable {
+  background-color: var(--gray-50);
   flex: 1;
 }
 
-.scroll-content {
+.content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 0 16px 32px;
-}
-
-.order-card {
-  background-color: var(--white);
-  border-radius: 16px;
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-}
-
-.order-details {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
-}
-
-.order-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.order-value-row {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-}
-
-.order-icon {
-  color: var(--gray-400);
-}
-
-.order-value {
-  color: var(--black);
-  font-size: 18px;
-  font-weight: var(--font-weight-semibold);
-}
-
-.order-label {
-  color: var(--gray-400);
-  font-size: 14px;
-}
-
-.divider {
-  background-color: #e6e6e6;
-  height: 1px;
-}
-
-.courier-row {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-}
-
-.courier-avatar {
-  border-radius: 14px;
-  height: 54px;
-  width: 54px;
-}
-
-.courier-info {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.courier-name {
-  color: var(--tomato);
-  font-size: 18px;
-  font-weight: var(--font-weight-semibold);
-}
-
-.courier-label {
-  color: var(--gray-500);
-  font-size: 14px;
-}
-
-.phone-button {
-  align-items: center;
-  background-color: var(--tomato);
-  border-radius: 14px;
-  display: flex;
-  height: 58px;
-  justify-content: center;
-  width: 54px;
-}
-
-.phone-icon {
-  color: var(--white);
+  gap: 32px;
+  padding: 32px 16px 32px;
 }

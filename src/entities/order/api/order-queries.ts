@@ -7,8 +7,17 @@ const delay = (ms: number) =>
 
 export const orderKeys = {
   all: ['orders'] as const,
-  detail: (id: string) => ['orders', 'detail', id] as const,
+  detail: (id: string) => [...orderKeys.all, 'detail', id] as const,
+  list: () => [...orderKeys.all, 'list'] as const,
 }
+
+export const orderListQueryOptions = queryOptions({
+  queryFn: async (): Promise<Order[]> => {
+    await delay(200)
+    return orders
+  },
+  queryKey: orderKeys.list(),
+})
 
 export const orderDetailQueryOptions = (id: string) =>
   queryOptions({
