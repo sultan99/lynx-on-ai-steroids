@@ -16,11 +16,11 @@ export const TopBar = ({
   onBack,
 }: TopBarProps) => (
   <view className={css.root}>
-    <view className={css.zone}>
+    <view className={css.button}>
       {onBack && <Icon glyph='chevron-left' bindtap={onBack} />}
     </view>
     {title && <text className={css.title}>{title}</text>}
-    <view className={css.zone}>
+    <view className={css.button}>
       {actionIcon && onAction && <Icon glyph={actionIcon} bindtap={onAction} />}
     </view>
   </view>
