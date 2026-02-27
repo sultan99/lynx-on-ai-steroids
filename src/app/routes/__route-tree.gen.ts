@@ -13,6 +13,7 @@ import { Route as ProfileRouteImport } from './profile'
 import { Route as OrdersRouteImport } from './orders'
 import { Route as OnboardingRouteImport } from './onboarding'
 import { Route as HomeRouteImport } from './home'
+import { Route as CatalogRouteImport } from './catalog'
 import { Route as CartRouteImport } from './cart'
 import { Route as BookmarksRouteImport } from './bookmarks'
 import { Route as IndexRouteImport } from './index'
@@ -37,6 +38,11 @@ const HomeRoute = HomeRouteImport.update({
   path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CatalogRoute = CatalogRouteImport.update({
+  id: '/catalog',
+  path: '/catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
+  '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
+  '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
+  '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bookmarks'
     | '/cart'
+    | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bookmarks'
     | '/cart'
+    | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bookmarks'
     | '/cart'
+    | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookmarksRoute: typeof BookmarksRoute
   CartRoute: typeof CartRoute
+  CatalogRoute: typeof CatalogRoute
   HomeRoute: typeof HomeRoute
   OnboardingRoute: typeof OnboardingRoute
   OrdersRoute: typeof OrdersRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/catalog': {
+      id: '/catalog'
+      path: '/catalog'
+      fullPath: '/catalog'
+      preLoaderRoute: typeof CatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cart': {
       id: '/cart'
       path: '/cart'
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookmarksRoute: BookmarksRoute,
   CartRoute: CartRoute,
+  CatalogRoute: CatalogRoute,
   HomeRoute: HomeRoute,
   OnboardingRoute: OnboardingRoute,
   OrdersRoute: OrdersRoute,
