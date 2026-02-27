@@ -12,16 +12,18 @@ export const SearchBar = ({
   ...restProps
 }: SearchBarProps) => (
   <view {...restProps} className={css.root}>
-    <Icon className={css.searchIcon} glyph='search' size='sm' />
-    <input
-      className={css.input}
-      confirm-type='search'
-      data-testid='search-input'
-      placeholder={placeholder}
-      bindinput={(e) => onInput(e.detail.value)}
-    />
+    <view className={css.inputWrapper}>
+      <input
+        className={css.input}
+        confirm-type='search'
+        data-testid='search-input'
+        placeholder={placeholder}
+        bindinput={(e) => onInput(e.detail.value)}
+      />
+      <Icon className={css.searchIcon} glyph='search' />
+    </view>
     <view className={css.filterButton}>
-      <Icon className={css.filterIcon} glyph='settings' size='xs' />
+      <Icon className={css.filterIcon} glyph='settings' />
     </view>
   </view>
 )

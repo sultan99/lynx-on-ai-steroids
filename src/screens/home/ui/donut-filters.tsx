@@ -16,8 +16,8 @@ export const DonutFilters = ({
   return (
     <view className={css.root}>
       <text className={css.greeting}>Hi, {user?.name}</text>
-    <text className={css.heading}>Filter Donuts</text>
-    <CategoryFilter activeId={activeCategory} onSelect={onSelect} />
+      <text className={css.heading}>Filter Donuts</text>
+      <CategoryFilter activeId={activeCategory} onSelect={onSelect} />
     </view>
   )
 }
