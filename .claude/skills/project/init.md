@@ -10,14 +10,27 @@ node --version
 
 Required: >= 18. If missing or outdated, inform the user to install Node.js 18+.
 
-### Step 2: Install dependencies
+### Step 2: Install jq
+
+`jq` is required by Claude Code hooks (Biome auto-format on file save).
+
+```bash
+jq --version 2>/dev/null
+```
+
+If missing, install:
+
+- **Windows**: `winget install jqlang.jq`
+- **macOS**: `brew install jq`
+
+### Step 3: Install dependencies
 
 ```bash
 cd <project-root>
 npm install
 ```
 
-### Step 3: Install recommended VS Code extensions
+### Step 4: Install recommended VS Code extensions
 
 Check if the developer is using VS Code:
 
@@ -37,7 +50,7 @@ Pass all IDs from the `recommendations` array as separate `--install-extension` 
 
 If VS Code is not detected, skip this step silently.
 
-### Step 4: Check Android Studio
+### Step 5: Check Android Studio
 
 Verify Android Studio is installed:
 
@@ -47,7 +60,7 @@ ls "/c/Program Files/Android/Android Studio/bin" 2>&1
 
 If not found, tell the user to install Android Studio from https://developer.android.com/studio.
 
-### Step 5: Check Android SDK
+### Step 6: Check Android SDK
 
 ```bash
 ls "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" 2>&1
@@ -55,7 +68,7 @@ ls "$LOCALAPPDATA/Android/Sdk/platform-tools/adb.exe" 2>&1
 
 If not found, tell the user to install the Android SDK via Android Studio's SDK Manager.
 
-### Step 6: Set environment variables
+### Step 7: Set environment variables
 
 Check if `JAVA_HOME` and `ANDROID_HOME` are set:
 
@@ -85,7 +98,7 @@ foreach ($dir in $additions) {
 [System.Environment]::SetEnvironmentVariable("Path", $currentPath, "User")
 ```
 
-### Step 7: Set up Android device for debugging
+### Step 8: Set up Android device for debugging
 
 Inform the user to enable these on their Android device:
 
@@ -103,7 +116,7 @@ adb devices
 
 The device should appear in the list.
 
-### Step 8: Check Gradle wrapper
+### Step 9: Check Gradle wrapper
 
 If `android/gradle/wrapper/gradle-wrapper.jar` is missing, regenerate it:
 
@@ -116,7 +129,7 @@ cd <project-root>/android
 /tmp/gradle-extract/gradle-8.7/bin/gradle wrapper --gradle-version 8.7
 ```
 
-### Step 9: Check local.properties
+### Step 10: Check local.properties
 
 If `android/local.properties` is missing, create it:
 
@@ -126,7 +139,7 @@ Detect the SDK path dynamically and write it:
 echo "sdk.dir=$(echo $LOCALAPPDATA/Android/Sdk | sed 's|/|\\\\|g')" > android/local.properties
 ```
 
-### Step 10: Install DeepSource CLI
+### Step 11: Install DeepSource CLI
 
 Download and install the DeepSource CLI from GitHub releases:
 
@@ -160,7 +173,7 @@ Confirm auth succeeded:
 ~/bin/deepsource.exe auth status
 ```
 
-### Step 11: Set up DeepSource
+### Step 12: Set up DeepSource
 
 DeepSource provides automated code quality analysis and test coverage tracking on pull requests.
 
@@ -183,7 +196,7 @@ git remote get-url origin
   gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
   ```
 
-### Step 12: Install Lynx DevTools
+### Step 13: Install Lynx DevTools
 
 Lynx DevTools is a desktop application for debugging Lynx apps on-device. It provides Elements, Console, Sources, and Trace panels — similar to Chrome DevTools but for the Lynx rendering engine.
 
@@ -195,7 +208,7 @@ Tell the user:
 2. Install and launch it
 3. Connect the Android device via USB — the app will be detected automatically
 
-### Step 13: Verify setup
+### Step 14: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -210,6 +223,7 @@ If the QR code and bundle URL appear, setup is complete.
 After all steps, report a checklist:
 
 - [ ] Node.js >= 18
+- [ ] jq installed
 - [ ] npm dependencies installed
 - [ ] VS Code extensions installed (if applicable)
 - [ ] Android Studio installed

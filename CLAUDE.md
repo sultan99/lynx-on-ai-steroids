@@ -11,6 +11,15 @@ ReactLynx cross-platform app with Android APK support. Uses Lynx SDK to render R
 - **Testing**: Vitest, Testing Library
 - **Language**: TypeScript 5.9
 
+## MCP Servers
+
+Configured in `.mcp.json` (project-local):
+
+| Server | Purpose |
+|--------|---------|
+| `context7` | Up-to-date library documentation and code examples |
+| `figma` | Read Figma designs, extract design context for implementation |
+
 ## Project Structure
 
 This project follows [Feature-Sliced Design](https://feature-sliced.design/) (FSD) with `screens/` instead of `pages/` (mobile convention).
@@ -28,6 +37,8 @@ android/                # Native Android wrapper (Kotlin, Gradle, LynxView)
 .claude/rules/          # Coding, testing, and skill creation rules
 .claude/skills/         # Skill instruction files (see Skills section)
 .claude/agents/         # Subagent instructions (test-writer, runner)
+.claude/settings.json   # Claude Code hooks (Biome auto-format on save)
+.mcp.json               # MCP server config (Context7, Figma)
 .github/                # Copilot review instructions, PR template
 ```
 
