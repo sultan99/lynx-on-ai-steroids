@@ -1,19 +1,40 @@
 .screen {
-  background-color: var(--white);
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  height: 100%;
+	background-color: var(--white);
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	height: 100%;
 }
 
 .scrollable {
-  background-color: var(--gray-50);
-  flex: 1;
+	background-color: var(--gray-50);
+	flex: 1;
+}
+
+.filters {
+	background-color: var(--white);
+	border-radius: 0 0 24px 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+}
+
+.greeting {
+	color: var(--gray-900);
+	font-size: 18px;
+	font-weight: var(--font-weight-medium);
+}
+
+.heading {
+	color: var(--gray-900);
+	font-size: 20px;
+	font-weight: var(--font-weight-bold);
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding: 32px 16px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	padding: 32px 16px 32px;
 }

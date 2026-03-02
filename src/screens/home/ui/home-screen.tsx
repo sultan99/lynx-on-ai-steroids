@@ -3,14 +3,15 @@ import { useNavigate } from '@tanstack/react-router'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import { BottomNavigationBar } from '@/shared/ui'
 import { BakeryPromoSection } from '@/widgets/bakery-promo'
+import { CategoryFilter } from '@/widgets/category-filter'
 import { DonutList } from '@/widgets/donut-list'
-import { TopBar } from '@/widgets/top-bar'
-import { DonutFilters } from './donut-filters'
+import { TopBar, useUserData } from '@/widgets/top-bar'
 import * as css from './home-screen.module.scss'
 
 export const HomeScreen = () => {
   const paddingTop = useStatusBarHeight('px')
   const navigate = useNavigate()
+  const user = useUserData()
   const [activeCategory, setActiveCategory] = useState('')
 
   const handleDonutTap = (donutId: string) => {
@@ -21,10 +22,14 @@ export const HomeScreen = () => {
     <view className={css.screen} style={{ paddingTop }}>
       <TopBar />
       <scroll-view className={css.scrollable} scroll-y>
-        <DonutFilters
-          activeCategory={activeCategory}
-          onSelect={setActiveCategory}
-        />
+        <view className={css.filters}>
+          <text className={css.greeting}>Hi, {user?.name}</text>
+          <text className={css.heading}>Filter Donuts</text>
+          <CategoryFilter
+            activeId={activeCategory}
+            onSelect={setActiveCategory}
+          />
+        </view>
         <view className={css.content}>
           <BakeryPromoSection />
           <DonutList
@@ -33,7 +38,7 @@ export const HomeScreen = () => {
           />
         </view>
       </scroll-view>
-      <BottomNavigationBar activeTab='home' />
+      <BottomNavigationBar activeTab='/home' />
     </view>
   )
 }
