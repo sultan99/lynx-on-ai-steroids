@@ -1,6 +1,7 @@
 export { ActionButton } from './action-button/action-button'
 export { BottomNavigationBar } from './bottom-navigation-bar/bottom-navigation-bar'
 export { CategoryChip } from './category-chip/category-chip'
+export { Drawer } from './drawer/drawer'
 export { Icon } from './icon/icon'
 export { Info } from './info/info'
 export { LocationBar } from './location-bar/location-bar'
