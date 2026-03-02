@@ -105,10 +105,8 @@ export const Drawer = ({
     const deltaPercent = (deltaY / screenHeight) * 100
     const newHeight = state.startHeight + deltaPercent
 
-    const clampedHeight = Math.min(maxHeight, Math.max(height, newHeight))
-
-    state.currentHeight = clampedHeight
-    drawerRef.current?.setStyleProperty('height', `${clampedHeight}%`)
+    state.currentHeight = newHeight
+    drawerRef.current?.setStyleProperty('height', `${newHeight}%`)
   }
 
   const handleTouchEnd = (e: MainThread.TouchEvent) => {
