@@ -15,6 +15,7 @@ These rules apply to ALL code in the repository — `android`, `src/`,  and any 
 - Avoid over-engineering: unnecessary abstractions, premature generalization, feature flags for simple changes
 - Scripts generating files should use temp dirs for intermediate output — copy only final artifacts to the target dir, then delete temp
 - Windows compatibility: use forward slashes in glob patterns — `path.join` produces backslashes on Windows which breaks glob libraries. Use `path.join` only for non-glob filesystem paths
+- Screens should be thin composition layers — no direct data fetching hooks. Move data fetching into widgets or child components
 
 ## Lynx Elements
 

@@ -17,7 +17,6 @@ Files in scope:
 - `.claude/skills/project/` — project skill files
 - `.claude/skills/validate/` — validation skill files
 - `.claude/skills/deepsource/` — DeepSource skill files
-- `.claude/skills/ship/` — ship skill files
 - `.claude/agents/` — subagent instructions
 - `.claude/rules/state-boundaries.md` — state management rules
 - `.github/copilot-instructions.md` — Copilot code review instructions
