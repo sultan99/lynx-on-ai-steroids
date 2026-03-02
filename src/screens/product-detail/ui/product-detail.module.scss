@@ -1,0 +1,103 @@
+.screen {
+  background-color: var(--gray-50);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.hero-container {
+  align-items: center;
+  display: flex;
+  height: 260px;
+  justify-content: center;
+  padding: 24px;
+}
+
+.hero-image {
+  width: 80%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 24px 32px;
+}
+
+.title-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.product-name {
+  color: var(--tomato);
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+}
+
+.description {
+  color: var(--gray-400);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.details-row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price {
+  color: var(--gray-900);
+  font-size: 28px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.divider {
+  background-color: var(--gray-50);
+  height: 1px;
+}
+
+.reviews-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.reviews-title {
+  color: var(--gray-900);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+}
+
+.reviews-count {
+  color: var(--gray-400);
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+}
+
+.fab {
+  bottom: 15px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}

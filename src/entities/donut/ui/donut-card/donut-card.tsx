@@ -7,15 +7,21 @@ import * as css from './donut-card.module.scss'
 type DonutCardProps = {
   donut: Donut
   onLike?: (id: string) => void
+  onTap?: (id: string) => void
 } & Omit<JSX.IntrinsicElements['view'], 'children'>
 
 export const DonutCard = ({
   className,
   donut,
   onLike,
+  onTap,
   ...rest
 }: DonutCardProps) => (
-  <view {...rest} className={joinCss(css.root, className)}>
+  <view
+    {...rest}
+    className={joinCss(css.root, className)}
+    bindtap={() => onTap?.(donut.id)}
+  >
     <view className={css.priceTag}>
       <text className={css.price}>${donut.price.toFixed(2)}</text>
     </view>

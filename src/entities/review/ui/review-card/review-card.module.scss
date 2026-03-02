@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.avatar {
+  border-radius: 12px;
+  height: 24px;
+  width: 24px;
+}
+
+.name {
+  color: var(--gray-900);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.date {
+  color: var(--gray-400);
+  flex: 1;
+  font-size: 14px;
+}
+
+.stars {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.star-filled {
+  color: var(--amber);
+  font-size: 14px;
+}
+
+.star-empty {
+  color: var(--gray-400);
+  font-size: 14px;
+}
+
+.text {
+  color: var(--gray-900);
+  font-size: 14px;
+  line-height: 24px;
+}

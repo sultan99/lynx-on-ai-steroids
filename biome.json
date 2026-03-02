@@ -94,6 +94,18 @@
       "trailingCommas": "all"
     }
   },
+  "overrides": [
+    {
+      "includes": ["src/app/routes/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": "off"
+          }
+        }
+      }
+    }
+  ],
   "css": {
     "formatter": {
       "enabled": true,
