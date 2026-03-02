@@ -1,5 +1,5 @@
-import { describe, expect, test } from 'vitest'
-import { cssUnit, joinCss, pickCss } from '../css-utils'
+import { describe, expect, test, vi } from 'vitest'
+import { cssUnit, joinCss, pickCss, toPixel } from '../css-utils'
 
 const css: Record<string, string> = {
   button: 'button_hash',
@@ -15,6 +15,26 @@ const css: Record<string, string> = {
   tabIcon: 'tab-icon_hash',
   tabIconIsActive: 'tab-icon-is-active_hash',
 }
+
+describe('toPixel', () => {
+  test('returns number for plain pixel string', () => {
+    expect(toPixel('42')).toBe(42)
+  })
+
+  test('returns number for string with px suffix', () => {
+    expect(toPixel('100px')).toBe(100)
+  })
+
+  test('converts percentage to pixels based on screen height', () => {
+    vi.stubGlobal('SystemInfo', { pixelHeight: 2400, pixelRatio: 2 })
+    expect(toPixel('50%')).toBe(600)
+    vi.unstubAllGlobals()
+  })
+
+  test('handles fractional pixel values', () => {
+    expect(toPixel('10.5')).toBe(10.5)
+  })
+})
 
 describe('cssUnit', () => {
   test('appends unit to number value', () => {

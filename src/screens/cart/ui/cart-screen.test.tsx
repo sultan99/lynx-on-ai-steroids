@@ -184,7 +184,7 @@ describe('CartScreen — with items', () => {
     expect(getByText('$10.00')).toBeInTheDocument()
   })
 
-  test('Order button navigates to /orders', async () => {
+  test('Order button navigates to order tracking screen', async () => {
     mockItems = [makeItem()]
     const { getByTestId } = await renderScreen()
     fireEvent.tap(getByTestId('order-button'))

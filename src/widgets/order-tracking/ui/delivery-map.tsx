@@ -1,7 +1,7 @@
 import { TopBar } from '@/shared/ui'
 import * as css from './delivery-map.module.scss'
 
-const MAPS_API_KEY = 'AIzaSyCTijrxtyuK43FymDmZ5mg9c34BnBcEJpA'
+const MAPS_API_KEY = process.env.MAPS_API_KEY ?? ''
 const ORIGIN = '40.7282,-74.0046'
 const DESTINATION = '40.7195,-73.9973'
 

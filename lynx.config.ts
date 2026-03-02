@@ -5,12 +5,15 @@ import { pluginReactLynx } from '@lynx-js/react-rsbuild-plugin'
 import { defineConfig } from '@lynx-js/rspeedy'
 import { pluginSass } from '@rsbuild/plugin-sass'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
+import { loadEnv } from '@rsbuild/core'
 import { tanstackRouter } from '@tanstack/router-plugin/rspack'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const env = loadEnv({ prefixes: ['MAPS_'] })
 
 export default defineConfig({
   source: {
+    define: env.publicVars,
     entry: {
       main: resolve(__dirname, 'src/app/index.tsx'),
     },
