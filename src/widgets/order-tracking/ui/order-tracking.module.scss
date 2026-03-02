@@ -1,0 +1,18 @@
+.root {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	position: relative;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 0 24px 24px;
+}
+
+.divider {
+	background-color: var(--gray-50);
+	height: 1px;
+}

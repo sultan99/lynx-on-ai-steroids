@@ -50,7 +50,7 @@ export const CartScreen = () => {
   )
 
   const handleOrder = useCallback(() => {
-    navigate({ to: '/orders' })
+    navigate({ to: '/order/$orderId', params: { orderId: '1' } })
   }, [navigate])
 
   if (items.length === 0) {
@@ -79,7 +79,6 @@ export const CartScreen = () => {
           ))}
           <view className={css.spacer}></view>
           <CartSummary
-            className={css.summary}
             deliveryCharges={DELIVERY_CHARGES}
             promoDiscount={PROMO_DISCOUNT}
             subTotal={subTotal}

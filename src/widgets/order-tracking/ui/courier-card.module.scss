@@ -1,0 +1,45 @@
+.root {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.avatar {
+  border-radius: 14px;
+  height: 58px;
+  width: 54px;
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.name {
+  color: var(--tomato);
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.role {
+  color: var(--gray-400);
+  font-size: 14px;
+}
+
+.phone-button {
+  align-items: center;
+  background-color: var(--tomato);
+  border-radius: 14px;
+  display: flex;
+  height: 58px;
+  justify-content: center;
+  width: 54px;
+}
+
+.phone-icon {
+  color: var(--white);
+  font-size: 22px;
+}

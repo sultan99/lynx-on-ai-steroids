@@ -1,0 +1,56 @@
+.root {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.top-bar {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.map-image {
+  width: 100%;
+}
+
+.eta-badge {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: var(--radius-full);
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 130px;
+  position: absolute;
+  top: 135px;
+}
+
+.eta-pill {
+  align-items: center;
+  background-color: var(--tomato);
+  border-radius: var(--radius-full);
+  display: flex;
+  flex-direction: column;
+  padding: 6px 12px;
+}
+
+.eta-number {
+  color: var(--white);
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.eta-unit {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.eta-label {
+  color: var(--gray-400);
+  font-size: 14px;
+  padding-right: 16px;
+}

@@ -6,6 +6,6 @@ export const OrdersScreen = () => (
     <view className={css.content}>
       <text className={css.stubText}>Orders</text>
     </view>
-    <BottomNavigationBar activeTab='orders' />
+    <BottomNavigationBar activeTab='/orders' />
   </view>
 )

@@ -188,7 +188,10 @@ describe('CartScreen — with items', () => {
     mockItems = [makeItem()]
     const { getByTestId } = await renderScreen()
     fireEvent.tap(getByTestId('order-button'))
-    expect(mockNavigate).toHaveBeenCalledWith({ to: '/orders' })
+    expect(mockNavigate).toHaveBeenCalledWith({
+      to: '/order/$orderId',
+      params: { orderId: '1' },
+    })
   })
 
   test('back button calls router.history.back', async () => {

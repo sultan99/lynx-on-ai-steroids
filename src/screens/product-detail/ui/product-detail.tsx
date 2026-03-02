@@ -4,6 +4,7 @@ import { useParams, useRouter } from '@tanstack/react-router'
 import { useCartStore } from '@/entities/cart'
 import { donutDetailQueryOptions } from '@/entities/donut'
 import { ReviewCard, reviewListQueryOptions } from '@/entities/review'
+import { toPixel } from '@/shared/lib/css-utils'
 import { useStatusBarHeight } from '@/shared/lib/hooks/use-status-bar-height'
 import {
   ActionButton,
@@ -41,7 +42,7 @@ export const ProductDetailScreen = () => {
       <view className={css.heroContainer}>
         <image auto-size className={css.heroImage} src={donut.image} />
       </view>
-      <Drawer>
+      <Drawer height={toPixel('55%')}>
         <view className={css.card}>
           <view className={css.titleRow}>
             <text className={css.productName}>{donut.name}</text>
