@@ -11,6 +11,10 @@ export const CatalogScreen = () => {
   const { handleInput, query } = useSearch()
   const donuts = useDonutsData({ searchQuery: query })
 
+  const handleDonutTap = (donutId: string) => {
+    navigate({ to: '/product/$donutId', params: { donutId } })
+  }
+
   return (
     <view className={css.screen} style={{ paddingTop }}>
       <TopBar
@@ -23,7 +27,7 @@ export const CatalogScreen = () => {
         <view className={css.content}>
           <SearchBar placeholder='Search Food' onInput={handleInput} />
           <text className={css.title}>Found {donuts.length} Results</text>
-          <DonutList searchQuery={query} />
+          <DonutList searchQuery={query} onTap={handleDonutTap} />
         </view>
       </scroll-view>
     </view>
