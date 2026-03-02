@@ -15,9 +15,9 @@ import { Route as OnboardingRouteImport } from './onboarding'
 import { Route as HomeRouteImport } from './home'
 import { Route as CatalogRouteImport } from './catalog'
 import { Route as CartRouteImport } from './cart'
-import { Route as BookmarksRouteImport } from './bookmarks'
 import { Route as IndexRouteImport } from './index'
 import { Route as ProductDonutIdRouteImport } from './product.$donutId'
+import { Route as OrderOrderIdRouteImport } from './order.$orderId'
 
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
@@ -49,11 +49,6 @@ const CartRoute = CartRouteImport.update({
   path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BookmarksRoute = BookmarksRouteImport.update({
-  id: '/bookmarks',
-  path: '/bookmarks',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -64,86 +59,91 @@ const ProductDonutIdRoute = ProductDonutIdRouteImport.update({
   path: '/product/$donutId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OrderOrderIdRoute = OrderOrderIdRouteImport.update({
+  id: '/order/$orderId',
+  path: '/order/$orderId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/product/$donutId': typeof ProductDonutIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/product/$donutId': typeof ProductDonutIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bookmarks': typeof BookmarksRoute
   '/cart': typeof CartRoute
   '/catalog': typeof CatalogRoute
   '/home': typeof HomeRoute
   '/onboarding': typeof OnboardingRoute
   '/orders': typeof OrdersRoute
   '/profile': typeof ProfileRoute
+  '/order/$orderId': typeof OrderOrderIdRoute
   '/product/$donutId': typeof ProductDonutIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/bookmarks'
     | '/cart'
     | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
     | '/profile'
+    | '/order/$orderId'
     | '/product/$donutId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/bookmarks'
     | '/cart'
     | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
     | '/profile'
+    | '/order/$orderId'
     | '/product/$donutId'
   id:
     | '__root__'
     | '/'
-    | '/bookmarks'
     | '/cart'
     | '/catalog'
     | '/home'
     | '/onboarding'
     | '/orders'
     | '/profile'
+    | '/order/$orderId'
     | '/product/$donutId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BookmarksRoute: typeof BookmarksRoute
   CartRoute: typeof CartRoute
   CatalogRoute: typeof CatalogRoute
   HomeRoute: typeof HomeRoute
   OnboardingRoute: typeof OnboardingRoute
   OrdersRoute: typeof OrdersRoute
   ProfileRoute: typeof ProfileRoute
+  OrderOrderIdRoute: typeof OrderOrderIdRoute
   ProductDonutIdRoute: typeof ProductDonutIdRoute
 }
 
@@ -191,13 +191,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bookmarks': {
-      id: '/bookmarks'
-      path: '/bookmarks'
-      fullPath: '/bookmarks'
-      preLoaderRoute: typeof BookmarksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -212,18 +205,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductDonutIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/order/$orderId': {
+      id: '/order/$orderId'
+      path: '/order/$orderId'
+      fullPath: '/order/$orderId'
+      preLoaderRoute: typeof OrderOrderIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BookmarksRoute: BookmarksRoute,
   CartRoute: CartRoute,
   CatalogRoute: CatalogRoute,
   HomeRoute: HomeRoute,
   OnboardingRoute: OnboardingRoute,
   OrdersRoute: OrdersRoute,
   ProfileRoute: ProfileRoute,
+  OrderOrderIdRoute: OrderOrderIdRoute,
   ProductDonutIdRoute: ProductDonutIdRoute,
 }
 export const routeTree = rootRouteImport

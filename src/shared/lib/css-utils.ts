@@ -8,6 +8,15 @@ type Props = Record<string, string | boolean | undefined>
 export const cssUnit = (value: string | number | undefined, unit: string) =>
   value != null ? `${value}${unit}` : ''
 
+export const toPixel = (value: string) => {
+  const num = parseFloat(value)
+  if (value.endsWith('%')) {
+    const screenHeight = SystemInfo.pixelHeight / SystemInfo.pixelRatio
+    return Math.round((num / 100) * screenHeight)
+  }
+  return num
+}
+
 export const useCssVars = (variables: CssVars) => {
   const id = useId()
   const values = Object.values(variables)

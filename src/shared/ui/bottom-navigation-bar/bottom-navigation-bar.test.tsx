@@ -17,7 +17,7 @@ describe('BottomNavigationBar', () => {
   })
 
   test('navigates to home on tap', () => {
-    render(<BottomNavigationBar activeTab='cart' />)
+    render(<BottomNavigationBar activeTab='/cart' />)
     const { getByText } = queryRoot()
     fireEvent.tap(getByText(glyphMap.newspaper))
     expect(mockNavigate).toHaveBeenCalledWith({ to: '/home' })

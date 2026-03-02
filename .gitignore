@@ -9,6 +9,7 @@
 Thumbs.db
 bugreport-*.zip
 
+.env
 .claude/progress/
 .idea/
 .vscode/*

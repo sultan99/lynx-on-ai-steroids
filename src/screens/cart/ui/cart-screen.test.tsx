@@ -184,11 +184,14 @@ describe('CartScreen — with items', () => {
     expect(getByText('$10.00')).toBeInTheDocument()
   })
 
-  test('Order button navigates to /orders', async () => {
+  test('Order button navigates to order tracking screen', async () => {
     mockItems = [makeItem()]
     const { getByTestId } = await renderScreen()
     fireEvent.tap(getByTestId('order-button'))
-    expect(mockNavigate).toHaveBeenCalledWith({ to: '/orders' })
+    expect(mockNavigate).toHaveBeenCalledWith({
+      to: '/order/$orderId',
+      params: { orderId: '1' },
+    })
   })
 
   test('back button calls router.history.back', async () => {

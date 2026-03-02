@@ -4,92 +4,74 @@ import { useMainThreadRef } from '@lynx-js/react'
 import { joinCss } from '@/shared/lib/css-utils'
 import * as css from './drawer.module.scss'
 
-const SNAP_DURATION = 300
-const SNAP_EASING = 'cubic-bezier(0.2, 0, 0, 1)'
+const HANDLE_HEIGHT = 48
+const SNAP_TRANSITION = '300ms cubic-bezier(0.2, 0, 0, 1)'
 const SWIPE_THRESHOLD = 30
 
 type DrawerProps = Omit<JSX.IntrinsicElements['view'], 'children'> & {
   children: ReactNode
   height?: number
-  maxHeight?: number
 }
 
 export const Drawer = ({
   children,
   className,
-  height = 55,
-  maxHeight = 80,
+  height,
   ...restProps
 }: DrawerProps) => {
   const drawerRef = useMainThreadRef<MainThread.Element>(null)
   const scrollRef = useMainThreadRef<MainThread.Element>(null)
-  const animationRef = useMainThreadRef<MainThread.Animation | null>(null)
+
   const stateRef = useMainThreadRef({
-    currentHeight: height,
-    mode: 'drag' as 'drag' | 'scroll',
+    collapsed: height != null,
+    currentHeight: 0,
+    dragging: false,
     scrollTop: 0,
-    startHeight: height,
+    startHeight: 0,
     startY: 0,
   })
 
-  const stops = [height, maxHeight]
-
-  const cancelAnimation = () => {
+  const snap = (collapse: boolean) => {
     'main thread'
-    const anim = animationRef.current
-    if (!anim) return
     const state = stateRef.current
-    drawerRef.current?.setStyleProperty('height', `${state.currentHeight}%`)
-    anim.cancel()
-    animationRef.current = null
-  }
+    const drawer = drawerRef.current
 
-  const updateMode = (target: number) => {
-    'main thread'
-    const isScroll = target >= maxHeight
-    stateRef.current.mode = isScroll ? 'scroll' : 'drag'
-    scrollRef.current?.setAttribute('enable-scroll', isScroll)
-  }
+    state.collapsed = collapse
 
-  const animateToHeight = (target: number) => {
-    'main thread'
-    cancelAnimation()
-    const state = stateRef.current
-    const from = state.currentHeight
-
-    state.currentHeight = target
-    updateMode(target)
-
-    animationRef.current =
-      drawerRef.current?.animate(
-        [{ height: `${from}%` }, { height: `${target}%` }],
-        { duration: SNAP_DURATION, easing: SNAP_EASING, fill: 'forwards' },
-      ) ?? null
-  }
-
-  const snapToNearest = (direction: 'up' | 'down') => {
-    'main thread'
-    const current = stateRef.current.currentHeight
-
-    if (direction === 'up') {
-      const target = [...stops].find((stop) => stop > current + 1)
-      animateToHeight(target ?? maxHeight)
+    if (height == null) {
+      const target = `${state.startHeight}px`
+      const transition = `height ${SNAP_TRANSITION}, max-height ${SNAP_TRANSITION}`
+      drawer?.setStyleProperty('transition', transition)
+      drawer?.setStyleProperty('height', target)
+      drawer?.setStyleProperty('max-height', target)
       return
     }
 
-    const target = [...stops].reverse().find((stop) => stop < current - 1)
+    drawer?.setStyleProperty('transition', '')
+    drawer?.setStyleProperty('height', '')
+    drawer?.setStyleProperty('max-height', collapse ? `${height}px` : '')
+    scrollRef.current?.setAttribute('enable-scroll', !collapse)
+  }
 
-    animateToHeight(target ?? height)
+  const handleDrawerLayout = (e: MainThread.LayoutChangeEvent) => {
+    'main thread'
+    if (!stateRef.current.dragging) {
+      stateRef.current.currentHeight = e.detail.height
+    }
   }
 
   const handleTouchStart = (e: MainThread.TouchEvent) => {
     'main thread'
     const touch = e.touches[0]
     if (!touch) return
-    cancelAnimation()
     const state = stateRef.current
     state.startY = touch.clientY
     state.startHeight = state.currentHeight
+
+    if (state.collapsed || height == null) {
+      state.dragging = true
+      drawerRef.current?.setStyleProperty('transition', 'none')
+    }
   }
 
   const handleTouchMove = (e: MainThread.TouchEvent) => {
@@ -97,16 +79,23 @@ export const Drawer = ({
     const touch = e.touches[0]
     if (!touch) return
     const state = stateRef.current
-
-    if (state.mode === 'scroll') return
-
-    const screenHeight = SystemInfo.pixelHeight / SystemInfo.pixelRatio
     const deltaY = state.startY - touch.clientY
-    const deltaPercent = (deltaY / screenHeight) * 100
-    const newHeight = state.startHeight + deltaPercent
 
+    if (!state.dragging && state.scrollTop > 0) return
+    if (!state.dragging && deltaY >= 0) return
+
+    if (!state.dragging) {
+      state.dragging = true
+      scrollRef.current?.setAttribute('enable-scroll', false)
+      state.startY = touch.clientY
+      state.startHeight = state.currentHeight
+      drawerRef.current?.setStyleProperty('transition', 'none')
+    }
+
+    const newHeight = Math.max(HANDLE_HEIGHT, state.startHeight + deltaY)
     state.currentHeight = newHeight
-    drawerRef.current?.setStyleProperty('height', `${newHeight}%`)
+    drawerRef.current?.setStyleProperty('height', `${newHeight}px`)
+    drawerRef.current?.setStyleProperty('max-height', `${newHeight}px`)
   }
 
   const handleTouchEnd = (e: MainThread.TouchEvent) => {
@@ -114,32 +103,24 @@ export const Drawer = ({
     const touch = e.changedTouches[0]
     if (!touch) return
     const state = stateRef.current
+    if (!state.dragging) return
+    state.dragging = false
+
+    if (height == null) {
+      snap(false)
+      return
+    }
+
     const deltaY = state.startY - touch.clientY
-
-    const isScrollSwipeDown =
-      state.mode === 'scroll' &&
-      state.scrollTop <= 0 &&
-      deltaY < -SWIPE_THRESHOLD
-
-    if (isScrollSwipeDown) {
-      snapToNearest('down')
+    if (deltaY > SWIPE_THRESHOLD) {
+      snap(false)
       return
     }
-
-    if (state.mode === 'scroll') return
-
-    if (Math.abs(deltaY) < SWIPE_THRESHOLD) {
-      const closest = [...stops].reduce((prev, curr) =>
-        Math.abs(curr - state.currentHeight) <
-        Math.abs(prev - state.currentHeight)
-          ? curr
-          : prev,
-      )
-      animateToHeight(closest)
+    if (deltaY < -SWIPE_THRESHOLD) {
+      snap(true)
       return
     }
-
-    snapToNearest(deltaY > 0 ? 'up' : 'down')
+    snap(state.collapsed)
   }
 
   const handleScroll = (e: { detail: { scrollTop: number } }) => {
@@ -152,10 +133,11 @@ export const Drawer = ({
       {...restProps}
       className={joinCss(css.root, className)}
       main-thread:ref={drawerRef}
-      style={{ height: `${height}%`, maxHeight: `${maxHeight}%` }}
-      main-thread:bindtouchstart={handleTouchStart}
-      main-thread:bindtouchmove={handleTouchMove}
+      style={height != null ? { maxHeight: `${height}px` } : undefined}
+      main-thread:bindlayoutchange={handleDrawerLayout}
       main-thread:bindtouchend={handleTouchEnd}
+      main-thread:bindtouchmove={handleTouchMove}
+      main-thread:bindtouchstart={handleTouchStart}
     >
       <view className={css.handleArea}>
         <view className={css.handle} />
