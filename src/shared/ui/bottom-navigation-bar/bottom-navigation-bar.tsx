@@ -6,12 +6,11 @@ import * as css from './bottom-navigation-bar.module.scss'
 
 export type NavTab =
   | '/'
-  | 'home'
-  | 'orders'
-  | 'cart'
-  | 'bookmarks'
-  | 'profile'
-  | 'catalog'
+  | '/home'
+  | '/orders'
+  | '/cart'
+  | '/profile'
+  | '/catalog'
 
 type NavBarProps = {
   activeTab: NavTab
@@ -22,34 +21,34 @@ const cssTabIcon = pickCss(css, 'tab-icon')
 export const BottomNavigationBar = ({ activeTab }: NavBarProps) => {
   const cssIcon = (tab: NavTab) => cssTabIcon({ isActive: activeTab === tab })
   const navigate = useNavigate()
-  const go = (tab: NavTab) => () => navigate({ to: `/${tab}` })
+  const go = (tab: NavTab) => () => navigate({ to: tab })
 
   return (
     <view className={css.root}>
       <Icon
-        className={cssIcon('home')}
+        className={cssIcon('/home')}
         glyph='newspaper'
-        bindtap={go('home')}
+        bindtap={go('/home')}
       />
       <Icon
-        className={cssIcon('orders')}
-        glyph='tool-case'
-        bindtap={go('orders')}
+        className={cssIcon('/catalog')}
+        glyph='search'
+        bindtap={go('/catalog')}
       />
       <ActionButton
         className={css.actionButton}
         glyph='shopping-bag'
-        bindtap={go('cart')}
+        bindtap={go('/cart')}
       />
       <Icon
-        className={cssIcon('catalog')}
-        glyph='search'
-        bindtap={go('catalog')}
+        className={cssIcon('/orders')}
+        glyph='tool-case'
+        bindtap={go('/orders')}
       />
       <Icon
-        className={cssIcon('profile')}
+        className={cssIcon('/profile')}
         glyph='user'
-        bindtap={go('profile')}
+        bindtap={go('/profile')}
       />
     </view>
   )
