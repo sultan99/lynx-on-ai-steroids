@@ -20,8 +20,10 @@ export const TopBar = ({
       {onBack && <Icon glyph='chevron-left' bindtap={onBack} />}
     </view>
     {title && <text className={css.title}>{title}</text>}
-    <view className={css.button}>
-      {actionIcon && onAction && <Icon glyph={actionIcon} bindtap={onAction} />}
-    </view>
+    {actionIcon && onAction && (
+      <view className={css.button}>
+        <Icon glyph={actionIcon} bindtap={onAction} />
+      </view>
+    )}
   </view>
 )

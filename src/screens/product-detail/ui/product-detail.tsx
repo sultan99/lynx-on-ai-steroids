@@ -28,14 +28,14 @@ export const ProductDetailScreen = () => {
 
   const handleAddToCart = () => {
     Array.from({ length: quantity }, () => addItem(donut))
-    router.navigate({ to: '/cart' })
+    router.history.back()
   }
 
   return (
     <view className={css.screen} style={{ paddingTop }}>
       <TopBar
-        actionIcon='flag'
-        onAction={() => {}}
+        actionIcon='shopping-bag'
+        onAction={() => router.navigate({ to: '/cart' })}
         onBack={() => router.history.back()}
       />
       <view className={css.heroContainer}>
