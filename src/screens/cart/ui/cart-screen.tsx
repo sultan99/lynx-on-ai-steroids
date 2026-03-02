@@ -49,13 +49,6 @@ export const CartScreen = () => {
     [items, updateQuantity],
   )
 
-  const handleRemove = useCallback(
-    (donutId: string) => {
-      removeItem(donutId)
-    },
-    [removeItem],
-  )
-
   const handleOrder = useCallback(() => {
     navigate({ to: '/orders' })
   }, [navigate])
@@ -81,7 +74,7 @@ export const CartScreen = () => {
               key={item.donutId}
               onDecrement={handleDecrement}
               onIncrement={handleIncrement}
-              onRemove={handleRemove}
+              onRemove={removeItem}
             />
           ))}
           <view className={css.spacer}></view>

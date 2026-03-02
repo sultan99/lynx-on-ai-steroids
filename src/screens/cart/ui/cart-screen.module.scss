@@ -7,8 +7,8 @@
 }
 
 .scrollable {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -17,8 +17,8 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 16px;
-  padding: 16px;
   min-height: 100%;
+  padding: 16px;
 }
 
 .spacer {
