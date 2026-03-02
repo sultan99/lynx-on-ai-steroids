@@ -7,6 +7,7 @@ ReactLynx cross-platform app with Android APK support. Uses Lynx SDK to render R
 - **UI**: ReactLynx (`@lynx-js/react`) — React-like API targeting the Lynx rendering engine
 - **Bundler**: Rspeedy (`@lynx-js/rspeedy`) — Rsbuild-based bundler for Lynx apps
 - **Lynx SDK**: 3.6.0 (`@lynx-js/types`)
+- **JS Engine**: PrimJS (QuickJS fork) — main thread ES2019, background thread ES2015
 - **Android**: Kotlin, Gradle 8.5, AGP 8.5.0
 - **Testing**: Vitest, Testing Library
 - **Language**: TypeScript 5.9

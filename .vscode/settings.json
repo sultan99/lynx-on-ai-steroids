@@ -48,7 +48,7 @@
     "autopilot": "robot",
     "cart": "",
     "deepsource": "rules",
-    "entities": "element",
+    "entities": "atom",
     "forge": "forgejo",
     "home": "",
     "progress": "tasks",
