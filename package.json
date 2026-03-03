@@ -11,6 +11,7 @@
     "@lynx-js/react": "^0.116.3",
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-router": "^1.159.5",
+    "@trpc/client": "^11.11.0",
     "url-search-params-polyfill": "^8.2.5",
     "zustand": "^5.0.11"
   },
