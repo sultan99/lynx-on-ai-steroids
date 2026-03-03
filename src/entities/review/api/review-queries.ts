@@ -1,9 +1,5 @@
-import type { Review } from '../model/types'
 import { queryOptions } from '@tanstack/react-query'
-import { reviews } from './mock-data'
-
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+import { trpc } from '@/shared/api/trpc'
 
 export const reviewKeys = {
   all: ['reviews'] as const,
@@ -12,9 +8,6 @@ export const reviewKeys = {
 
 export const reviewListQueryOptions = (donutId: string) =>
   queryOptions({
-    queryFn: async (): Promise<Review[]> => {
-      await delay(200)
-      return reviews.filter((r) => r.donutId === donutId)
-    },
+    queryFn: () => trpc.review.list.query({ donutId }),
     queryKey: reviewKeys.list(donutId),
   })

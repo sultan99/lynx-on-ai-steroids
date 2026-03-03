@@ -1,9 +1,5 @@
-import type { User } from '../model/types'
 import { queryOptions } from '@tanstack/react-query'
-import { currentUser } from './mock-data'
-
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+import { trpc } from '@/shared/api/trpc'
 
 export const userKeys = {
   all: ['users'] as const,
@@ -11,9 +7,6 @@ export const userKeys = {
 }
 
 export const userQueryOptions = queryOptions({
-  queryFn: async (): Promise<User> => {
-    await delay(200)
-    return currentUser
-  },
+  queryFn: () => trpc.user.current.query(),
   queryKey: userKeys.current(),
 })

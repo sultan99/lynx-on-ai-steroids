@@ -1,9 +1,5 @@
-import type { Donut } from '../model/types'
 import { queryOptions } from '@tanstack/react-query'
-import { donuts } from './mock-data'
-
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+import { trpc } from '@/shared/api/trpc'
 
 export const donutKeys = {
   all: ['donuts'] as const,
@@ -12,18 +8,12 @@ export const donutKeys = {
 }
 
 export const donutListQueryOptions = queryOptions({
-  queryFn: async (): Promise<Donut[]> => {
-    await delay(300)
-    return donuts
-  },
+  queryFn: () => trpc.donut.list.query(),
   queryKey: donutKeys.list(),
 })
 
 export const donutDetailQueryOptions = (id: string) =>
   queryOptions({
-    queryFn: async (): Promise<Donut | undefined> => {
-      await delay(200)
-      return donuts.find((d) => d.id === id)
-    },
+    queryFn: () => trpc.donut.detail.query({ id }),
     queryKey: donutKeys.detail(id),
   })

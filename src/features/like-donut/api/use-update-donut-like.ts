@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { donutKeys, donuts } from '@/entities/donut'
+import { donutKeys } from '@/entities/donut'
+import { trpc } from '@/shared/api/trpc'
 import { useDonutFavoritesStore } from '../model/use-donut-favorites-store'
 
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+type QueryData = { id: string; isFavorite: boolean }[]
 
 export const useUpdateDonutLike = () => {
   const queryClient = useQueryClient()
@@ -11,28 +11,26 @@ export const useUpdateDonutLike = () => {
   const clearFavorite = useDonutFavoritesStore((s) => s.clearFavorite)
 
   return useMutation({
-    mutationFn: async (donutId: string) => {
-      await delay(300)
-      const donut = donuts.find((d) => d.id === donutId)
-      if (donut) {
-        donut.isFavorite = !donut.isFavorite
-      }
-      return donutId
-    },
+    mutationFn: (donutId: string) =>
+      trpc.donut.toggleFavorite.mutate({ donutId }),
+
     onMutate: (donutId: string) => {
-      const donut = donuts.find((d) => d.id === donutId)
-      const wasFavorite = donut?.isFavorite ?? false
+      const donuts = queryClient.getQueryData<QueryData>(donutKeys.list())
+      const wasFavorite =
+        donuts?.find((donut) => donut.id === donutId)?.isFavorite ?? false
       setFavorite(donutId, !wasFavorite)
       return { wasFavorite }
     },
+
     onError: (_err, donutId, context) => {
       if (context) {
         setFavorite(donutId, context.wasFavorite)
       }
     },
-    onSettled: (_data, _err, donutId) => {
+
+    onSettled: async (_data, _err, donutId) => {
+      await queryClient.invalidateQueries({ queryKey: donutKeys.all })
       clearFavorite(donutId)
-      queryClient.invalidateQueries({ queryKey: donutKeys.all })
     },
   })
 }
