@@ -7,9 +7,9 @@
   "scripts": {
     "build": "tsc",
     "emu": "firebase emulators:start",
-    "seed": "tsx db/seed.ts",
-    "dev": "tsx watch dev.ts",
-    "start": "tsx watch dev.ts",
+    "seed": "tsx --env-file=.env seed/index.ts",
+    "dev": "tsx --env-file=.env watch dev.ts",
+    "start": "tsx --env-file=.env watch dev.ts",
     "test": "vitest run"
   },
   "engines": {

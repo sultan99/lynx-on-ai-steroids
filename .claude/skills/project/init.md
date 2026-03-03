@@ -30,7 +30,35 @@ cd <project-root>
 npm install
 ```
 
-### Step 4: Install recommended VS Code extensions
+### Step 4: Install Firebase CLI
+
+```bash
+firebase --version 2>/dev/null
+```
+
+If missing, install globally:
+
+```bash
+npm install -g firebase-tools
+```
+
+Then authenticate:
+
+```bash
+firebase login
+```
+
+This opens a browser for Google account auth. Required for `npm run emu` (emulator) and `firebase deploy`.
+
+Docs: https://firebase.google.com/docs/cli
+
+### Step 5: Install Google Cloud SDK
+
+```bash
+gcloud --version 2>/dev/null
+```
+
+If missing, tell the
 
 Check if the developer is using VS Code:
 
@@ -98,7 +126,97 @@ foreach ($dir in $additions) {
 [System.Environment]::SetEnvironmentVariable("Path", $currentPath, "User")
 ```
 
-### Step 8: Set up Android device for debugging
+### Step 8: Configure project env files
+
+The project uses two `.env` files — one for the frontend and one for the API.
+
+#### 8a: Root `.env` (frontend)
+
+Check if `.env` exists at the project root:
+
+```bash
+test -f .env && echo "exists" || echo "missing"
+```
+
+If missing, create it by prompting the developer for each value:
+
+| Variable | Where to get it |
+|----------|-----------------|
+| `MAPS_API_KEY` | [Google Cloud Console > APIs & Services > Credentials](https://console.cloud.google.com/apis/credentials) — create an API key with "Maps Static API" enabled |
+
+Ask: "Paste your Google Maps API key (or press Enter to skip for now):"
+
+Write the `.env` file:
+
+```
+MAPS_API_KEY=<prompted-value>
+```
+
+If the developer skips, write an empty placeholder:
+
+```
+MAPS_API_KEY=
+```
+
+#### 8b: API `.env` (backend)
+
+Check if `api/.env` exists:
+
+```bash
+test -f api/.env && echo "exists" || echo "missing"
+```
+
+If missing, create it by prompting the developer for each value:
+
+| Variable | Default | Where to get it |
+|----------|---------|-----------------|
+| `FIREBASE_PROJECT_ID` | `donuts-api-sa99` | [Firebase Console](https://console.firebase.google.com/) — project ID from Project Settings |
+| `FIREBASE_STORAGE_BUCKET` | `donuts-api-sa99.firebasestorage.app` | Firebase Console > Storage — bucket URL |
+| `FIRESTORE_EMULATOR_HOST` | *(empty)* | Set to `127.0.0.1:8080` when seeding against local emulator |
+| `FIREBASE_STORAGE_EMULATOR_HOST` | *(empty)* | Set to `127.0.0.1:9199` when seeding against local emulator |
+
+Ask: "Enter your Firebase project ID (or press Enter for 'donuts-api-sa99'):"
+
+For each variable, if the developer presses Enter, use the default value. For emulator host vars, leave empty by default (Firebase emulator sets them automatically when running `npm run emu`).
+
+Write `api/.env`:
+
+```
+FIREBASE_PROJECT_ID=<prompted-or-default>
+FIREBASE_STORAGE_BUCKET=<prompted-or-default>.firebasestorage.app
+FIRESTORE_EMULATOR_HOST=
+FIREBASE_STORAGE_EMULATOR_HOST=
+```
+
+#### 8c: API `service-account.json`
+
+Check if `api/service-account.json` exists:
+
+```bash
+test -f api/service-account.json && echo "exists" || echo "missing"
+```
+
+If missing, tell the developer:
+
+> Download a Firebase service account key:
+> 1. Open [Firebase Console > Project Settings > Service accounts](https://console.firebase.google.com/project/donuts-api-sa99/settings/serviceaccounts/adminsdk)
+> 2. Click **Generate new private key**
+> 3. Save the file as `api/service-account.json`
+
+This file is gitignored and required for `npm run seed -- --force` (production seeding).
+
+#### 8d: Emulator env vars (automatic)
+
+When running `npm run emu` in `api/`, Firebase sets `FIRESTORE_EMULATOR_HOST` and `FIREBASE_STORAGE_EMULATOR_HOST` automatically. For manual seed runs against the emulator, set them in `api/.env`:
+
+```
+FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+FIREBASE_STORAGE_EMULATOR_HOST=127.0.0.1:9199
+```
+
+Clear them (set to empty) when switching back to production seeding with `--force`.
+
+### Step 9: Set up Android device for debugging
 
 Inform the user to enable these on their Android device:
 
@@ -116,7 +234,7 @@ adb devices
 
 The device should appear in the list.
 
-### Step 9: Check Gradle wrapper
+### Step 10: Check Gradle wrapper
 
 If `android/gradle/wrapper/gradle-wrapper.jar` is missing, regenerate it:
 
@@ -129,7 +247,7 @@ cd <project-root>/android
 /tmp/gradle-extract/gradle-8.7/bin/gradle wrapper --gradle-version 8.7
 ```
 
-### Step 10: Check local.properties
+### Step 11: Check local.properties
 
 If `android/local.properties` is missing, create it:
 
@@ -139,7 +257,7 @@ Detect the SDK path dynamically and write it:
 echo "sdk.dir=$(echo $LOCALAPPDATA/Android/Sdk | sed 's|/|\\\\|g')" > android/local.properties
 ```
 
-### Step 11: Install DeepSource CLI
+### Step 12: Install DeepSource CLI
 
 Download and install the DeepSource CLI from GitHub releases:
 
@@ -173,7 +291,7 @@ Confirm auth succeeded:
 ~/bin/deepsource.exe auth status
 ```
 
-### Step 12: Set up DeepSource
+### Step 13: Set up DeepSource
 
 DeepSource provides automated code quality analysis and test coverage tracking on pull requests.
 
@@ -196,7 +314,7 @@ git remote get-url origin
   gh secret set DEEPSOURCE_DSN --body "<dsn-value>"
   ```
 
-### Step 13: Install Lynx DevTools
+### Step 14: Install Lynx DevTools
 
 Lynx DevTools is a desktop application for debugging Lynx apps on-device. It provides Elements, Console, Sources, and Trace panels — similar to Chrome DevTools but for the Lynx rendering engine.
 
@@ -208,7 +326,7 @@ Tell the user:
 2. Install and launch it
 3. Connect the Android device via USB — the app will be detected automatically
 
-### Step 14: Verify setup
+### Step 15: Verify setup
 
 Run the dev server to confirm everything works:
 
@@ -230,6 +348,9 @@ After all steps, report a checklist:
 - [ ] Android SDK available
 - [ ] JAVA_HOME set
 - [ ] ANDROID_HOME set
+- [ ] `.env` configured (MAPS_API_KEY)
+- [ ] `api/.env` configured (FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET)
+- [ ] `api/service-account.json` configured
 - [ ] Android device connected (USB debugging + OEM unlocking)
 - [ ] Gradle wrapper ready
 - [ ] local.properties configured
