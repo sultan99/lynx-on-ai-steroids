@@ -36,7 +36,7 @@ export const DonutCard = ({
       <Icon
         className={css.favoriteIcon}
         glyph={donut.isFavorite ? 'heart-filled' : 'heart'}
-        bindtap={() => onLike?.(donut.id)}
+        catchtap={() => onLike?.(donut.id)}
       />
       <Rating value={donut.rating} />
     </view>

@@ -66,7 +66,9 @@ describe('DonutList', () => {
     const onLike = vi.fn()
     render(<DonutList donuts={mockDonuts} onLike={onLike} />)
     const { getAllByText } = queryRoot()
-    fireEvent.tap(getAllByText(glyphMap.heart)[0])
+    fireEvent.tap(getAllByText(glyphMap.heart)[0], {
+      eventType: 'catchEvent',
+    })
     expect(onLike).toHaveBeenCalledWith('2')
   })
 
