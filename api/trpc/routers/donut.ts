@@ -14,7 +14,7 @@ export const donutRouter = router({
 
       const favDoc = await favorites.doc(ctx.userId).get()
       const favData = favDoc.data()
-      const isFavorite = favData?.donutIds.includes(input.id) ?? false
+      const isFavorite = favData?.donutIds?.includes(input.id) ?? false
       return { ...data, isFavorite }
     }),
 
@@ -37,22 +37,25 @@ export const donutRouter = router({
     .input(z.object({ donutId: z.string() }))
     .mutation(async ({ ctx, input }) => {
       const favRef = favorites.doc(ctx.userId)
-      const favDoc = await favRef.get()
-      const favData = favDoc.data()
-      const donutIds = favData?.donutIds ?? []
 
-      if (donutIds.includes(input.donutId)) {
-        await favRef.set({
-          donutIds: donutIds.filter((id) => id !== input.donutId),
+      return favorites.firestore.runTransaction(async (tx) => {
+        const favDoc = await tx.get(favRef)
+        const favData = favDoc.data()
+        const donutIds = favData?.donutIds ?? []
+
+        if (donutIds.includes(input.donutId)) {
+          tx.set(favRef, {
+            donutIds: donutIds.filter((id) => id !== input.donutId),
+            userId: ctx.userId,
+          })
+          return { isFavorite: false }
+        }
+
+        tx.set(favRef, {
+          donutIds: [...donutIds, input.donutId],
           userId: ctx.userId,
         })
-        return { isFavorite: false }
-      }
-
-      await favRef.set({
-        donutIds: [...donutIds, input.donutId],
-        userId: ctx.userId,
+        return { isFavorite: true }
       })
-      return { isFavorite: true }
     }),
 })
