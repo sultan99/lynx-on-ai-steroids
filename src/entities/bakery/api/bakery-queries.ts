@@ -1,9 +1,5 @@
-import type { Bakery } from '../model/types'
 import { queryOptions } from '@tanstack/react-query'
-import { bakeries } from './mock-data'
-
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+import { trpc } from '@/shared/api/trpc'
 
 export const bakeryKeys = {
   all: ['bakeries'] as const,
@@ -12,18 +8,12 @@ export const bakeryKeys = {
 }
 
 export const bakeryListQueryOptions = queryOptions({
-  queryFn: async (): Promise<Bakery[]> => {
-    await delay(300)
-    return bakeries
-  },
+  queryFn: () => trpc.bakery.list.query(),
   queryKey: bakeryKeys.list(),
 })
 
 export const bakeryDetailQueryOptions = (id: string) =>
   queryOptions({
-    queryFn: async (): Promise<Bakery | undefined> => {
-      await delay(200)
-      return bakeries.find((b) => b.id === id)
-    },
+    queryFn: () => trpc.bakery.detail.query({ id }),
     queryKey: bakeryKeys.detail(id),
   })
