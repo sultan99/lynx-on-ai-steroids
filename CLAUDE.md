@@ -9,6 +9,7 @@ ReactLynx cross-platform app with Android APK support. Uses Lynx SDK to render R
 - **Lynx SDK**: 3.6.0 (`@lynx-js/types`)
 - **JS Engine**: PrimJS (QuickJS fork) — main thread ES2019, background thread ES2015
 - **Android**: Kotlin, Gradle 8.5, AGP 8.5.0
+- **API**: tRPC v11, Firebase Cloud Functions (2nd gen), Firestore
 - **Testing**: Vitest, Testing Library
 - **Language**: TypeScript 5.9
 
@@ -34,6 +35,7 @@ src/
   features/             # Reusable product actions (auth, theme-switcher, etc.)
   entities/             # Business domain objects (user, article, etc.)
   shared/               # Reusable, project-detached (ui, lib, config, assets)
+api/                    # Backend API (tRPC, Cloud Functions, Firestore)
 android/                # Native Android wrapper (Kotlin, Gradle, LynxView)
 .claude/rules/          # Coding, testing, and skill creation rules
 .claude/skills/         # Skill instruction files (see Skills section)
@@ -153,6 +155,7 @@ The Android wrapper and JS code are decoupled — you can modify one without tou
 ## Build Artifacts
 
 - `dist/` — JS build output (gitignored)
+- `api/dist/` — API build output (gitignored)
 - `android/app/build/` — Gradle build output
 
 ## Reference Docs

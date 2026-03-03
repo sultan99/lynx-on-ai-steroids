@@ -24,7 +24,13 @@
   "biome.suggestInstallingGlobally": false,
 
   // === Spelling ===
-  "cSpell.words": ["bindconfirm", "bindinput", "bindtap", "testid"],
+  "cSpell.words": [
+    "Firestore",
+    "bindconfirm",
+    "bindinput",
+    "bindtap",
+    "testid"
+  ],
 
   // === Material Icon Theme ===
   "material-icon-theme.activeIconPack": "react",

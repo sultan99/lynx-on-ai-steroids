@@ -7,7 +7,7 @@ import dunkinLogo from '../assets/logo-dunkin-donuts.png'
 export const bakeries: Bakery[] = [
   {
     deliveryTime: 45,
-    id: '1',
+    id: 'bkr_lm4xpn',
     logo: dunkinLogo,
     name: "Dunkin' Donuts",
     orderLink: 'https://www.dunkindonuts.com',
@@ -17,7 +17,7 @@ export const bakeries: Bakery[] = [
   },
   {
     deliveryTime: 30,
-    id: '2',
+    id: 'bkr_rf8qyt',
     logo: burgerKingLogo,
     name: 'Burger King',
     orderLink: 'https://www.bk.com',

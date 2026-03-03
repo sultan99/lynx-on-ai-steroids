@@ -8,11 +8,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 350,
-    categoryId: '1',
+    categoryId: 'cat_k9pm2n',
     deliveryType: 'Free',
     description:
       'Rich chocolate glaze over a fluffy yeast donut, topped with chocolate sprinkles.',
-    id: '1',
+    id: 'dnt_r2km9x',
     image: classicImg,
     isFavorite: true,
     name: 'Chocolate',
@@ -23,11 +23,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 420,
-    categoryId: '2',
+    categoryId: 'cat_v3fqrt',
     deliveryType: 'Free',
     description:
       'Soft donut filled with smooth vanilla custard and dusted with powdered sugar.',
-    id: '2',
+    id: 'dnt_f7pln4',
     image: filledImg,
     isFavorite: false,
     name: 'Cream Filled',
@@ -38,11 +38,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 380,
-    categoryId: '4',
+    categoryId: 'cat_h2dnlp',
     deliveryType: 'Paid',
     description:
       'Velvety cream cheese frosting swirled on a cinnamon-spiced donut.',
-    id: '3',
+    id: 'dnt_j5wqs8',
     image: creemyImg,
     isFavorite: false,
     name: 'Careemy',
@@ -53,11 +53,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 450,
-    categoryId: '4',
+    categoryId: 'cat_h2dnlp',
     deliveryType: 'Free',
     description:
       'Triple-layered chocolate donut with dark ganache and cocoa nibs.',
-    id: '4',
+    id: 'dnt_t3vbk6',
     image: decadentImg,
     isFavorite: true,
     name: 'Decadent',
@@ -68,11 +68,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 340,
-    categoryId: '1',
+    categoryId: 'cat_k9pm2n',
     deliveryType: 'Free',
     description:
       'Classic donut with a thick chocolate frost coating and rainbow sprinkles.',
-    id: '5',
+    id: 'dnt_y1chr0',
     image: classicImg,
     isFavorite: false,
     name: 'Chocolate Frost',
@@ -83,11 +83,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 390,
-    categoryId: '5',
+    categoryId: 'cat_n5zkwc',
     deliveryType: 'Paid',
     description:
       'Golden donut topped with crushed walnuts, almonds, and a honey drizzle.',
-    id: '6',
+    id: 'dnt_m8gzd5',
     image: creemyImg,
     isFavorite: false,
     name: 'Nutty Crunch',
@@ -98,11 +98,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 310,
-    categoryId: '3',
+    categoryId: 'cat_b7wjys',
     deliveryType: 'Free',
     description:
       'Light donut glazed with mixed berry compote and topped with fresh fruit bits.',
-    id: '7',
+    id: 'dnt_x4nwf9',
     image: filledImg,
     isFavorite: true,
     name: 'Berry Bliss',
@@ -113,11 +113,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Krispy Kreme',
     calories: 290,
-    categoryId: '1',
+    categoryId: 'cat_k9pm2n',
     deliveryType: 'Free',
     description:
       'The original classic — light, airy, and coated in a sweet sugar glaze.',
-    id: '8',
+    id: 'dnt_p6jtm2',
     image: classicImg,
     isFavorite: false,
     name: 'Classic Glazed',
@@ -128,11 +128,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Dunkin',
     calories: 410,
-    categoryId: '4',
+    categoryId: 'cat_h2dnlp',
     deliveryType: 'Paid',
     description:
       'Caramel-drizzled donut with sea salt flakes and a buttery crumb topping.',
-    id: '9',
+    id: 'dnt_k0hyx7',
     image: decadentImg,
     isFavorite: false,
     name: 'Salted Caramel',
@@ -143,11 +143,11 @@ export const donuts: Donut[] = [
   {
     brand: 'Duck Donuts',
     calories: 360,
-    categoryId: '3',
+    categoryId: 'cat_b7wjys',
     deliveryType: 'Free',
     description:
       'Strawberry-frosted donut with white chocolate chips and a pink glaze.',
-    id: '10',
+    id: 'dnt_s3bnq1',
     image: filledImg,
     isFavorite: false,
     name: 'Strawberry Dream',
