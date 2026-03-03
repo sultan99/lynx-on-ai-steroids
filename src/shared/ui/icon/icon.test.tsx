@@ -29,4 +29,12 @@ describe('Icon', () => {
     fireEvent.tap(getByTestId('tap-icon'))
     expect(handler).toHaveBeenCalledTimes(1)
   })
+
+  test('fires catchtap callback', () => {
+    const handler = vi.fn()
+    render(<Icon data-testid='catch-icon' glyph='menu' catchtap={handler} />)
+    const { getByTestId } = queryRoot()
+    fireEvent.tap(getByTestId('catch-icon'), { eventType: 'catchEvent' })
+    expect(handler).toHaveBeenCalledTimes(1)
+  })
 })
