@@ -8,7 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const defaultConfig = await createVitestConfig()
 const config = defineConfig({
   define: {
-    __API_URL__: JSON.stringify('http://localhost:test/trpc'),
+    __API_URL__: JSON.stringify('http://localhost:4000/trpc'),
   },
   resolve: {
     alias: {
