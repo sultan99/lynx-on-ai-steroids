@@ -67,14 +67,16 @@ describe('DonutCard', () => {
     const onLike = vi.fn()
     render(<DonutCard donut={baseDonut} onLike={onLike} />)
     const { getByText } = queryRoot()
-    fireEvent.tap(getByText(glyphMap.heart))
+    fireEvent.tap(getByText(glyphMap.heart), { eventType: 'catchEvent' })
     expect(onLike).toHaveBeenCalledWith('1')
   })
 
   test('does not throw when heart is tapped without onLike', () => {
     render(<DonutCard donut={baseDonut} />)
     const { getByText } = queryRoot()
-    expect(() => fireEvent.tap(getByText(glyphMap.heart))).not.toThrow()
+    expect(() =>
+      fireEvent.tap(getByText(glyphMap.heart), { eventType: 'catchEvent' }),
+    ).not.toThrow()
   })
 
   test('passes restProps to root element', () => {

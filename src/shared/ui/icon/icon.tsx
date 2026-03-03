@@ -6,6 +6,7 @@ import * as css from './icon.module.scss'
 export type IconProps = {
   'data-testid'?: string
   bindtap?: () => void
+  catchtap?: () => void
   className?: string
   glyph: IconGlyph
   rotate?: number
