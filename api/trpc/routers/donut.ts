@@ -35,7 +35,7 @@ export const donutRouter = router({
 
   toggleFavorite: publicProcedure
     .input(z.object({ donutId: z.string() }))
-    .mutation(async ({ ctx, input }) => {
+    .mutation(({ ctx, input }) => {
       const favRef = favorites.doc(ctx.userId)
 
       return favorites.firestore.runTransaction(async (tx) => {

@@ -4,15 +4,14 @@ import { getFirestore } from 'firebase-admin/firestore'
 initializeApp({ projectId: process.env.FIREBASE_PROJECT_ID ?? 'donuts-api-sa99' })
 const db = getFirestore()
 
-const isEmulator = !!process.env.FIRESTORE_EMULATOR_HOST
+const isEmulator = Boolean(process.env.FIRESTORE_EMULATOR_HOST)
 const isForced = process.argv.includes('--force')
 
 if (!isEmulator && !isForced) {
-  console.error(
+  throw new Error(
     'Refusing to seed live Firestore.\n' +
       'Set FIRESTORE_EMULATOR_HOST for emulator, or pass --force to seed production.',
   )
-  process.exit(1)
 }
 
 const donuts = [

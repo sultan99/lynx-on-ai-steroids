@@ -266,7 +266,7 @@ describe('Donut Router', () => {
     })
 
     it('should create favorites doc when user has no favorites yet', async () => {
-      const { mockFavRef, mockTxSet } = setupTransactionMock(undefined)
+      const { mockFavRef, mockTxSet } = setupTransactionMock()
 
       const caller = createCaller()
       const result = await caller.toggleFavorite({ donutId: 'donut-1' })
