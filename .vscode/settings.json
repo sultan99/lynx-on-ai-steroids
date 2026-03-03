@@ -24,7 +24,13 @@
   "biome.suggestInstallingGlobally": false,
 
   // === Spelling ===
-  "cSpell.words": ["bindconfirm", "bindinput", "bindtap", "testid"],
+  "cSpell.words": [
+    "Firestore",
+    "bindconfirm",
+    "bindinput",
+    "bindtap",
+    "testid"
+  ],
 
   // === Material Icon Theme ===
   "material-icon-theme.activeIconPack": "react",
@@ -55,5 +61,13 @@
     "screens": "desktop",
     "skills": "bicep",
     "validate": "resolver"
+  },
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "custom-dictionary-workspace",
+      "path": "${workspaceFolder:lynx-on-ai-steroids}/.cspell/custom-dictionary-workspace.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
   }
 }

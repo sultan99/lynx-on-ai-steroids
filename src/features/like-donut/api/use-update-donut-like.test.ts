@@ -114,13 +114,14 @@ describe('useUpdateDonutLike', () => {
 
   test('mutationFn toggles donut favorite in mock data', async () => {
     const config = await getHook()
-    const donut = donuts.filter((d) => d.id === '1').at(0)
+    const donut = donuts.at(0)
     expect(donut).toBeDefined()
     const wasFavorite = donut?.isFavorite
+    const donutId = donut?.id ?? ''
 
-    const result = await config.mutationFn('1')
+    const result = await config.mutationFn(donutId)
 
-    expect(result).toBe('1')
+    expect(result).toBe(donutId)
     expect(donut?.isFavorite).toBe(!wasFavorite)
     if (donut) donut.isFavorite = wasFavorite ?? false
   })
