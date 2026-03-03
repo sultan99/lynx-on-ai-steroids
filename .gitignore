@@ -13,6 +13,9 @@ bugreport-*.zip
 .claude/progress/
 .idea/
 .vscode/*
+api/.env.local
+api/dist/
+api/node_modules/
 coverage/
 dist/
 node_modules/

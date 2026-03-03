@@ -190,7 +190,7 @@ describe('CartScreen — with items', () => {
     fireEvent.tap(getByTestId('order-button'))
     expect(mockNavigate).toHaveBeenCalledWith({
       to: '/order/$orderId',
-      params: { orderId: '1' },
+      params: { orderId: 'ord_xn7krp' },
     })
   })
 
