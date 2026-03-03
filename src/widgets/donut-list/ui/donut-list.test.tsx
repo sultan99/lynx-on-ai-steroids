@@ -62,7 +62,9 @@ describe('DonutList widget', () => {
   test('wires toggleFavorite to onLike', () => {
     render(<DonutList />)
     const { getAllByText } = queryRoot()
-    fireEvent.tap(getAllByText(glyphMap.heart)[0])
+    fireEvent.tap(getAllByText(glyphMap.heart)[0], {
+      eventType: 'catchEvent',
+    })
     expect(mockToggle).toHaveBeenCalledWith('2')
   })
 

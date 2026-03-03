@@ -1,9 +1,5 @@
-import type { Order } from '../model/types'
 import { queryOptions } from '@tanstack/react-query'
-import { orders } from './mock-data'
-
-const delay = (ms: number) =>
-  new Promise<void>((resolve) => setTimeout(resolve, ms))
+import { trpc } from '@/shared/api/trpc'
 
 export const orderKeys = {
   all: ['orders'] as const,
@@ -12,18 +8,12 @@ export const orderKeys = {
 }
 
 export const orderListQueryOptions = queryOptions({
-  queryFn: async (): Promise<Order[]> => {
-    await delay(200)
-    return orders
-  },
+  queryFn: () => trpc.order.list.query(),
   queryKey: orderKeys.list(),
 })
 
 export const orderDetailQueryOptions = (id: string) =>
   queryOptions({
-    queryFn: async (): Promise<Order | undefined> => {
-      await delay(200)
-      return orders.find((o) => o.id === id)
-    },
+    queryFn: () => trpc.order.detail.query({ id }),
     queryKey: orderKeys.detail(id),
   })
