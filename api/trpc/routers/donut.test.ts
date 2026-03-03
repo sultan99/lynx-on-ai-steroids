@@ -214,65 +214,65 @@ describe('Donut Router', () => {
   })
 
   describe('toggleFavorite', () => {
-    it('should add favorite when donut is not favorited', async () => {
-      const mockFavRef = {
-        get: vi.fn().mockResolvedValue({
-          data: () => ({ donutIds: [], userId: 'user-1' }),
-        }),
-        set: vi.fn().mockResolvedValue(undefined),
+    const setupTransactionMock = (favData: collections.Favorite | undefined) => {
+      const mockFavRef = { id: 'user-1' }
+      const mockTxSet = vi.fn()
+      const mockTx = {
+        get: vi.fn().mockResolvedValue({ data: () => favData }),
+        set: mockTxSet,
       }
 
-      const mockFavDoc = vi.fn().mockReturnValue(mockFavRef)
-      vi.mocked(collections.favorites).doc = mockFavDoc
+      const mockDoc = vi.fn().mockReturnValue(mockFavRef)
+      vi.mocked(collections.favorites).doc = mockDoc
+      Object.defineProperty(vi.mocked(collections.favorites), 'firestore', {
+        value: { runTransaction: vi.fn((cb: (tx: typeof mockTx) => unknown) => cb(mockTx)) },
+        configurable: true,
+      })
+
+      return { mockDoc, mockFavRef, mockTxSet }
+    }
+
+    it('should add favorite when donut is not favorited', async () => {
+      const { mockDoc, mockFavRef, mockTxSet } = setupTransactionMock({
+        donutIds: [],
+        userId: 'user-1',
+      })
 
       const caller = createCaller()
       const result = await caller.toggleFavorite({ donutId: 'donut-1' })
 
       expect(result).toEqual({ isFavorite: true })
-      expect(mockFavDoc).toHaveBeenCalledWith('user-1')
-      expect(mockFavRef.set).toHaveBeenCalledWith({
+      expect(mockDoc).toHaveBeenCalledWith('user-1')
+      expect(mockTxSet).toHaveBeenCalledWith(mockFavRef, {
         donutIds: ['donut-1'],
         userId: 'user-1',
       })
     })
 
     it('should remove favorite when donut is already favorited', async () => {
-      const mockFavRef = {
-        get: vi.fn().mockResolvedValue({
-          data: () => ({ donutIds: ['donut-1', 'donut-2'], userId: 'user-1' }),
-        }),
-        set: vi.fn().mockResolvedValue(undefined),
-      }
-
-      const mockFavDoc = vi.fn().mockReturnValue(mockFavRef)
-      vi.mocked(collections.favorites).doc = mockFavDoc
+      const { mockFavRef, mockTxSet } = setupTransactionMock({
+        donutIds: ['donut-1', 'donut-2'],
+        userId: 'user-1',
+      })
 
       const caller = createCaller()
       const result = await caller.toggleFavorite({ donutId: 'donut-1' })
 
       expect(result).toEqual({ isFavorite: false })
-      expect(mockFavRef.set).toHaveBeenCalledWith({
+      expect(mockTxSet).toHaveBeenCalledWith(mockFavRef, {
         donutIds: ['donut-2'],
         userId: 'user-1',
       })
     })
 
     it('should create favorites doc when user has no favorites yet', async () => {
-      const mockFavRef = {
-        get: vi.fn().mockResolvedValue({
-          data: () => undefined,
-        }),
-        set: vi.fn().mockResolvedValue(undefined),
-      }
-
-      const mockFavDoc = vi.fn().mockReturnValue(mockFavRef)
-      vi.mocked(collections.favorites).doc = mockFavDoc
+      const { mockFavRef, mockTxSet } = setupTransactionMock(undefined)
 
       const caller = createCaller()
       const result = await caller.toggleFavorite({ donutId: 'donut-1' })
 
       expect(result).toEqual({ isFavorite: true })
-      expect(mockFavRef.set).toHaveBeenCalledWith({
+      expect(mockTxSet).toHaveBeenCalledWith(mockFavRef, {
         donutIds: ['donut-1'],
         userId: 'user-1',
       })
