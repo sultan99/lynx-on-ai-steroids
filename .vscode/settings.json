@@ -61,13 +61,5 @@
     "screens": "desktop",
     "skills": "bicep",
     "validate": "resolver"
-  },
-  "cSpell.customDictionaries": {
-    "custom-dictionary-workspace": {
-      "name": "custom-dictionary-workspace",
-      "path": "${workspaceFolder:lynx-on-ai-steroids}/.cspell/custom-dictionary-workspace.txt",
-      "addWords": true,
-      "scope": "workspace"
-    }
   }
 }
