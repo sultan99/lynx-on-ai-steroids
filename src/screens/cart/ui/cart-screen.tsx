@@ -50,7 +50,7 @@ export const CartScreen = () => {
   )
 
   const handleOrder = useCallback(() => {
-    navigate({ to: '/order/$orderId', params: { orderId: '1' } })
+    navigate({ to: '/order/$orderId', params: { orderId: 'ord_xn7krp' } })
   }, [navigate])
 
   if (items.length === 0) {
