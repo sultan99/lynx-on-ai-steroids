@@ -91,7 +91,6 @@ There is no `npm run build`. Builds and device deployment are done via the `/bui
 - `/dev <issue-number> [-y]` — Feature implementation workflow (plan, implement, test, commit)
 - `/validate` — Run lint, type-check, and tests in parallel
 - `/deepsource review` — Interactive review of DeepSource static analysis issues
-- `/autopilot` — Skip all skill confirmations for the rest of the session
 
 **Git:**
 - `/git branch [issue]` — Create branch from GitHub issue

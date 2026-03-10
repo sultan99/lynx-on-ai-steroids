@@ -14,14 +14,14 @@ Feature implementation workflow — from issue to PR.
 ```
 /dev
     <issue-number>        Implement GitHub issue (e.g., /dev 12)
-    <issue-number> -y     Implement with auto-confirm (autopilot mode, auto-commit and PR)
+    <issue-number> -y     Implement with auto-confirm (auto-commit and PR)
 
-    -y, --yes             Skip confirmations, default to autopilot mode
+    -y, --yes             Skip confirmations
 ```
 
 **If no issue number provided:** Ask the developer for the issue number. Do not proceed without one.
 
-If `-y` or `AUTO_CONFIRM` is active, all sub-skill invocations inherit auto-confirm.
+If `-y` is passed, all sub-skill invocations inherit auto-confirm.
 
 ---
 
@@ -44,7 +44,7 @@ Before starting the workflow, check if a progress file exists:
    > - Remaining: <list incomplete plan items>
    >   Continue?"
 4. Wait for developer response
-5. If confirmed → recreate todo list from the progress file (mark completed items as done), restore the implementation mode (autopilot/pair), continue from the first unchecked plan item in Step 4. If all plan items are done, go to Step 5.
+5. If confirmed → recreate todo list from the progress file (mark completed items as done), restore the implementation mode, continue from the first unchecked plan item in Step 4. If all plan items are done, go to Step 5.
 6. If declined → ask if they want to start fresh (this deletes the progress file)
 
 **If no progress file exists**, check git history for prior session work:
@@ -104,10 +104,10 @@ git branch --show-current
 >
 > 1. Any specific instructions or context? (approach, files to reference, constraints)
 > 2. How would you like to work?
->    - **Autopilot** — I implement all plan items, then ask you to verify
+>    - **All at once** — I implement all plan items, then ask you to verify
 >    - **Pair programming** — I implement one plan item at a time, you review each before I continue"
 
-**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → default to Autopilot mode and proceed. Otherwise → wait for response before continuing.
+**Confirmation gate:** If `-y` → default to "all at once" mode and proceed. Otherwise → wait for response before continuing.
 
 #### Save Progress
 
@@ -120,7 +120,7 @@ The plan items are the **implementation tasks** from the todo list — the actua
 
 ## Mode
 
-<autopilot | pair>
+<all-at-once | pair>
 
 ## Branch
 
@@ -149,7 +149,7 @@ The plan items are the **implementation tasks** from the todo list — the actua
 - Follow `.claude/rules/coding.md` for all coding conventions
 - Follow `.claude/rules/testing.md` when writing or updating tests
 
-#### Autopilot Mode
+#### All-at-Once Mode
 
 Implement all plan items sequentially without pausing. After each item, update the progress file — mark the plan item as `[x]`. After all items are done, proceed to Step 5.
 
@@ -167,7 +167,7 @@ After all items are done, proceed to Step 5.
 
 ### Step 5: Developer Verification
 
-**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → proceed to Step 6. Otherwise → ask:
+**Confirmation gate:** If `-y` → proceed to Step 6. Otherwise → ask:
 
 > "All plan items are implemented. Please test the feature and let me know:
 >
@@ -192,7 +192,7 @@ Fix any errors before completing.
 
 ### Step 8: Commit & PR
 
-**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → invoke `/git commit` and `/github create pr`, then proceed to Step 9. Otherwise → ask:
+**Confirmation gate:** If `-y` → invoke `/git commit` and `/github create pr`, then proceed to Step 9. Otherwise → ask:
 
 > "Would you like to commit the changes and create a PR?"
 

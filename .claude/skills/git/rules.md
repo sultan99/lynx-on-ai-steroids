@@ -4,7 +4,7 @@ These rules apply to ALL git operations — main thread and all agents.
 
 ## Confirmations
 
-Critical git actions (`commit`, `push`, `merge`, `rebase`, `reset`) require developer confirmation unless `-y` was passed or `/autopilot` is active. See `.claude/rules/skills.md` > Confirmations.
+Critical git actions (`commit`, `push`, `merge`, `rebase`, `reset`) require developer confirmation unless `-y` was passed.
 
 ## Restrictions
 

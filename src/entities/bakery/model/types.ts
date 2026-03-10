@@ -1,10 +1,3 @@
-export type Bakery = {
-  deliveryTime: number
-  id: string
-  logo: string
-  name: string
-  orderLink: string
-  promoImage: string
-  promoText: string
-  rating: number
-}
+import type { TrpcTypes } from '@/shared/api/trpc-types'
+
+export type Bakery = TrpcTypes['bakery']['list'][number]

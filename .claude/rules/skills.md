@@ -94,16 +94,11 @@ If no argument is provided, list available commands and ask the user.
 
 ## Confirmations
 
-Skills must confirm before performing critical actions. The developer can bypass confirmations with `-y` or by activating `/autopilot`.
+Skills must confirm before performing critical actions. The developer can bypass confirmations with `-y`.
 
 ### Auto-confirm check
 
-Before every confirmation gate, check in this order:
-
-1. Was `-y` passed to the current skill invocation?
-2. Was `/autopilot` activated earlier in the session?
-
-If either is true → skip confirmation and proceed. Otherwise → show what will happen and wait for developer approval.
+Before every confirmation gate, check if `-y` was passed to the current skill invocation. If true → skip confirmation and proceed. Otherwise → show what will happen and wait for developer approval.
 
 ### Critical actions (require confirmation)
 

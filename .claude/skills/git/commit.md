@@ -57,7 +57,7 @@ Analyze git changes and create a commit message. Use present tense and explain "
 
 Use the message format above.
 
-**Confirmation gate:** Show the planned commit message(s) and files. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Proceed with commit?" and wait.
+**Confirmation gate:** Show the planned commit message(s) and files. If `-y` → proceed. Otherwise → ask "Proceed with commit?" and wait.
 
 ### Step 5: Report result
 
