@@ -10,7 +10,7 @@ Rebase current branch onto another branch.
 git fetch origin
 ```
 
-**Confirmation gate:** Show which branch the current branch will be rebased onto. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Rebase `<current>` onto `origin/<branch>`?" and wait.
+**Confirmation gate:** Show which branch the current branch will be rebased onto. If `-y` → proceed. Otherwise → ask "Rebase `<current>` onto `origin/<branch>`?" and wait.
 
 ### Step 2: Rebase
 

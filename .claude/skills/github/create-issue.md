@@ -48,7 +48,7 @@ Show the fully formatted issue:
 <implementation hints, affected areas, or constraints>
 ```
 
-**Confirmation gate:** If `-y` or `AUTO_CONFIRM` → proceed to create. Otherwise → ask "Want to change anything, or should I create it?" and wait. If the developer requests changes, apply them, re-present the draft, and ask again. Loop until confirmed.
+**Confirmation gate:** If `-y` → proceed to create. Otherwise → ask "Want to change anything, or should I create it?" and wait. If the developer requests changes, apply them, re-present the draft, and ask again. Loop until confirmed.
 
 ### Step 4: Create issue
 

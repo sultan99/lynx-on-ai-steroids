@@ -1,15 +1,4 @@
-export type Courier = {
-  avatar: string
-  id: string
-  name: string
-  phone: string
-}
+import type { TrpcTypes } from '@/shared/api/trpc-types'
 
-export type Order = {
-  courier: Courier
-  deliveryAddress: string
-  deliveryTime: string
-  estimatedTime: number
-  id: string
-  status: 'delivered' | 'in-transit' | 'preparing'
-}
+export type Order = TrpcTypes['order']['list'][number]
+export type Courier = Order['courier']

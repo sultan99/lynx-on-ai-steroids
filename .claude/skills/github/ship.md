@@ -2,7 +2,7 @@
 
 Ship experimental changes by analyzing your diff, creating a GitHub issue, branching, committing, and opening a PR.
 
-If `-y` or `AUTO_CONFIRM` is active, all sub-skill invocations inherit auto-confirm.
+If `-y` is passed, all sub-skill invocations inherit auto-confirm.
 
 ### Step 1: Verify branch and analyze changes
 
@@ -38,7 +38,7 @@ Present a concise summary to the developer:
 - Files affected
 - Type assessment: feature / bug fix / chore
 
-**Confirmation gate:** Say "Here's what I see in your changes: [summary]. I'll create a GitHub issue from this." If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Anything you want to add or correct?" and wait.
+**Confirmation gate:** Say "Here's what I see in your changes: [summary]. I'll create a GitHub issue from this." If `-y` → proceed. Otherwise → ask "Anything you want to add or correct?" and wait.
 
 ### Step 3: Create issue
 
