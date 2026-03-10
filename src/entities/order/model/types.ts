@@ -1,5 +1,4 @@
 import type { TrpcTypes } from '@/shared/api/trpc-types'
 
-type OrderOutput = TrpcTypes['order']['list'][number]
-export type Order = OrderOutput
+export type Order = TrpcTypes['order']['list'][number]
 export type Courier = Order['courier']
