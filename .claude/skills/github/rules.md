@@ -4,7 +4,7 @@ These rules apply to ALL GitHub operations.
 
 ## Confirmations
 
-Critical GitHub actions (`issue create`, `pr create`, `pr edit`, `push`) require developer confirmation unless `-y` was passed or `/autopilot` is active. See `.claude/rules/skills.md` > Confirmations.
+Critical GitHub actions (`issue create`, `pr create`, `pr edit`, `push`) require developer confirmation unless `-y` was passed.
 
 ## Restrictions
 

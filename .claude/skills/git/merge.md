@@ -10,7 +10,7 @@ Merge a branch into the current branch.
 git fetch origin
 ```
 
-**Confirmation gate:** Show which branch will be merged into the current branch. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Merge `origin/<branch>` into `<current>`?" and wait.
+**Confirmation gate:** Show which branch will be merged into the current branch. If `-y` → proceed. Otherwise → ask "Merge `origin/<branch>` into `<current>`?" and wait.
 
 ### Step 2: Merge
 

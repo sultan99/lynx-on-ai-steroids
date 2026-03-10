@@ -41,7 +41,7 @@ Fill in each section based on the GitHub issue and branch analysis.
 
 ### Step 7: Confirm and update PR
 
-**Confirmation gate:** Show the new PR title and summary of changes. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → ask "Update PR #<number>?" and wait.
+**Confirmation gate:** Show the new PR title and summary of changes. If `-y` → proceed. Otherwise → ask "Update PR #<number>?" and wait.
 
 ```bash
 gh pr edit <pr-number> --title "<title>" --body "<description>"

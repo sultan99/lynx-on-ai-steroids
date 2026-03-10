@@ -65,7 +65,7 @@ If there are no comments from one group, omit that section header.
 
 ### Step 5: Implement fixes
 
-**Confirmation gate:** Show the developer what changes you plan to make. If `-y` or `AUTO_CONFIRM` → proceed. Otherwise → wait for approval before committing or pushing.
+**Confirmation gate:** Show the developer what changes you plan to make. If `-y` → proceed. Otherwise → wait for approval before committing or pushing.
 
 ### Step 6: Validate
 

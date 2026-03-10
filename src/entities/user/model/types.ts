@@ -1,7 +1,3 @@
-export type User = {
-  avatar: string
-  avatarUrl: string
-  id: string
-  location: string
-  name: string
-}
+import type { TrpcTypes } from '@/shared/api/trpc-types'
+
+export type User = NonNullable<TrpcTypes['user']['current']>
